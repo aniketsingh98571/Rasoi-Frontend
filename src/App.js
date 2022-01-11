@@ -12,7 +12,7 @@ function App() {
         <a
           className="App-link"
           href="https://reactjs.org"
-          target="target3"
+          target="target5"
           rel="noopener noreferrer"
         >
           Learn React
