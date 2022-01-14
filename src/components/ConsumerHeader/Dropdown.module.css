@@ -1,0 +1,33 @@
+.menu {
+  position: absolute;
+  right: 11vw;
+  top: 9vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+  width: 20vh;
+  padding: 4px;
+  background-color: #ffffee;
+  color: var(--Black);
+  border: 2px solid var(--Black);
+  border-top-left-radius: 15%;
+}
+.menuItem {
+  border: 2px solid var(--Black);
+  margin: 5%;
+  padding: 2px;
+  text-align: center;
+  font-family: AvenirNextLTPro-Bold;
+  background-color: var(--White);
+  color: var(--Black);
+}
+/* .menu :last-child h3 {
+  background-color: #ffffee;
+} */
+.menuItem:hover,
+.menu :last-child h3:hover {
+  cursor: pointer;
+  background-color: var(--Yellow);
+  color: var(--Black);
+}
