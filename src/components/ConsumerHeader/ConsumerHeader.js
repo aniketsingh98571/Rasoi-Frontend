@@ -12,6 +12,12 @@ const ConsumerHeader = () => {
     setclickStatus(!clickStatus);
   };
 
+  // document.addEventListener("mousedown", (e) => {
+  //   if (clickStatus === true) {
+  //     setclickStatus(!clickStatus);
+  //   }
+  // });
+
   const handleSearchInput = (e) => {
     setsearch({ ...search, [e.target.name]: e.target.value });
     // setNote({ ...note, [e.target.name]: e.target.value })
@@ -64,6 +70,9 @@ const ConsumerHeader = () => {
             <div className={classes.cartIcon}>
               <i className="fas fa-shopping-cart"></i>
             </div>
+          </div>
+          <div className={classes.count}>
+            <p>4</p>
           </div>
         </div>
       </div>
