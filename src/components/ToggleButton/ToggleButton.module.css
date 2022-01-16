@@ -1,0 +1,26 @@
+.Container{
+    margin: 30px 200px 0 0;
+    display: flex;
+    /* border: 2px solid red; */
+    justify-content: right;
+    align-items: center;
+    
+}
+.ToggleButtonContainer{
+    display: flex;
+}
+.ToggleButtonContainer button{
+    padding: 5px 20px;
+    border: 2px solid var(--Black);
+    font-family: AvenirNextLTPro-Bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+.ToggleText p{
+    margin: 0 10px 0 0;
+    font-family: CircularStd-Book;
+    font-size: 22px;
+}
+.ActiveClass{
+    background-color: var(--Yellow);
+}
