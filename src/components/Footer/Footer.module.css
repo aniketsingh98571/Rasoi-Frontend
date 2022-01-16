@@ -3,8 +3,9 @@
   width: 90vw;
   height: 30vh;
   background-color: var(--White);
-  margin: 0 auto 10px auto;
-  border: 2px solid black;
+  margin: 100px auto 10px auto;
+  border-top: 2px solid var(--Black);
+  /* border: 2px solid black; */
 }
 .links {
   display: flex;
@@ -12,7 +13,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 33%;
-  background-color: aqua;
+  /* background-color: aqua; */
   height: 100%;
   font-size: large;
   font-family: AvenirNextLTPro-Regular;
@@ -20,6 +21,11 @@
 .linkItem {
   /* margin: 2%; */
   font-family: AvenirNextLTPro-Regular;
+}
+
+.linkItem:hover {
+  cursor: pointer;
+  font-family: AvenirNextLTPro-Bold;
 }
 .contact {
   width: 33%;
@@ -64,4 +70,15 @@
 .email p {
   width: fit-content;
   color: var(--Black);
+}
+.mapDiv {
+  display: flex;
+  width: 33.33%;
+  height: 100%;
+  margin: 0 auto;
+  /* background-color: blue; */
+}
+.cityMap {
+  height: 100%;
+  width: 100%;
 }

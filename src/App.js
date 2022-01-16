@@ -5,14 +5,7 @@ import SellerHeader from "./components/SellerHeader/SellerHeader";
 import Footer from "./components/Footer/Footer";
 
 function App() {
-  return (
-    <div className="App">
-      <ConsumerHeader />
-
-      {/* <SellerHeader /> */}
-      <Footer />
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;
