@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import classes from './UserSignUp.module.css'
-import ToggleButton from "../ToggleButton/ToggleButton"
+
 const UserSignUp=()=>{
     const [ConsumerRegistration,SetConsumerRegistration]=useState({
         name:"",
@@ -64,9 +64,7 @@ const ConfirmPassword=(e)=>{
             <div className={classes.SignUpText}>
                 <p>Sign Up</p>
             </div>
-            <div className={classes.ToggleContainer}>
-                <ToggleButton ActiveClass="No" SellerRoute="/SellerSignUp"/>
-            </div>
+           
             </div>
             <div className={classes.ConsumerForm}>
                 <div className={classes.LeftForm}>
@@ -120,7 +118,7 @@ const ConfirmPassword=(e)=>{
                     <button type="button" onClick={SubmitHandler}>Sign Up</button>
                 </div>
                 <div className={classes.SignInText}>
-                    <p>Already have an account? <Link className={classes.LinkEdit} to="/UserSignIn"><span className={classes.SignText} >Sign in</span></Link></p>
+                    <p>Already have an account? <Link className={classes.LinkEdit} to="/"><span className={classes.SignText} >Sign in</span></Link></p>
                 </div>
             </div>
             </div>

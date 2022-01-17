@@ -1,16 +1,16 @@
 import React,{useState} from "react"
-import classes from './UserSignIn.module.css'
+import classes from './SellerSignIn.module.css'
 import ToggleButton from "../ToggleButton/ToggleButton"
 import { Link } from "react-router-dom"
-const UserSignIn=()=>{
-    const [Consumerlog,SetConsumerlog]=useState({
+const SellerSignIn=()=>{
+    const [Sellerlog,SetSellerlog]=useState({
         Mobile:"",
         Password:""
     })
     const HandleInput=(e)=>{
         const name=e.target.name;
         const value=e.target.value;
-        SetConsumerlog({...Consumerlog,[name]:value})
+        SetSellerlog({...Sellerlog,[name]:value})
        
     }
     const SubmitHandler=(e)=>{
@@ -37,8 +37,8 @@ const UserSignIn=()=>{
       
     //  });
         
-        SetConsumerlog({Mobile:"",Password:""})
-        // console.log(Consumerlog)
+        SetSellerlog({Mobile:"",Password:""})
+        console.log(Sellerlog)
     }
     return(
         <div className={classes.Container}>
@@ -47,7 +47,7 @@ const UserSignIn=()=>{
             
             </div>
             <div className={classes.ToggleContainer}>
-            <ToggleButton ActiveClasses="No" SellerRoute="/SellerSignIn"/>
+            <ToggleButton ActiveClasses="Yes" SellerRouter="/"/>
                  </div>
             <div className={classes.LogInForm}>
                 <div className={classes.MobileContainer}>
@@ -55,7 +55,7 @@ const UserSignIn=()=>{
                         <p>Mobile Number</p>
                     </div>
                     <div className={classes.MobileInput}>
-                        <input type="number" name="Mobile" value={Consumerlog.Mobile} onChange={HandleInput}/>
+                        <input type="number" name="Mobile" value={Sellerlog.Mobile} onChange={HandleInput}/>
                     </div>
                 </div>
                 <div className={classes.PasswordContainer}>
@@ -63,7 +63,7 @@ const UserSignIn=()=>{
                         <p>Password</p>
                     </div>
                     <div className={classes.PasswordInput}>
-                        <input type="password" name="Password" value={Consumerlog.Password} onChange={HandleInput}/>
+                        <input type="password" name="Password" value={Sellerlog.Password} onChange={HandleInput}/>
                     </div>
                 </div>
             </div>
@@ -72,10 +72,10 @@ const UserSignIn=()=>{
                     <button type="button" onClick={SubmitHandler}>Login</button>
                 </div>
                 <div className={classes.ButtonText}>
-                  <p>Don't Have an Account? <Link className={classes.LinkEdit} to="/UserSignUp"> <span className={classes.SpanText} >Sign Up</span></Link></p>
+                  <p>Don't Have an Account? <Link className={classes.LinkEdit} to="/SellerSignUp"> <span className={classes.SpanText} >Sign Up</span></Link></p>
                   </div>
             </div>
         </div>
     )
 }
-export default UserSignIn;
+export default SellerSignIn;
