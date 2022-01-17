@@ -1,13 +1,19 @@
 import React from "react";
 import classes from "./Footer.module.css";
-import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className={classes.container}>
       <div className={classes.links}>
-        <div className={classes.linkItem}>Home</div>
-        <div className={classes.linkItem}>Service Agreement</div>
-        <div className={classes.linkItem}>Terms and Conditions</div>
+        <a href="./home.html" target={"_new"}>
+          <div className={classes.linkItem}>Home</div>
+        </a>
+        <a href="./ServiceAgreement.html" target={"_new"}>
+          <div className={classes.linkItem}>Service Agreement</div>
+        </a>
+        <a href="./TandC.html" target={"_new"}>
+          <div className={classes.linkItem}>Terms and Conditions</div>
+        </a>
       </div>
 
       <div className={classes.contact}>

@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  width: 90vw;
+  height: auto;
+  background-color: var(--White);
+  margin: 100px auto 10px auto;
+  justify-content: center;
+  font-family: CircularStd-Book;
+  /* border: 2px solid black; */
+}

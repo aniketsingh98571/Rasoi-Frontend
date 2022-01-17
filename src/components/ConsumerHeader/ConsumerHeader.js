@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./ConsumerHeader.module.css";
 import Logo from "../../assets/images/logo.png";
 import Dropdown from "./Dropdown.js";
+import { Link } from "react-router-dom";
 
 const ConsumerHeader = () => {
   const [clickStatus, setclickStatus] = useState(false);
@@ -29,15 +30,15 @@ const ConsumerHeader = () => {
   };
 
   const handleCartClick = (e) => {
-    alert("The cart icon was clicked");
+    // alert("The cart icon was clicked");
   };
 
   return (
     <>
       <div className={classes.container}>
-        <div className={classes.logo}>
+        <Link to="/" className={classes.logo}>
           <img src={Logo} alt="logo" />
-        </div>
+        </Link>
 
         <div className={classes.search}>
           <div className={classes.searchInput}>
@@ -65,7 +66,8 @@ const ConsumerHeader = () => {
           </div>
         </div>
 
-        <div className={classes.cartArea} onClick={handleCartClick}>
+        {/* <Link to="/cart"> */}
+        <Link to="/cart" className={classes.cartArea} onClick={handleCartClick}>
           <div className={classes.cart}>
             <div className={classes.cartIcon}>
               <i className="fas fa-shopping-cart"></i>
@@ -74,7 +76,8 @@ const ConsumerHeader = () => {
           <div className={classes.count}>
             <p>4</p>
           </div>
-        </div>
+        </Link>
+        {/* </Link> */}
       </div>
       {clickStatus && <Dropdown />}
     </>
