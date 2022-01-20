@@ -15,7 +15,8 @@ const SellerSignIn=()=>{
     }
     const SubmitHandler=(e)=>{
         e.preventDefault();
-    //     fetch('http://localhost:8080/consumer/signup', {
+        if(Sellerlog.Mobile&&Sellerlog.Password){
+            //     fetch('http://localhost:8080/consumer/signup', {
     //     method: 'POST', // or 'PUT'
     //     mode: 'cors',
     //     headers: {
@@ -36,9 +37,14 @@ const SellerSignIn=()=>{
     //   console.error('Error:', error);
       
     //  });
+    SetSellerlog({Mobile:"",Password:""})
+        }
+        else
+        alert("Please fill all the details")
+    
         
-        SetSellerlog({Mobile:"",Password:""})
-        console.log(Sellerlog)
+        
+        
     }
     return(
         <div className={classes.Container}>

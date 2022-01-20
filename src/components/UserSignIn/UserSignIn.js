@@ -15,7 +15,8 @@ const UserSignIn=()=>{
     }
     const SubmitHandler=(e)=>{
         e.preventDefault();
-    //     fetch('http://localhost:8080/consumer/signup', {
+        if(Consumerlog.Mobile&&Consumerlog.Password){
+             //     fetch('http://localhost:8080/consumer/signup', {
     //     method: 'POST', // or 'PUT'
     //     mode: 'cors',
     //     headers: {
@@ -36,9 +37,12 @@ const UserSignIn=()=>{
     //   console.error('Error:', error);
       
     //  });
-        
         SetConsumerlog({Mobile:"",Password:""})
-        // console.log(Consumerlog)
+        }
+        else alert("Please fill out all fields")
+
+        
+        
     }
     return(
         <div className={classes.Container}>

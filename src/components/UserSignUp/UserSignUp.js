@@ -9,7 +9,7 @@ const UserSignUp=()=>{
         mobileNo:"",
         password:""
     })
-    const [ConfirmPass,SetConfirmPass]=useState()
+    const [ConfirmPass,SetConfirmPass]=useState("")
     const [ErrorMessage,SetMessage]=useState("")
     const HandleInput=(e)=>{
         const name=e.target.name;
@@ -23,19 +23,40 @@ const ConfirmPassword=(e)=>{
 }
     const SubmitHandler=(e)=>{
         e.preventDefault();
+     
+        if(ConsumerRegistration.address&&ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password){ console.log("filled")}
+        else{ alert("Please fill all details")}
         
-        if((ConsumerRegistration.address&&ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password)) console.log("hi")
-        else alert("Please fill all details")
-        if(ConsumerRegistration.password!==ConfirmPass){
+        if(ConsumerRegistration.mobileNo.length!==10){
+            document.getElementById("MobileId").innerHTML="Invalid Mobile Length";
+            SetConsumerRegistration({name:ConsumerRegistration.name,address:ConsumerRegistration.address,mobileNo:"", password:ConsumerRegistration.password})
+        }
+            
+        
+        if(ConsumerRegistration.password.length<5){
+            document.getElementById("PswrdId").innerHTML="Password Length too short";
+            SetConsumerRegistration({name:ConsumerRegistration.name,address:ConsumerRegistration.address,mobileNo:ConsumerRegistration.mobileNo, password:""})
+            console.log(ConsumerRegistration.password.length)
+         }
+       
+         if(ConsumerRegistration.password!==ConfirmPass){
             SetMessage("Password do not Match") 
             SetConfirmPass("")
-          setTimeout(()=>SetMessage(""),500)  
+          
         }
-        else{
+       
+        else if(ConsumerRegistration.password===ConfirmPass&&ConsumerRegistration.password.length>5&&ConsumerRegistration.mobileNo.length===10){
             SetConsumerRegistration({name:"",address:"",mobileNo:"",password:""})
             SetConfirmPass("")
         }
-    //     fetch('http://localhost:8080/consumer/signup', {
+       
+        setTimeout(()=>{
+            SetMessage("")
+            document.getElementById("PswrdId").innerHTML="";
+            document.getElementById("MobileId").innerHTML="";
+          },500)  
+    
+    //           fetch('http://localhost:8080/consumer/signup', {
     //     method: 'POST', // or 'PUT'
     //     mode: 'cors',
     //     headers: {
@@ -101,6 +122,7 @@ const ConfirmPassword=(e)=>{
                         </div>
                         <div className={classes.MobileInput}>
                             <input type="number" name="mobileNo" value={ConsumerRegistration.mobileNo} onChange={HandleInput}/>
+                            <p id="MobileId"></p>
                         </div>
                     </div>
                     <div className={classes.Password}>
@@ -109,6 +131,7 @@ const ConfirmPassword=(e)=>{
                         </div>
                         <div className={classes.PasswordInput}>
                             <input type="password" name="password" value={ConsumerRegistration.password} onChange={HandleInput}/>
+                            <p id="PswrdId"></p>
                         </div>
                     </div>
                 </div>

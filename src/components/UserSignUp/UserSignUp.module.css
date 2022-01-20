@@ -24,15 +24,20 @@
     font-size: 40px;
 }
 .ConsumerForm{
-    width: 70%;
+    width: 80%;
     display: flex;
-    align-items: center;
+  
     justify-content: space-around;
     margin: 60px auto 0 auto;
     flex-wrap: wrap;
+    /* border:2px solid red; */
 }
 .OuterButtonContainer{
     text-align: center;
+}
+.RightForm{
+    /* border: 2px solid red; */
+   width: 18%;
 }
 .LeftForm p, .RightForm p{
     font-family:CircularStd-Book;
@@ -40,21 +45,32 @@
     margin: 0 0 5px 0;
     
 }
-.LeftForm input,.RightForm input{
+
+.LeftForm input{
     width:150%;
     height: 30px;
     outline: none;
     margin: 0 0 25px 0;
     border-radius: 5px;
 }
-.ConfirmPasswordInput input{
+.RightForm input{
+    width:145%;
+    height: 30px;
+    outline: none;
+    margin: 0 0 25px 0;
+    border-radius: 5px;
+}
+.ConfirmPasswordInput input,.PasswordInput input,.MobileInput input{
     margin-bottom: 0;
 }
-.ConfirmPasswordInput p{
+.ConfirmPasswordInput p,.PasswordInput p,.MobileInput p{
     font-size: 16px;
     color: red;
     margin-top: 5px;
     
+}
+.Password{
+    margin-top: 40px;
 }
 .ButtonContainer button{
     outline: none;

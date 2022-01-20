@@ -6,11 +6,12 @@ const SellerSignUp=()=>{
 
     const [ConsumerRegistration,SetConsumerRegistration]=useState({
         name:"",
-        address:"",
         mobileNo:"",
         password:""
     })
-    const [ConfirmPass,SetConfirmPass]=useState()
+    const [FileUpload1,SetFileUpload1]=useState();
+    const [FileUpload2,SetFileUpload2]=useState();
+    const [ConfirmPass,SetConfirmPass]=useState("")
     const [ErrorMessage,SetMessage]=useState("")
     const HandleInput=(e)=>{
         const name=e.target.name;
@@ -22,41 +23,56 @@ const ConfirmPassword=(e)=>{
     SetConfirmPass(e.target.value)
     
 }
+const HandleFileInput1=(e)=>{
+  SetFileUpload1(e.target.files[0])
+
+}
+const HandleFileInput2=(e)=>{
+    SetFileUpload2(e.target.files[0])
+}
     const SubmitHandler=(e)=>{
         e.preventDefault();
         
-        if((ConsumerRegistration.address&&ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password)) console.log("hi")
+        if(ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password) console.log("hi")
         else alert("Please fill all details")
         if(ConsumerRegistration.password!==ConfirmPass){
             SetMessage("Password do not Match") 
             SetConfirmPass("")
-          setTimeout(()=>SetMessage(""),500)  
+          
         }
         else{
             SetConsumerRegistration({name:"",address:"",mobileNo:"",password:""})
             SetConfirmPass("")
         }
-    //     fetch('http://localhost:8080/consumer/signup', {
-    //     method: 'POST', // or 'PUT'
-    //     mode: 'cors',
-    //     headers: {
-    //        'Content-Type': 'application/json',
-    //              },
-    //    body: JSON.stringify(ConsumerRegistration),
-    //        })
-    //  .then(response =>{ response.json() //status 403=user already exists.
-    //     if(response.status===403)console.log("User already exists")
-    //  })
-    //  .then(data => {
+
+        setTimeout(()=>SetMessage(""),500)  
+        const form=new FormData();
+        form.append('User Details',ConsumerRegistration)
+        form.append('Pan Card',FileUpload1)
+        form.append('Profile Picture',FileUpload2)
+        
+        
+        fetch('http://localhost:8080/consumer/signup', {
+        method: 'POST', // or 'PUT'
+        mode: 'cors',
+        headers: {
+           'Content-Type': 'multipart/form-data',
+                 },
+       body: JSON.stringify(form),
+           })
+     .then(response =>{ response.json() //status 403=user already exists.
+  
+     })
+     .then(data => {
          
-    //   console.log('Success:', data);
-    //   console.log(data.message+"aniket")
+      console.log('Success:', data);
+      console.log(data.message+"aniket")
       
-    //  })
-    //   .catch((error) => {
-    //   console.error('Error:', error);
+     })
+      .catch((error) => {
+      console.error('Error:', error);
       
-    //  });
+     });
     }
     return(
         <div className={classes.Container}>
@@ -89,7 +105,7 @@ const ConfirmPassword=(e)=>{
                   <p>Upload Pan Card</p> 
                </div>
                <div className={classes.PanInput}>
-                   <input type="file"/>
+                   <input id={1} accept=".jpeg,.png"  type="file" name="Pan"  onChange={HandleFileInput1}/>
                </div>
            </div>
             </div>
@@ -116,7 +132,7 @@ const ConfirmPassword=(e)=>{
                     <p>Upload Profile Picture</p>
                 </div>
                 <div className={classes.ProfileInput}>
-                    <input type="file"/>
+                    <input id={2} type="file"  accept=".jpeg,.png" name="Profile" onChange={HandleFileInput2}/>
                 </div>
             </div>
             </div>
