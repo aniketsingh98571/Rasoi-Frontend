@@ -1,7 +1,7 @@
 .container {
   display: flex;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed;
+  bottom: 0; */
   width: 90vw;
   height: 30vh;
   margin-left: auto;

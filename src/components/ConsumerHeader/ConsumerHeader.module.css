@@ -145,9 +145,9 @@
   margin: 0;
 }
 .count {
-  position: absolute;
-  top: 4.5vh;
-  right: 12.5vw;
+  position: relative;
+  top: -15px;
+  right: 13px;
   display: flex;
   flex-direction: column;
   background-color: black;

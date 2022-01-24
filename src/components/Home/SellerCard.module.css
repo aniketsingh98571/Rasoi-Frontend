@@ -1,0 +1,79 @@
+.card {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  min-width: 22vw;
+  min-height: 60vh;
+  max-width: 22vw;
+  max-height: 60vh;
+  margin: 1.5vw 3vw 1.5vw 3vw;
+  /* margin-right: auto; */
+  background-color: var(--White);
+  border: 2px solid black;
+  border-radius: 5%;
+  /* margin-top: 5vh; */
+  box-shadow: 5px 5px 5px var(--Yellow);
+}
+.sellerImage {
+  width: 100%;
+  height: 50%;
+}
+.sellerImage img {
+  width: 100%;
+  height: 100%;
+}
+.sellerDesc {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  width: 90%;
+  margin: 5%;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.sellerDesc h3 {
+  font-size: x-large;
+  font-family: AvenirNextLTPro-Bold;
+}
+.sellerDesc p {
+  margin-top: 5%;
+  font-size: large;
+  text-align: center;
+  font-family: AvenirNextLTPro-Regular;
+}
+.rateandView {
+  display: flex;
+  width: 100%;
+  height: 30%;
+  align-items: center;
+  font-family: AvenirNextLTPro-Bold;
+}
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 50%;
+  margin: 5%;
+  background-color: var(--Yellow);
+  color: var(--Black);
+}
+.rating p {
+  font-size: large;
+}
+button {
+  border: none;
+  outline: none;
+}
+.view {
+  background-color: var(--Yellow);
+  color: var(--Black);
+  width: 40%;
+  height: 50%;
+  font-family: AvenirNextLTPro-Bold;
+  font-size: large;
+  margin: 5%;
+  cursor: pointer;
+}
