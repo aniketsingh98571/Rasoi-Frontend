@@ -26,7 +26,7 @@ const SellerSignIn=()=>{
             })
             .catch(err => {
         
-               console.log(err.response.message)
+               console.log(err)
             });
           
    

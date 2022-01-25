@@ -36,7 +36,7 @@ const ConsumerHeader = () => {
   return (
     <>
       <div className={classes.container}>
-        <Link to="/" className={classes.logo}>
+        <Link to="/Home" className={classes.logo}>
           <img src={Logo} alt="logo" />
         </Link>
 
