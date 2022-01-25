@@ -1,11 +1,12 @@
 import React,{useState} from "react"
+import axios from "axios"
 import classes from './SellerSignIn.module.css'
 import ToggleButton from "../ToggleButton/ToggleButton"
 import { Link } from "react-router-dom"
 const SellerSignIn=()=>{
     const [Sellerlog,SetSellerlog]=useState({
-        Mobile:"",
-        Password:""
+        mobileNo:"",
+        password:""
     })
     const HandleInput=(e)=>{
         const name=e.target.name;
@@ -15,29 +16,20 @@ const SellerSignIn=()=>{
     }
     const SubmitHandler=(e)=>{
         e.preventDefault();
-        if(Sellerlog.Mobile&&Sellerlog.Password){
-            //     fetch('http://localhost:8080/consumer/signup', {
-    //     method: 'POST', // or 'PUT'
-    //     mode: 'cors',
-    //     headers: {
-    //        'Content-Type': 'application/json',
-    //              },
-    //    body: JSON.stringify(ConsumerRegistration),
-    //        })
-    //  .then(response =>{ response.json() //status 403=user already exists.
-    //     if(response.status===403)console.log("User already exists")
-    //  })
-    //  .then(data => {
-         
-    //   console.log('Success:', data);
-    //   console.log(data.message+"aniket")
-      
-    //  })
-    //   .catch((error) => {
-    //   console.error('Error:', error);
-      
-    //  });
-    SetSellerlog({Mobile:"",Password:""})
+        if(Sellerlog.mobileNo&&Sellerlog.password){
+            axios.post(   'http://localhost:8080/seller/signin', Sellerlog)
+            .then(res => {
+               console.log(res.data.sellerID); //getting user id of authenticated seller
+               localStorage.setItem('SellerId',res.data.sellerID)
+               SetSellerlog({mobileNo:"",password:""})
+       
+            })
+            .catch(err => {
+        
+               console.log(err.response.message)
+            });
+          
+   
         }
         else
         alert("Please fill all the details")
@@ -61,7 +53,7 @@ const SellerSignIn=()=>{
                         <p>Mobile Number</p>
                     </div>
                     <div className={classes.MobileInput}>
-                        <input type="number" name="Mobile" value={Sellerlog.Mobile} onChange={HandleInput}/>
+                        <input type="number" name="mobileNo" value={Sellerlog.mobileNo} onChange={HandleInput}/>
                     </div>
                 </div>
                 <div className={classes.PasswordContainer}>
@@ -69,7 +61,7 @@ const SellerSignIn=()=>{
                         <p>Password</p>
                     </div>
                     <div className={classes.PasswordInput}>
-                        <input type="password" name="Password" value={Sellerlog.Password} onChange={HandleInput}/>
+                        <input type="password" name="password" value={Sellerlog.password} onChange={HandleInput}/>
                     </div>
                 </div>
             </div>

@@ -1,18 +1,22 @@
 import React,{useState} from "react"
 import { Link } from "react-router-dom"
 import classes from './SellerSignUp.module.css'
+import axios from 'axios';
 
 const SellerSignUp=()=>{
 
     const [ConsumerRegistration,SetConsumerRegistration]=useState({
-        name:"",
+        sellerName:"",
         mobileNo:"",
-        password:""
+        password:"",
+        panImage:null,
+        profileImage:null
+        
     })
-    const [FileUpload1,SetFileUpload1]=useState();
-    const [FileUpload2,SetFileUpload2]=useState();
+    
     const [ConfirmPass,SetConfirmPass]=useState("")
     const [ErrorMessage,SetMessage]=useState("")
+    
     const HandleInput=(e)=>{
         const name=e.target.name;
         const value=e.target.value;
@@ -24,55 +28,68 @@ const ConfirmPassword=(e)=>{
     
 }
 const HandleFileInput1=(e)=>{
-  SetFileUpload1(e.target.files[0])
+ SetConsumerRegistration({...ConsumerRegistration,panImage:e.target.files[0]})
 
 }
 const HandleFileInput2=(e)=>{
-    SetFileUpload2(e.target.files[0])
+    SetConsumerRegistration({...ConsumerRegistration,profileImage:e.target.files[0]})
 }
     const SubmitHandler=(e)=>{
-        e.preventDefault();
         
-        if(ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password) console.log("hi")
+        e.preventDefault();
+        if(ConsumerRegistration.mobileNo&&ConsumerRegistration.sellerName&&ConsumerRegistration.password&&ConsumerRegistration.panImage&&ConsumerRegistration.profileImage&&ConfirmPass) console.log("hi")
         else alert("Please fill all details")
+       
+        if(ConsumerRegistration.mobileNo.length!==10){
+            document.getElementById("mobileId").innerHTML="Enter valid Mobile Number";
+            SetConsumerRegistration({sellerName:ConsumerRegistration.sellerName,mobileNo:"",password:ConsumerRegistration.password,
+            panImage:ConsumerRegistration.panImage,profileImage:ConsumerRegistration.profileImage})
+            
+        }
+
+        if(ConsumerRegistration.password.length<5){
+            document.getElementById("passId").innerHTML="Password too short"
+            SetConsumerRegistration({sellerName:ConsumerRegistration.sellerName,mobileNo:ConsumerRegistration.mobileNo,password:"",
+            panImage:ConsumerRegistration.panImage,profileImage:ConsumerRegistration.profileImage})
+        }
+        
         if(ConsumerRegistration.password!==ConfirmPass){
             SetMessage("Password do not Match") 
             SetConfirmPass("")
-          
         }
-        else{
-            SetConsumerRegistration({name:"",address:"",mobileNo:"",password:""})
-            SetConfirmPass("")
-        }
+        
+       
+        else if(ConsumerRegistration.sellerName&&ConsumerRegistration.mobileNo&&ConsumerRegistration.password&&
+            ConsumerRegistration.profileImage&&ConsumerRegistration.panImage&&ConfirmPass&&(ConsumerRegistration.password===ConfirmPass)&&
+            ConsumerRegistration.mobileNo.length===10&&ConsumerRegistration.password.length>5){
+           
+        
+      console.log("All okay")
+       
+        const formData=new FormData();
+        formData.append('sellerName',ConsumerRegistration.sellerName);
+        formData.append('mobileNo',ConsumerRegistration.mobileNo);
+        formData.append('password',ConsumerRegistration.password);
+        formData.append('panImage',ConsumerRegistration.panImage);
+        formData.append('profileImage',ConsumerRegistration.profileImage)
+       axios.post(   'http://localhost:8080/seller/signup', formData)
+             .then(res => {
+                console.log(res);
+                SetConsumerRegistration({sellerName:"",mobileNo:"",password:"",panImage:null,profileImage:null})
+                SetConfirmPass("")
+             })
+             .catch(err => {
+         if(err.response.status===403)
+                console.log("Seller Already Exists")
+             });
 
-        setTimeout(()=>SetMessage(""),500)  
-        const form=new FormData();
-        form.append('User Details',ConsumerRegistration)
-        form.append('Pan Card',FileUpload1)
-        form.append('Profile Picture',FileUpload2)
-        
-        
-        fetch('http://localhost:8080/consumer/signup', {
-        method: 'POST', // or 'PUT'
-        mode: 'cors',
-        headers: {
-           'Content-Type': 'multipart/form-data',
-                 },
-       body: JSON.stringify(form),
-           })
-     .then(response =>{ response.json() //status 403=user already exists.
-  
-     })
-     .then(data => {
-         
-      console.log('Success:', data);
-      console.log(data.message+"aniket")
-      
-     })
-      .catch((error) => {
-      console.error('Error:', error);
-      
-     });
+    
+    }
+    setTimeout(()=>{
+        SetMessage("")
+        document.getElementById("mobileId").innerHTML="";
+        document.getElementById("passId").innerHTML="";
+    },2000)
     }
     return(
         <div className={classes.Container}>
@@ -82,6 +99,7 @@ const HandleFileInput2=(e)=>{
         </div>
         
         </div>
+        <form onSubmit={SubmitHandler} encType='multipart/form-data'>
         <div className={classes.ConsumerForm}>
             <div className={classes.LeftForm}>
             <div className={classes.NameContainer}>
@@ -89,7 +107,7 @@ const HandleFileInput2=(e)=>{
                     <p>Name</p>
                 </div>
                 <div className={classes.NameInput}>
-                    <input type="text" name="name" value={ConsumerRegistration.name} onChange={HandleInput}/>
+                    <input type="text" name="sellerName" value={ConsumerRegistration.sellerName} onChange={HandleInput}/>
                 </div>
             </div>
             <div className={classes.Password}>
@@ -98,6 +116,7 @@ const HandleFileInput2=(e)=>{
                     </div>
                     <div className={classes.PasswordInput}>
                         <input type="password" name="password" value={ConsumerRegistration.password} onChange={HandleInput}/>
+                        <p id="passId"></p>
                     </div>
                 </div>
            <div className={classes.PanCardContainer}>
@@ -105,7 +124,7 @@ const HandleFileInput2=(e)=>{
                   <p>Upload Pan Card</p> 
                </div>
                <div className={classes.PanInput}>
-                   <input id={1} accept=".jpeg,.png"  type="file" name="Pan"  onChange={HandleFileInput1}/>
+                   <input id={1} accept=".jpeg,.png,.jpg"  type="file" name="panImage"  onChange={HandleFileInput1}/>
                </div>
            </div>
             </div>
@@ -116,6 +135,7 @@ const HandleFileInput2=(e)=>{
                     </div>
                     <div className={classes.MobileInput}>
                         <input type="number" name="mobileNo" value={ConsumerRegistration.mobileNo} onChange={HandleInput}/>
+                        <p id="mobileId"></p>
                     </div>
                 </div>
                 <div className={classes.ConfirmPassword}>
@@ -132,14 +152,18 @@ const HandleFileInput2=(e)=>{
                     <p>Upload Profile Picture</p>
                 </div>
                 <div className={classes.ProfileInput}>
-                    <input id={2} type="file"  accept=".jpeg,.png" name="Profile" onChange={HandleFileInput2}/>
+                    <input id={2} type="file"  accept=".jpeg,.png,.jpg" name="profileImage" onChange={HandleFileInput2}/>
                 </div>
             </div>
             </div>
         </div>
+        <div className={classes.SubmitButtonOne}>
+        <input type="submit" className={classes.SubmitButton}/>
+        </div>
+        </form>
         <div className={classes.OuterButtonContainer}>
             <div className={classes.ButtonContainer}>
-                <button type="button" onClick={SubmitHandler}>Sign Up</button>
+                {/* <button type="button" onClick={SubmitHandler}>Sign Up</button> */}
             </div>
             <div className={classes.SignInText}>
                 <p>Already have an account? <Link className={classes.LinkEdit} to="/SellerSignIn"><span className={classes.SignText} >Sign in</span></Link></p>

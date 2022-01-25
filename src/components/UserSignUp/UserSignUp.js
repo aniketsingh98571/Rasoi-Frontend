@@ -24,7 +24,7 @@ const ConfirmPassword=(e)=>{
     const SubmitHandler=(e)=>{
         e.preventDefault();
      
-        if(ConsumerRegistration.address&&ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password){ console.log("filled")}
+        if(ConsumerRegistration.address&&ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password&&ConfirmPass){ console.log("filled")}
         else{ alert("Please fill all details")}
         
         if(ConsumerRegistration.mobileNo.length!==10){
@@ -36,7 +36,7 @@ const ConfirmPassword=(e)=>{
         if(ConsumerRegistration.password.length<5){
             document.getElementById("PswrdId").innerHTML="Password Length too short";
             SetConsumerRegistration({name:ConsumerRegistration.name,address:ConsumerRegistration.address,mobileNo:ConsumerRegistration.mobileNo, password:""})
-            console.log(ConsumerRegistration.password.length)
+            
          }
        
          if(ConsumerRegistration.password!==ConfirmPass){
@@ -45,39 +45,37 @@ const ConfirmPassword=(e)=>{
           
         }
        
-        else if(ConsumerRegistration.password===ConfirmPass&&ConsumerRegistration.password.length>5&&ConsumerRegistration.mobileNo.length===10){
-            SetConsumerRegistration({name:"",address:"",mobileNo:"",password:""})
-            SetConfirmPass("")
-        }
-       
-        setTimeout(()=>{
-            SetMessage("")
-            document.getElementById("PswrdId").innerHTML="";
-            document.getElementById("MobileId").innerHTML="";
-          },500)  
-    
-    //           fetch('http://localhost:8080/consumer/signup', {
-    //     method: 'POST', // or 'PUT'
-    //     mode: 'cors',
-    //     headers: {
-    //        'Content-Type': 'application/json',
-    //              },
-    //    body: JSON.stringify(ConsumerRegistration),
-    //        })
-    //  .then(response =>{ response.json() //status 403=user already exists.
-    //     if(response.status===403)console.log("User already exists")
-    //  })
-    //  .then(data => {
+        else if(ConsumerRegistration.password===ConfirmPass&&ConsumerRegistration.password.length>5&&ConsumerRegistration.mobileNo.length===10
+            &&ConsumerRegistration.address&&ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password&&ConfirmPass){
+      
+                console.log("All okay")
+        fetch('http://localhost:8080/consumer/signup', {
+        method: 'POST', // or 'PUT'
+        mode: 'cors',
+        headers: {
+           'Content-Type': 'application/json',
+                 },
+       body: JSON.stringify(ConsumerRegistration),
+           })
+     .then(response =>{ response.json() //status 403=user already exists.
+        if(response.status===403)console.log("User already exists")
+        else if(response.status===201)console.log("Data Sent")
+        SetConsumerRegistration({name:"",address:"",mobileNo:"",password:""})
+        SetConfirmPass("")
+     })
+     .then(data => {
          
-    //   console.log('Success:', data);
-    //   console.log(data.message+"aniket")
+    })
+      .catch((error) => {
+      console.error('Error:', error);
       
-    //  })
-    //   .catch((error) => {
-    //   console.error('Error:', error);
-      
-    //  });
-        
+     });
+    }
+    setTimeout(()=>{
+        SetMessage("")
+        document.getElementById("PswrdId").innerHTML="";
+        document.getElementById("MobileId").innerHTML="";
+      },2000)  
     }
     return(
         <div className={classes.Container}>
