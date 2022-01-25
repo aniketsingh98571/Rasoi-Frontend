@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  height: auto;
+  background-color: var(--White);
+  margin: 5vh auto 5vh auto;
+  justify-content: center;
+}

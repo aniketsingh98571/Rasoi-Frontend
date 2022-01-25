@@ -1,0 +1,164 @@
+.container {
+  display: flex;
+  width: 90vw;
+  height: 16vh;
+  /* background-color: aqua; */
+  margin: 10px auto 0 auto;
+  /* justify-content: center; */
+  align-items: center;
+}
+.logo {
+  width: 13%;
+  height: 100%;
+  background-color: aqua;
+}
+.logo img {
+  height: 100%;
+  width: 100%;
+}
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-left: 15%;
+  width: 40%;
+}
+.searchInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-family: AvenirNextLTPro-Bold;
+}
+
+.searchInput input {
+  width: 80%;
+  /* height: 100%; */
+  height: 35%;
+  outline: none;
+  border: 4px solid var(--Yellow);
+  padding: 0 4px;
+  font-family: AvenirNextLTPro-Bold;
+}
+
+.searchInput .searchIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  height: 35%;
+  border: 4px solid var(--Yellow);
+  background-color: var(--Yellow);
+  /* padding: 0 4px; */
+}
+/* .searchIcon {
+  border: 4px solid var(--Yellow);
+} */
+.searchInput .searchIcon span {
+  /* justify-content: center;
+  align-items: center;
+  text-align: center; */
+  height: 28%;
+  width: 100%;
+  /* margin: 3px; */
+  font-family: AvenirNextLTPro-Bold;
+}
+.searchIcon:hover {
+  cursor: pointer;
+}
+.user {
+  margin-left: 8%;
+  display: flex;
+  /* width: 10%; */
+  /* width: max-content; */
+  width: fit-content;
+  /* height: 100%; */
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  /* background-color: black;*/
+}
+.avatar {
+  background-color: var(--Yellow);
+  width: 8vh;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: AvenirNextLTPro-Bold;
+}
+.avatar i {
+  width: 100%;
+  text-align: center;
+  font-size: xx-large;
+  padding: 0;
+  margin: 0;
+}
+.dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  /* background-color: aliceblue; */
+}
+.user:hover {
+  cursor: pointer;
+}
+.dropdown i {
+  width: 100%;
+  text-align: center;
+  font-size: xx-large;
+}
+.cartArea {
+  margin-left: 5%;
+  display: flex;
+  /* width: 10%; */
+  /* width: max-content; */
+  width: fit-content;
+  height: 100%;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+.cartArea:hover {
+  cursor: pointer;
+}
+.cart {
+  width: 8vh;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: AvenirNextLTPro-Bold;
+  background-color: var(--Yellow);
+}
+.cart i {
+  width: 100%;
+  text-align: center;
+  font-size: x-large;
+  padding: 0;
+  margin: 0;
+}
+.count {
+  position: relative;
+  top: -15px;
+  right: 13px;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: var(--White);
+  width: 3vh;
+  height: 3vh;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.count p {
+  margin: 2%;
+}
