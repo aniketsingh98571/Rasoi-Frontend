@@ -1,4 +1,5 @@
 import React from "react";
+import Filter from "../Headline/Filter";
 import classes from "./Home.module.css";
 import SellerCard from "./SellerCard";
 
@@ -31,17 +32,13 @@ const Home = () => {
     },
     {
       sellerName: "R. Srinivasan",
-      specialDishes: ["Idli Sambar", "Mix Veg", "Pizza"],
+      specialDishes: ["Momos", "Misal", "Pizza"],
       ratings: 4.7,
     },
   ];
   return (
     <div className={classes.container}>
-      {/* <SellerCard
-        sellerName="Aniket Singh"
-        specialDishes={["Maggi", "Misal", "Pasta", "Pav Bhaji"]}
-      /> */}
-      {/* This is home */}
+      <Filter />
       {Sellers.map((seller) => {
         return (
           <SellerCard

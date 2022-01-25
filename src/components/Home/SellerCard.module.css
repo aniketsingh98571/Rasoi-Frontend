@@ -9,7 +9,7 @@
   margin: 1.5vw 3vw 1.5vw 3vw;
   /* margin-right: auto; */
   background-color: var(--White);
-  border: 2px solid black;
+  border: 2px solid var(--Black);
   border-radius: 5%;
   /* margin-top: 5vh; */
   box-shadow: 5px 5px 5px var(--Yellow);

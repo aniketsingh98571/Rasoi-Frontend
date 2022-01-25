@@ -16,7 +16,7 @@ const SellerCard = (props) => {
         <div className={classes.sellerDesc}>
           <h3>{props.sellerName}</h3>
           {/* <p>{dishes + ", " + ""}</p> */}
-          <p>{props.specialDishes.toString().replaceAll(",", ", ")} </p>
+          <p>{props.specialDishes.toString().replaceAll(",", ",  ")} </p>
         </div>
 
         <div className={classes.rateandView}>
