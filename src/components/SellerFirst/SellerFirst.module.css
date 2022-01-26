@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.OuterContainer{
+    background-color: var(--White);
+    height: 110vh;
+}
+.NavContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+    
+}
+.LogoContainer img{
+    width: 150px;
+    height: auto;
+    margin: 10px 0 0 30px;
+}
+.WelComeText p{
+    margin: 0 50px 0 0;
+    font-family: CircularStd-Book;
+    font-size: 18px;
+}
+.Welcome{
+    font-family: CircularStd-Black;
+    font-size: 20px;
+}
+.ProfileText{
+    /* border: 2px solid red; */
+    margin: 15px 0 0 0;
+}
+.ProfileText p{
+    font-family: CircularStd-Black;
+    font-size: 24px;
+    margin: 0 0 0 63px;
+}
+.LeftForm{
+    border: 2px solid var(--Black);
+    width: 30%;
+    margin: 15px 0 0 55px;
+}
+.ProfileContainerText{
+    background-color: var(--Yellow);
+    height: 40px;
+    text-align: center;
+}
+.ProfileContainerText p{
+    padding: 8px 0 0 0 ;
+}
+.ProfileContainerText p,.NameText p,.MobileText p,.BioText p,.SocialText p{
+    font-family: CircularStd-Black;
+    font-size: 20px;
+}
+.ProfileInput{
+    width: 150px;
+    height: 150px;
+    border: 2px solid  var(--Black);
+    border-radius: 50%;
+    margin: 10px  auto 10px auto;
+}
+.ProfileInput input{
+    display: none;
+}
+.LabelContainer{
+    height: 100%;
+    width: 100%;
+    /* border: 2px solid orange; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.LabelContainer i{
+    font-size: 50px;
+    color: var(--Yellow);
+}
+.LabelContainer p{
+    font-family:AvenirNextLTPro-Regular;
+    font-size: 18px;
+}
+/* .ProfilePicContainer{
+    border-bottom: 2px solid var(--Black);
+} */
+.NameContainer,.MobileContainer,.BioContainer{
+    margin: 10px 0 10px 98px;
+    /* border: 2px solid red; */
+    width: 70%;
+  
+}
+.NameInput input,.MobileInput input{
+    width: 80%;
+    height: 25px;
+    outline: none;
+    margin: 5px 0 5px 0;
+    border: 1px solid var(--Black);
+}
+.BioInput textarea{
+    width: 80%;
+    outline: none;
+    margin: 5px 0 5px 0;
+    border: 1px solid var(--Black);
+}
+
+.SocialText{
+    background-color: var(--Yellow);
+    border-top: 2px solid var(--Black);
+    height: 40px;
+    
+}
+.SocialText p{
+    text-align: center;
+    padding: 8px 0 0 0;
+}
+.FaceBookContainer,.InstagramContainer{
+    margin: 10px auto 0 auto;
+    display: flex;
+    align-items: center;
+    /* border: 2px solid red; */
+    width: 70%;
+
+}
+.FaceBookContainer i,.InstagramContainer i{
+    color: var(--Yellow);
+    font-size: 25px;
+    margin: 0 5px 0 0;
+}
+.InstagramContainer i{
+    margin: 0 8px 0 0;
+}
+.FaceBookContainer input,.InstagramContainer input{
+    width: 80%;
+    height: 25px;
+    outline: none;
+    border: 1px solid var(--Black);
+}
+.SocialContainer{
+    padding-bottom: 10px;
+}
