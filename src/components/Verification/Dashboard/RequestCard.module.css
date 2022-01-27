@@ -1,0 +1,88 @@
+.card {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 90vw;
+  margin: 0 auto 5px auto;
+  height: 40vh;
+  border: 2px solid var(--Yellow);
+}
+.imageDiv {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+.sellerImage {
+  width: 30%;
+  height: 80%;
+  border: 2px solid var(--Yellow);
+}
+.imageDiv img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.1s;
+  cursor: zoom-in;
+}
+.imageDiv img:hover {
+  transform: translate(-10vw, 2vh) scale(1.8);
+}
+.sellerImage img:hover {
+  transform: translate(-5vw, 2vh) scale(1.8);
+}
+.panImage {
+  width: 60%;
+  height: 80%;
+  border: 2px solid var(--Yellow);
+}
+.rightDiv {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  flex-direction: column;
+}
+.details {
+  display: flex;
+  width: 100%;
+  height: 70%;
+  justify-content: center;
+  text-align: justify;
+  flex-direction: column;
+  /* border: 2px solid black; */
+}
+.sellerName,
+.sellerMobile {
+  height: 50%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  color: var(--Black);
+}
+.details p {
+  margin-left: 3%;
+  font-family: CircularStd-Bold;
+  font-size: x-large;
+}
+.buttonDiv {
+  display: flex;
+  align-items: center;
+  height: 30%;
+  width: 100%;
+}
+.markVerified,
+.reject {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 60%;
+  padding: 1%;
+  background-color: var(--Yellow);
+  color: var(--Black);
+  margin-left: 5%;
+  cursor: pointer;
+}
+.buttonDiv {
+  font-family: AvenirNextLTPro-Bold;
+  font-size: larger;
+}
