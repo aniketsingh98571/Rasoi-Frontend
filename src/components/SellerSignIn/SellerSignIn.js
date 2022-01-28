@@ -2,6 +2,7 @@ import React,{useState} from "react"
 import axios from "axios"
 import classes from './SellerSignIn.module.css'
 import ToggleButton from "../ToggleButton/ToggleButton"
+import { ToastContainer, toast } from 'react-toastify';
 import { Link } from "react-router-dom"
 const SellerSignIn=()=>{
     const [Sellerlog,SetSellerlog]=useState({
@@ -19,19 +20,89 @@ const SellerSignIn=()=>{
         if(Sellerlog.mobileNo&&Sellerlog.password){
             axios.post(   'http://localhost:8080/seller/signin', Sellerlog)
             .then(res => {
-               console.log(res.data.sellerID); //getting user id of authenticated seller
-               localStorage.setItem('SellerId',res.data.sellerID)
+               
+                if(res.status===200&&res.data.configured===false){
+                    toast.success('Login Successful', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        });
+                        console.log(res)
+               localStorage.setItem('SellerId',res.data.seller_ID)
                SetSellerlog({mobileNo:"",password:""})
-       
+               
+              setTimeout(() => {
+                window.location.href="/SellerSetUp"
+              }, 5000); 
+    }
+    else if(res.status===200&&res.data.configured===true){
+        window.location.href="/SellerSignIn"
+    }
+               
             })
             .catch(err => {
-                console.log(err)
+                if(err.response.status===404){
+                    toast.error('Seller does not exist', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        });
+                }
+                if(err.response.status===401){
+                    toast.error('Invalid Credentials', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        });
+                }
+                if(err.response.status===403){
+                    toast.error('Seller is Not Validated', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        });
+                }
+                if(err.response.status===422){
+                    toast.error('Either Mobile Number and Password not entered', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        });
+                }
             });
           
    
         }
         else
-        alert("Please fill all the details")
+        toast.warn('Please Fill out all fields', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
     
         
         
@@ -72,6 +143,7 @@ const SellerSignIn=()=>{
                   <p>Don't Have an Account? <Link className={classes.LinkEdit} to="/SellerSignUp"> <span className={classes.SpanText} >Sign Up</span></Link></p>
                   </div>
             </div>
+            <ToastContainer />
         </div>
     )
 }

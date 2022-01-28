@@ -40,6 +40,7 @@
     border: 2px solid var(--Black);
     width: 30%;
     margin: 15px 0 0 55px;
+    border-right: none;
 }
 .ProfileContainerText{
     background-color: var(--Yellow);
@@ -138,4 +139,124 @@
 }
 .SocialContainer{
     padding-bottom: 10px;
+}
+.RightForm{
+    width: 60%;
+    border: 2px solid var(--Black);
+    margin: 15px 15px 0 0;
+}
+.FormContainer{
+    display: flex;
+}
+.FirstContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 2px solid var(--Black);
+    height: 30vh;
+}
+.FirstContainerText p{
+    font-family: CircularStd-Black;
+    font-size: 24px;
+    /* margin: 0 60px 0 0; */
+}
+.StreetAddressText p,.PinCodeText p{
+    font-family: CircularStd-Black;
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+
+.StreetAddressInput input,.PinCodeInput input{
+    width: 150%;
+    height: 25px;
+    outline: none;
+    border: 1px solid var(--Black);
+   
+    
+}
+.StreetAddress{
+    margin: 0 0 15px 0;
+}
+.FirstContainerInput{
+    margin: 0 70px 0 0;
+}
+.MenuText{
+    background-color: var(--Yellow);
+    height: 40px;
+}
+.MenuText p{
+    font-family: CircularStd-Black;
+    text-align: center;
+    padding: 8px 0 0 0;
+    font-size: 20px;
+}
+
+.Wrapper{
+    display: flex;
+    /* border: 2px solid red; */
+    justify-content: center;
+}
+.FirstForm{
+    /* border: 2px solid blue; */
+    margin: 30px 80px 0 0;
+
+}
+.SecondForm{
+    /* border: 2px solid orange; */
+    margin: 30px 0 0 0;
+}
+.FoodNameText p,.TypeText p,.PriceText p,.TimeText p,.FoodImageText p{
+    font-family: CircularStd-Black;
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+.FoodNameInput input,.PriceInput input,.TimeInput input{
+    width: 100%;
+    outline: none;
+    height: 25px;
+    border: 1px solid var(--Black);
+}
+.FoodNameContainer,.TypeContainer,.PriceContainer,.TimeContainer{
+    margin: 0 0 30px 0;
+}
+.TypeInput select{
+    width: 100%;
+    height: 25px;
+    outline: none;
+    border: 1px solid var(--Black);
+}
+.CheckContainer p{
+    margin: 8px 0 0px 0;
+    font-family: AvenirNextLTPro-Regular;
+}
+.CheckContainer label{
+    font-family: AvenirNextLTPro-Regular;
+    margin: 0 0 0 5px;
+}
+.FirstButton{
+   text-align: center;
+}
+.FirstButton input{
+    margin: 15px 0 0 0;
+    width: 35%;
+    padding: 8px 0;
+    background-color: var(--Yellow);
+    font-family: CircularStd-Black;
+    font-size: 18px;
+    outline: none;
+border: none;
+}
+.InnerButton{
+    text-align: center;
+    
+}
+.InnerButton input{
+    width: 35%;
+    padding: 8px 0;
+    background-color: var(--Yellow);
+    font-family: CircularStd-Black;
+    font-size: 18px;
+    outline: none;
+border: none;
+margin: 5px 0 10px 0;
 }

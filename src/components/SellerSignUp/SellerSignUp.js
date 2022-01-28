@@ -1,6 +1,8 @@
 import React,{useState} from "react"
 import { Link } from "react-router-dom"
 import classes from './SellerSignUp.module.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 const SellerSignUp=()=>{
@@ -38,7 +40,17 @@ const HandleFileInput2=(e)=>{
         
         e.preventDefault();
         if(ConsumerRegistration.mobileNo&&ConsumerRegistration.sellerName&&ConsumerRegistration.password&&ConsumerRegistration.panImage&&ConsumerRegistration.profileImage&&ConfirmPass) console.log("hi")
-        else alert("Please fill all details")
+        else {
+            toast.warn('Please Fill out all fields', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+        }
        
         if(ConsumerRegistration.mobileNo.length!==10){
             document.getElementById("mobileId").innerHTML="Enter valid Mobile Number";
@@ -77,10 +89,53 @@ const HandleFileInput2=(e)=>{
                 console.log(res);
                 SetConsumerRegistration({sellerName:"",mobileNo:"",password:"",panImage:null,profileImage:null})
                 SetConfirmPass("")
+                if(res.status===201){
+                    toast.success('Seller Registered,Please wait for your account to be verified', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        });
+                }
              })
              .catch(err => {
-         if(err.response.status===403)
-                console.log("Seller Already Exists")
+         if(err.response.status===403){
+         toast.error('Seller Already Exists', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+        }
+        if(err.response.status===406){
+            toast.error('Please enter mobile no and name', {
+               position: "top-center",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               });
+           }
+           if(err.response.status===422){
+            toast.error('Image format not supported', {
+               position: "top-center",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               });
+           }
+        
              });
 
     
@@ -169,6 +224,7 @@ const HandleFileInput2=(e)=>{
                 <p>Already have an account? <Link className={classes.LinkEdit} to="/SellerSignIn"><span className={classes.SignText} >Sign in</span></Link></p>
             </div>
         </div>
+        <ToastContainer />
         </div>
 
     )

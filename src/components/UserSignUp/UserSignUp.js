@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import classes from './UserSignUp.module.css'
+import { ToastContainer, toast } from 'react-toastify';
 
 const UserSignUp=()=>{
     const [ConsumerRegistration,SetConsumerRegistration]=useState({
@@ -25,7 +26,17 @@ const ConfirmPassword=(e)=>{
         e.preventDefault();
      
         if(ConsumerRegistration.address&&ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password&&ConfirmPass){ console.log("filled")}
-        else{ alert("Please fill all details")}
+        else{ 
+            toast.warn('Please Fill out all fields', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+        }
         
         if(ConsumerRegistration.mobileNo.length!==10){
             document.getElementById("MobileId").innerHTML="Invalid Mobile Length";
@@ -57,11 +68,35 @@ const ConfirmPassword=(e)=>{
                  },
        body: JSON.stringify(ConsumerRegistration),
            })
-     .then(response =>{ response.json() //status 403=user already exists.
-        if(response.status===403)console.log("User already exists")
-        else if(response.status===201)console.log("Data Sent")
-        SetConsumerRegistration({name:"",address:"",mobileNo:"",password:""})
-        SetConfirmPass("")
+     .then(response =>{ 
+          response.json() //status 403=user already exists.
+          SetConsumerRegistration({name:"",address:"",mobileNo:"",password:""})
+          SetConfirmPass("")
+        if(response.status===403){
+            toast.error('User Already Exists', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+                 
+        }
+        else if(response.status===201){
+            toast.success('User Registered, please login with your credentials', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+
+     }
+       
      })
      .then(data => {
          
@@ -142,6 +177,7 @@ const ConfirmPassword=(e)=>{
                     <p>Already have an account? <Link className={classes.LinkEdit} to="/"><span className={classes.SignText} >Sign in</span></Link></p>
                 </div>
             </div>
+            <ToastContainer />
             </div>
     
     )
