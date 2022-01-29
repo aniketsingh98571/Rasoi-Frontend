@@ -74,7 +74,7 @@ const ConsumerHeader = () => {
             </div>
           </div>
           <div className={classes.count}>
-            <p>4</p>
+            <p>0</p>
           </div>
         </Link>
         {/* </Link> */}

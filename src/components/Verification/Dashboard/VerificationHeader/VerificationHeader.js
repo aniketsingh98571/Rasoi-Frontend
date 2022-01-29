@@ -21,9 +21,6 @@ const VerificationHeader = () => {
         </div>
 
         <div className={classes.user} onClick={handleUserClick}>
-          {/* <div className={classes.avatar}>
-            <i className="fas fa-user-circle"></i>
-          </div> */}
           <div className={classes.dropdown}>
             <i className="fas fa-angle-down"></i>
           </div>

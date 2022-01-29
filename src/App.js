@@ -11,6 +11,7 @@ import Cart from "./components/Cart/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Dashboard from "./components/Verification/Dashboard/Dashboard";
+import VerificationLogin from "./components/Verification/VerificationLogin";
 
 function App() {
   return (
@@ -42,7 +43,11 @@ function App() {
             ]}
           />
           <Route exact path="/seller" element={<SellerHeader />} />
-          {/* <Route exact path="/verification" element={<VerificationLogin />} /> */}
+          <Route
+            exact
+            path="/verificationLogin"
+            element={<VerificationLogin />}
+          />
           <Route exact path="/verification" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>

@@ -4,6 +4,28 @@ import RequestCard from "./RequestCard";
 import VerificationHeader from "./VerificationHeader/VerificationHeader";
 
 const Dashboard = () => {
+  // useEffect(() => {
+  //   axios.get('http://localhost:8080/seller/getSellerConfig', {
+  //           params: {
+  //             sellerID: sellerID
+  //           }
+  //         })
+  //         .then(function (response) {
+  //           setResponse({generalDishesCount:response.data.generalDishesCount,
+  //               message:response.data.message,mobileNo:response.data.mobileNo,sellerName:response.data.sellerName,specialDishesCount:response.data.specialDishesCount});
+  //         })
+  //         .catch(function (error) {
+  //           if(error.response.status===403){
+  //               localStorage.removeItem('SellerId')
+  //               window.location.href="/SellerSignIn"
+  //           }
+  //           if(error.response.status===409){
+  //               window.location.href="/SellerSignUp"
+  //           }
+  //         })
+  //   //eslint-disable-next-line
+  // }, [])
+
   const requests = [
     {
       sellerName: "Aniket Singh",

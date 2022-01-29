@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import classes from "./VerificationLogin.module.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const VerificationLogin = () => {
   const [VerifierLog, setVerifierLog] = useState({
     username: "",
     password: "",
   });
+  let navigate = useNavigate();
+
   const HandleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setVerifierLog({ ...VerifierLog, [name]: value });
   };
+
   const SubmitHandler = (e) => {
     e.preventDefault();
     if (VerifierLog.username && VerifierLog.password) {
@@ -19,12 +23,15 @@ const VerificationLogin = () => {
         .post("http://localhost:8080/seller/signin", VerifierLog)
         .then((res) => {
           console.log(res);
+          localStorage.setItem("verifierId", "SMLAD");
+          navigate("/verification");
         })
         .catch((err) => {
           console.log(err);
         });
     } else alert("Please fill all the details");
   };
+
   return (
     <div className={classes.Container}>
       <div className={classes.LoginText}>

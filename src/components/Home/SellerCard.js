@@ -1,17 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import classes from "./SellerCard.module.css";
 
 const SellerCard = (props) => {
   // const [dishes, setDishes] = useState(props.specialDishes);
+  let navigate = useNavigate();
 
+  const handleViewClick = () => {
+    // alert(`Clicked on the seller with id ${props.sellerID}`);
+    localStorage.setItem("sellerID", props.sellerID);
+    navigate(`/sellerDetails`);
+    // navigate(`/cart`);
+  };
   return (
     <>
       <div className={classes.card}>
         <div className={classes.sellerImage}>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-ivCX30t_GkaYNqPQY53bg2ZHZDr-mmv37g&usqp=CAU"
-            alt="Seller"
-          />
+          <img src={props.sellerImg} alt="Seller" />
         </div>
         <div className={classes.sellerDesc}>
           <h3>{props.sellerName}</h3>
@@ -24,7 +29,9 @@ const SellerCard = (props) => {
             <p>{props.ratings}</p>
             <i className="fas fa-star"></i>
           </div>
-          <button className={classes.view}>View</button>
+          <button className={classes.view} onClick={handleViewClick}>
+            View
+          </button>
         </div>
       </div>
     </>
