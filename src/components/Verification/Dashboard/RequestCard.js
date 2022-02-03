@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./RequestCard.module.css";
 import axios from "axios";
 
 const RequestCard = (props) => {
-  const [validate, setValidate] = useState({ id: "", action: "" });
+ 
+
   const handleVerify = () => {
-    setValidate({ id: `${props.sellerID}`, action: "true" });
+    console.log("Before",props.sellerID)
+    
+    // setValidate({ id: props.sellerID, action:"true" });
+   
     ///POST/PUT request
-    console.log(validate);
+   
     axios
-      .put("http://localhost:8080/validator/validateSeller", validate)
+      .put("http://localhost:8080/validator/validateSeller", {id:props.sellerID,action:"true"})
       .then((res) => {
         console.log(res);
+        if(res.status===200)
+         props.Update();
       })
       .catch((err) => {
         console.log(err);
@@ -20,27 +26,27 @@ const RequestCard = (props) => {
   };
 
   const handleReject = () => {
-    //DELETE request
-    // axios.delete(URL, {
-    //   headers: {
-    //     Authorization: authorizationToken
-    //   },
-    //   data: {
-    //     source: source
-    //   }
-    // });
-    //mark the seller as rejected
-    alert(`Seller with ID ${props.sellerID} rejected!`);
+    // setValidate({ id: props.sellerID, action:"false" });
+    axios
+    .put("http://localhost:8080/validator/validateSeller", {id:props.sellerID,action:"false"})
+    .then((res) => {
+      console.log(res);
+      if(res.status===200)
+       props.Update();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   };
   return (
     <div className={classes.card}>
       <div className={classes.imageDiv}>
         <div className={classes.sellerImage}>
-          <img src={`http://localhost:8000/${props.sellerImg}`} alt="seller" />
+          <img src={`http://localhost:8080/${props.sellerImg}`} alt="seller" />
           <figcaption>Seller Image</figcaption>
         </div>
         <div className={classes.panImage}>
-          <img src={`http://localhost:8000/${props.sellerPan}`} alt="pan" />
+          <img src={`http://localhost:8080/${props.sellerPan}`} alt="pan" />
           <figcaption>PAN Card</figcaption>
         </div>
       </div>

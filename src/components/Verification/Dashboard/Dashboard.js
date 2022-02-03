@@ -10,7 +10,7 @@ const Dashboard = () => {
     axios
       .get("http://localhost:8080/validator/getAllNonVadidatedSeller")
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
         setReq(response.data.sellers);
       })
       .catch(function (error) {
@@ -18,6 +18,17 @@ const Dashboard = () => {
       });
     //eslint-disable-next-line
   }, []);
+  const getUpdated=()=>{
+    axios
+      .get("http://localhost:8080/validator/getAllNonVadidatedSeller")
+      .then(function (response) {
+        console.log(response);
+        setReq(response.data.sellers);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   // const requests = [
   //   {
@@ -70,6 +81,7 @@ const Dashboard = () => {
             sellerPan={seller.panImage}
             sellerImg={seller.personalImage}
             sellerID={seller.id}
+            Update={getUpdated}
           />
         );
       })}
