@@ -1,49 +1,11 @@
-import React,{useState} from "react"
+import React from "react"
 import classes from './UserSignIn.module.css'
 import ToggleButton from "../ToggleButton/ToggleButton"
 import { Link } from "react-router-dom"
+import { ToastContainer } from 'react-toastify';
+import UserSignInLogic from "./UserSignInLogic"
 const UserSignIn=()=>{
-    const [Consumerlog,SetConsumerlog]=useState({
-        Mobile:"",
-        Password:""
-    })
-    const HandleInput=(e)=>{
-        const name=e.target.name;
-        const value=e.target.value;
-        SetConsumerlog({...Consumerlog,[name]:value})
-       
-    }
-    const SubmitHandler=(e)=>{
-        e.preventDefault();
-        if(Consumerlog.Mobile&&Consumerlog.Password){
-             //     fetch('http://localhost:8080/consumer/signup', {
-    //     method: 'POST', // or 'PUT'
-    //     mode: 'cors',
-    //     headers: {
-    //        'Content-Type': 'application/json',
-    //              },
-    //    body: JSON.stringify(ConsumerRegistration),
-    //        })
-    //  .then(response =>{ response.json() //status 403=user already exists.
-    //     if(response.status===403)console.log("User already exists")
-    //  })
-    //  .then(data => {
-         
-    //   console.log('Success:', data);
-    //   console.log(data.message+"aniket")
-      
-    //  })
-    //   .catch((error) => {
-    //   console.error('Error:', error);
-      
-    //  });
-        SetConsumerlog({Mobile:"",Password:""})
-        }
-        else alert("Please fill out all fields")
-
-        
-        
-    }
+   const {Consumerlog,HandleInput,SubmitHandler} = UserSignInLogic()
     return(
         <div className={classes.Container}>
             <div className={classes.LoginText}>
@@ -79,6 +41,7 @@ const UserSignIn=()=>{
                   <p>Don't Have an Account? <Link className={classes.LinkEdit} to="/UserSignUp"> <span className={classes.SpanText} >Sign Up</span></Link></p>
                   </div>
             </div>
+            <ToastContainer/>
         </div>
     )
 }

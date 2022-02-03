@@ -13,7 +13,7 @@ const SellerHeader = () => {
   return (
     <div>
       <div className={classes.container}>
-        <Link to="/" className={classes.logo}>
+        <Link to="/SellerDashboard" className={classes.logo}>
           <img src={Logo} alt="logo" />
         </Link>
 

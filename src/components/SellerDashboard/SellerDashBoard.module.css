@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.InnerContainer{
+    width:90%;
+    margin: 10px auto 0 auto;
+
+}
+.ButtonContainer{
+    margin: 15px 0 0 75px;
+    /* border: 2px solid red; */
+}
+.ButtonContainer button{
+    background-color: var(--Yellow);
+    outline: none;
+    width: 10%;
+    padding: 8px 0;
+    font-size: 18px;
+    font-family: AvenirNextLTPro-Bold;
+    border-radius: 5px;
+}
+.SecondButton{
+    margin: 0 0 0 15px;
+}
+.FirstContainer{
+    border: 2px solid red;
+    display: flex;
+    
+    
+}
+.ImageContainer{
+    border: 2px solid var(--Black);
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin: 0 0 0 40px;
+}
+.ImageContainer img{
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+   object-fit: fill;
+ 
+}
+.TextContainer{
+    border: 2px solid blue;
+    width: 30%;
+    margin: 0 0 0 40px;
+}
+.TextContainer i{
+    font-size: 30px;
+    color: var(--Yellow);
+    margin: 15px 0 0 10px;
+}
+.AddressContainer i{
+    font-size: 30px;
+    color: var(--Yellow);
+    margin: 15px 0 0 15px;
+}
+.MobileContainer i{
+    font-size: 30px;
+    color: var(--Yellow);
+    margin: 15px 0 0 17px;
+}
+.NameContainer,.AddressContainer,.MobileContainer{
+    display: flex;
+    align-items: center;
+}
+.SocialContainer{
+    border: 2px solid orange;
+    width: 30%;
+    margin:  0 0 0 40px;
+}
+.NameContainer p{
+    font-size: 18px;
+    font-family: CircularStd-Book;
+    margin: 15px 0 0 17px;
+}
+.AddressContainer p{
+    font-size: 18px;
+    font-family: CircularStd-Book;
+    margin: 15px 0 0 22px;
+}
+.MobileContainer p{
+    font-size: 18px;
+    font-family: CircularStd-Book;
+    margin: 15px 0 0 27px;
+}

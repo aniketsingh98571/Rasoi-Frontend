@@ -11,7 +11,7 @@ import Cart from "./components/Cart/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SellerFirst from "./components/SellerFirst/SellerFirst";
-
+import SellerDashBoard from "./components/SellerDashboard/SellerDashBoard";
 function App() {
   return (
     <div className="App">
@@ -25,6 +25,7 @@ function App() {
         <Route exact path="/cart" element={[<><ConsumerHeader/><Cart /><Footer/></>]} />
         <Route exact path="/seller" element={<SellerHeader />} />
         <Route exact path="/SellerSetUp" element={<SellerFirst/>}/>
+        <Route exact path="/SellerDashboard" element={<SellerDashBoard/>}/>
         </Routes>
  
         </BrowserRouter>

@@ -1,17 +1,13 @@
-import React,{useState,useEffect} from "react"
+import React,{useEffect} from "react"
 import classes from './SellerFirst.module.css'
 import logo from '../../assets/images/logo.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
+import Modal from 'react-modal'
+import SellerFirstLogic from "./SellerFirstLogic";
 const SellerFirst=()=>{
-    const [response,setResponse]=useState({
-        generalDishesCount:"",
-        message:"",
-        mobileNo:"",
-        sellerName:"",
-        specialDishesCount:""
-    })
+    const {response,ModalOpen,FirstForm,SecondForm,FirstFormHandler,SecondFormHandler,FoodPicHandler,ProfilePicHandler,NavigateNext,OuterForm,InnerForm,DoneHandler,StopNavigation,setResponse} =SellerFirstLogic();
     useEffect(()=>{
         let sellerID=localStorage.getItem('SellerId')
         console.log(sellerID)
@@ -29,150 +25,58 @@ const SellerFirst=()=>{
           .catch(function (error) {
             if(error.response.status===403){
                 localStorage.removeItem('SellerId')
-                window.location.href="/SellerSignIn"
+                toast.warn('Seller Not Authorized', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
+                    setTimeout(() => {
+                        window.location.href="/SellerSignIn"
+                      }, 2000); 
+               
             }
             if(error.response.status===409){
-                window.location.href="/SellerSignUp"
+                toast.warn('Dashboard Already Filled', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
+                    setTimeout(() => {
+                        window.location.href="/SellerSignUp"
+                      }, 2000); 
+                
             }
           })
-    },[])
-    const [FirstForm,SetFirstForm]=useState({
-        ProfilePic:"",
-        bio:"",
-        facebook:"",
-        instagram:"",
-        areaName:"",
-        pinCode:""
     })
-    const [SecondForm,SetSecondForm]=useState({
-        dishName:"",
-        price:"",
-        dishType:"Veg",
-        isSpecial:false,
-        timeReq:"",
-        Picture:""
-    })
-    
-    const SecondFormHandler=(e)=>{
-        const name=e.target.name;
-        const value=e.target.value;
-        SetSecondForm({...SecondForm,[name]:value})
-    }
-    const FoodPicHandler=(e)=>{
-        SetSecondForm({...SecondForm,Picture:e.target.files[0]})
-        
-    }
-    const FirstFormHandler=(e)=>{
-        const name=e.target.name;
-        const value=e.target.value;
-        SetFirstForm({...FirstForm,[name]:value})
-    }
-    const ProfilePicHandler=(e)=>{
-        SetFirstForm({...FirstForm,ProfilePic:e.target.files[0]})
-    }
-    const InnerForm=(e)=>{
-        e.preventDefault();
-        console.log("InnerForm")
-
-        if(SecondForm.dishName&&SecondForm.price&&SecondForm.Picture&&SecondForm.timeReq) {
-            const InnerFormData=new FormData();
-            InnerFormData.append('dishName',SecondForm.dishName)
-            InnerFormData.append('price',SecondForm.price)
-            InnerFormData.append('dishType',SecondForm.dishType)
-            InnerFormData.append('isSpecial',SecondForm.isSpecial)
-            InnerFormData.append('timeReq',SecondForm.timeReq)
-            InnerFormData.append('picture',SecondForm.Picture)
-            InnerFormData.append('sellerID',localStorage.getItem('SellerId'))
-
-            axios.post(   'http://localhost:8080/seller/addDishes', InnerFormData)
-             .then(res => {
-                console.log(res);
-                SetSecondForm({dishName:"",price:"",timeReq:""})
-                //Server response for genaralized/specialized dish
-                //if 1 and all the other required fields in first form are filled then
-                //done activate else done not activate.
-                if(res.status===201){
-                    toast.success('Dish Added Successfully', {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        });
-                }
-             })
-             .catch(err => {
-                console.log(err)
-             });
-
-        }
-    
-    
-        else{ toast.warn('Please Fill out all fields market with *', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });
-
-        }
-        
-    }
-    const OuterForm=(e)=>{
-        e.preventDefault();
-        console.log("Outer Form")
-       
-     if(FirstForm.areaName&&FirstForm.pinCode&&FirstForm.ProfilePic){
-            const OuterFormData=new FormData();
-            OuterFormData.append('Picture',FirstForm.ProfilePic)
-             OuterFormData.append('bio',FirstForm.bio)
-            OuterFormData.append('facebook',FirstForm.facebook)
-            OuterFormData.append('instagram',FirstForm.instagram)
-            OuterFormData.append('areaName',FirstForm.areaName)
-            OuterFormData.append('pinCode',FirstForm.pinCode)
-            OuterFormData.append('sellerID',localStorage.getItem('SellerId'))
-           
-            axios.put(   'http://localhost:8080/seller/fillSellerDetails', OuterFormData)
-             .then(res => {
-                console.log(res);
-                if(res.status===200){
-                    toast.success('Seller Info Added Successfully', {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        });
-                }
-               
-                
-             })
-             .catch(err => {
-                console.log(err)
-                
-             });
-            
-        }
-        else{ toast.warn('Please Fill out all fields marked with *', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });
-        }
-    }
     return(
         <div className={classes.OuterContainer}>
+            <Modal isOpen={ModalOpen}
+               className={classes.Modal}
+               overlayClassName={classes.OverlayClass}
+              >
+
+                <div className={classes.ModalContainer}>
+                   <div className={classes.ConfirmContainer}>
+                       <p>Are you sure you want to Submit?</p>
+                       <p>Note: After submitting you will be redirected to your Dashboard</p>
+                   </div>
+                   <div className={classes.ConfirmButtonContainer}>
+                      
+                           <button className={classes.ButtonOne} onClick={NavigateNext} type="button">YES</button>
+                     
+                           <button className={classes.ButtonTwo} onClick={StopNavigation} type="button">No</button>
+                       
+                   </div>
+                    </div>
+            </Modal>
             <div className={classes.NavContainer}>
                 <div className={classes.LogoContainer}>
                     <img src={logo} alt="Rasoi logo"/>
@@ -251,7 +155,7 @@ const SellerFirst=()=>{
                        
                     </div>
                     <div className={classes.InnerButton}>
-                        <input type="submit" value="SUBMIT" />
+                        <input type="submit" value="SAVE DETAILS" />
                     </div>
                     </form>
                 </div>
@@ -312,11 +216,14 @@ const SellerFirst=()=>{
                                     </select>
                                     </div>
                                 </div>
+                                {
+                                    response.specialDishesCount===3?<p className={classes.SpecialMessage}>Max Speciality Count Reached</p>:
                                 <div className={classes.CheckContainer}>
-                                    <input onChange={SecondFormHandler} name="isSpecial" value={true} type="checkbox"/>
+                                 <input onChange={SecondFormHandler} name="isSpecial" value={true} type="checkbox"/>
                                     <label>Mark as Speciality</label>
                                     <p>*You can add upto 3 special items</p>
-                                </div>
+                                    </div>
+                                }
                             </div>
                             <div className={classes.SecondForm}>
                                 <div className={classes.PriceContainer}>
@@ -345,15 +252,20 @@ const SellerFirst=()=>{
                                 </div>
                             </div>
                             </div>
-                            <div className={classes.FirstButton}>
+                            {
+                                response.generalDishesCount===10?<p className={classes.SpecialMessage}>Max Menu Items Count Reached</p>:
+                            <div className={response.generalDishesCount===10?classes.HideAddButton: classes.FirstButton}>
                                 <input type="submit" value="ADD ITEM"/>
                             </div>
+                            }
                             </form>
                         </div>
                     </div>
                 </div>
                 </div>
-                
+                <div className={classes.OuterButton}>
+                    <button id="SubmitButtonId" type="button" onClick={DoneHandler}>Submit</button>
+                </div>
                 <ToastContainer />
         </div>
     )

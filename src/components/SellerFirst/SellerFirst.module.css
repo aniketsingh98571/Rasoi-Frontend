@@ -4,7 +4,7 @@
 }
 .OuterContainer{
     background-color: var(--White);
-    height: 110vh;
+    height: 112vh;
 }
 .NavContainer{
     display: flex;
@@ -259,4 +259,79 @@ border: none;
     outline: none;
 border: none;
 margin: 5px 0 10px 0;
+}
+.OuterButton{
+    text-align: center;
+}
+.OuterButton button{
+    margin: 15px 0 10px 0;
+    width: 20%;
+    padding: 10px 0;
+    background-color: var(--Yellow);
+    font-family: CircularStd-Black;
+    font-size: 18px;
+    outline: none;
+border: none;
+}
+.ModalContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid red; */
+    height: 40vh;
+}
+.ConfirmContainer{
+    text-align: center;
+}
+.ConfirmContainer p:nth-child(1){
+    font-size: 20px;
+    font-family: AvenirNextLTPro-Bold;
+}
+.ConfirmContainer p:nth-child(2){
+    font-size: 16px;
+    font-family: AvenirNextLTPro-Regular;
+    color: red;
+    margin: 10px 5px 0 5px;
+}
+.ConfirmButtonContainer{
+    display: flex;
+ 
+    /* border: 2px solid red; */
+    width: 100%;
+    justify-content: center;
+}
+.ButtonOne{
+    margin: 15px 0px 0px 0;
+   width: 30%;
+    padding: 10px 0;
+    background-color: var(--Yellow);
+    font-family: CircularStd-Black;
+    font-size: 18px;
+    outline: none;
+border: none;
+}
+.ButtonTwo{
+    margin: 15px 0px 0px 20px;
+    width: 30%;
+     padding: 10px 0;
+     background-color: var(--Yellow);
+     font-family: CircularStd-Black;
+     font-size: 18px;
+     outline: none;
+ border: none;
+}
+.Modal{
+    height: 40vh;
+   background-color:var(--White);
+   /* border: 2px solid blue; */
+  transform: translateY(70%) translateX(110%);
+
+    width: fit-content;
+    border: 2px solid var(--Black);
+   
+}
+.SpecialMessage{
+    color: red;
+    font-family: AvenirNextLTPro-Regular;
 }
