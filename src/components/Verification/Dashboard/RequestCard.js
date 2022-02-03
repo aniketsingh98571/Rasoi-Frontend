@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./RequestCard.module.css";
-// import axios from "axios";
+import axios from "axios";
 
 const RequestCard = (props) => {
+  const [validate, setValidate] = useState({ id: "", action: "" });
   const handleVerify = () => {
-    //POST/PUT request
-    // axios
-    //   .put("http://localhost:8080/seller/fillSellerDetails")
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    //mark the request as verified
-    alert(`Seller with ID ${props.sellerID} marked as verified!`);
+    setValidate({ id: `${props.sellerID}`, action: "true" });
+    ///POST/PUT request
+    console.log(validate);
+    axios
+      .put("http://localhost:8080/validator/validateSeller", validate)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // alert(`Seller with ID ${props.sellerID} marked as verified!`);
   };
 
   const handleReject = () => {
@@ -34,11 +36,11 @@ const RequestCard = (props) => {
     <div className={classes.card}>
       <div className={classes.imageDiv}>
         <div className={classes.sellerImage}>
-          <img src={props.sellerImg} alt="seller" />
+          <img src={`http://localhost:8000/${props.sellerImg}`} alt="seller" />
           <figcaption>Seller Image</figcaption>
         </div>
         <div className={classes.panImage}>
-          <img src={props.sellerPan} alt="pan" />
+          <img src={`http://localhost:8000/${props.sellerPan}`} alt="pan" />
           <figcaption>PAN Card</figcaption>
         </div>
       </div>
