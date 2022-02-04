@@ -84,6 +84,8 @@ const HandleFileInput2=(e)=>{
                 console.log(res);
                 SetConsumerRegistration({sellerName:"",mobileNo:"",password:"",panImage:'',profileImage:null})
                 SetConfirmPass("")
+                document.getElementById("PanImageId").value="";
+                document.getElementById("ProfileImageId").value="";
                 if(res.status===201){
                     toast.success('Seller Registered,Please wait for your account to be verified', {
                         position: "top-center",

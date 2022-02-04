@@ -17,21 +17,21 @@ const SellerDashBoard=()=>{
                     </div>
                     <div className={classes.TextContainer}>
                         <div className={classes.NameContainer}>
-                        <i class="fas fa-address-card"></i>
+                        <i className="fas fa-address-card"></i>
                         <p>Aniket Rajesh Singh</p>
                         </div>
                         <div className={classes.AddressContainer}>
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i className="fas fa-map-marker-alt"></i>
                         <p>Siddhatek, 422009</p>
                         </div>
                         <div className={classes.MobileContainer}>
-                        <i class="fas fa-mobile-alt"></i>
+                        <i className="fas fa-mobile-alt"></i>
                         <p>8600469998</p>
                         </div>
                     </div>
                     <div className={classes.SocialContainer}>
-                 <a href="/">  <i class="fab fa-facebook"></i></a> 
-                  <a href="/">  <i class="fab fa-instagram"></i></a>
+                 <a href="/">  <i className="fab fa-facebook"></i></a> 
+                  <a href="/">  <i className="fab fa-instagram"></i></a>
                   <div className={classes.EditButtonContainer}>
                       <button type="button">Edit Profile</button>
                   </div>

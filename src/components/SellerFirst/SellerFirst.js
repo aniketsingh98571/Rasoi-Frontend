@@ -1,13 +1,52 @@
-import React,{useEffect} from "react"
+import React,{useEffect,useState} from "react"
 import classes from './SellerFirst.module.css'
 import logo from '../../assets/images/logo.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import Modal from 'react-modal'
-import SellerFirstLogic from "./SellerFirstLogic";
+
 const SellerFirst=()=>{
-    const {response,ModalOpen,FirstForm,SecondForm,FirstFormHandler,SecondFormHandler,FoodPicHandler,ProfilePicHandler,NavigateNext,OuterForm,InnerForm,DoneHandler,StopNavigation,setResponse} =SellerFirstLogic();
+    
+    const [checkValid,setCheckValid]=useState({
+        special:false,
+        general:false
+    })
+    const [isSpecial,SetIsSpecial]=useState(false)
+    const SetSpecial=(e)=>{
+        SetIsSpecial(!isSpecial);
+    }
+    const [change,setchange]=useState(false)
+    const [Done,SetDone]=useState({
+            FormFirst:false,
+            FormSecond:0
+        })
+       
+    const [response,setResponse]=useState({
+            generalDishesCount:0,
+            message:"",
+            mobileNo:"",
+            sellerName:"",
+            specialDishesCount:0
+        })
+       
+        const [ModalOpen,SetModalOpen]=useState(false)
+       
+        const [FirstForm,SetFirstForm]=useState({
+            ProfilePic:"",
+            bio:"",
+            facebook:"",
+            instagram:"",
+            areaName:"",
+            pinCode:""
+        })
+        const [SecondForm,SetSecondForm]=useState({
+            dishName:"",
+            price:"",
+            dishType:"Veg",
+            timeReq:"",
+            Picture:""
+        })
     useEffect(()=>{
         let sellerID=localStorage.getItem('SellerId')
         console.log(sellerID)
@@ -18,8 +57,9 @@ const SellerFirst=()=>{
             }
           })
           .then(function (response) {
+              console.log(response)
             setResponse({generalDishesCount:response.data.generalDishesCount,
-                message:response.data.message,mobileNo:response.data.mobileNo,sellerName:response.data.sellerName,specialDishesCount:response.data.specialDishesCount});
+                message:response.data.message,mobileNo:response.data.mobileNo,sellerName:response.data.sellerName,specialDishesCount:response.data.specialDishesCounts});
 
           })
           .catch(function (error) {
@@ -50,12 +90,226 @@ const SellerFirst=()=>{
                     progress: undefined,
                     });
                     setTimeout(() => {
-                        window.location.href="/SellerSignUp"
+                        window.location.href="/SellerDashboard"
                       }, 2000); 
                 
             }
           })
-    })
+    },[change])
+    
+        
+        const SecondFormHandler=(e)=>{
+            const name=e.target.name;
+            const value=e.target.value;
+            SetSecondForm({...SecondForm,[name]:value})
+        }
+        const FoodPicHandler=(e)=>{
+            SetSecondForm({...SecondForm,Picture:e.target.files[0]})
+            
+        }
+        const FirstFormHandler=(e)=>{
+            const name=e.target.name;
+            const value=e.target.value;
+            SetFirstForm({...FirstForm,[name]:value})
+        }
+        const ProfilePicHandler=(e)=>{
+            SetFirstForm({...FirstForm,ProfilePic:e.target.files[0]})
+            toast.success(`Picture added successfully`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+                
+        }
+        const DoneHandler=()=>{
+            console.log(Done.FormFirst)
+            console.log(Done.FormSecond)
+            if(Done.FormFirst===true&&Done.FormSecond===1){
+                console.log("Dashboard filled")
+                SetModalOpen(true)
+               
+            }
+            else{
+                toast.warn('Please fill out fields marked with *', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
+                console.log("Please fill out form first")
+            }
+        }
+        const NavigateNext=()=>{
+            window.location.href="/SellerDashboard"
+            setchange(true)
+        }
+        const StopNavigation=()=>{
+            SetModalOpen(false)
+        }
+        const InnerForm=(e)=>{
+            e.preventDefault();
+            console.log("InnerForm")
+    
+            if(SecondForm.dishName&&SecondForm.price&&SecondForm.Picture&&SecondForm.timeReq) {
+                const InnerFormData=new FormData();
+                console.log(isSpecial)
+                console.log(SecondForm)
+                InnerFormData.append('dishName',SecondForm.dishName)
+                InnerFormData.append('price',SecondForm.price)
+                InnerFormData.append('dishType',SecondForm.dishType)
+                InnerFormData.append('isSpecial',isSpecial)
+                InnerFormData.append('timeReq',SecondForm.timeReq)
+                InnerFormData.append('picture',SecondForm.Picture)
+                InnerFormData.append('sellerID',localStorage.getItem('SellerId'))
+               
+                // console.log(SecondForm)
+                // console.log(isSpecial)
+              
+               
+               
+
+                axios.post(   'http://localhost:8080/seller/addDishes', InnerFormData)
+                 .then(res => {
+                    console.log(res);
+                    // console.log(SecondForm)
+                  
+                //    console.log(SecondForm)
+                    //Server response for genaralized/specialized dish
+                    //if 1 and all the other required fields in first form are filled then
+                    //done activate else done not activate.
+                    if(res.status===201){
+                        toast.success(`${SecondForm.dishName} added successfully`, {
+                            position: "top-center",
+                            autoClose: 1000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            });
+                            
+                            SetDone({FormFirst:Done.FormFirst, FormSecond:1})
+                            SetSecondForm({dishName:"",price:"",timeReq:"",dishType:"Veg"})
+                            document.getElementById("FoodPicId").value=""
+                          
+                    }
+                 })
+                 .catch(err => {
+                    console.log(err)
+                    if(err.response.data.message==="all special dishes slots are full"){
+                        toast.warn('Your Last Dish was not saved in our database due to max limit reached!', {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            });
+                          
+                            setCheckValid({special:true,general:checkValid.general})
+                            SetSecondForm({dishName:"",price:"",timeReq:"",dishType:"Veg"})
+                            document.getElementById("FoodPicId").value=""
+                            SetIsSpecial(false)
+                           
+                    }
+                    if(err.response.data.message==="all Normal dishes slots are full"){
+                        console.log("full")
+                        toast.warn('Your Last Dish was not saved in our database due to max limit reached!', {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            });
+                     
+                        
+                        
+                       
+                        setCheckValid({special:checkValid.special,general:true})
+                        SetSecondForm({dishName:"",price:"",timeReq:"",dishType:"Veg"})
+                        document.getElementById("FoodPicId").value=""
+                        SetIsSpecial(true)
+                        document.getElementById("CheckBoxId").checked=true;
+                        document.getElementById("CheckBoxId").disabled=true;
+                }
+                 });
+    
+            }
+        
+        
+            else{ toast.warn('Please Fill out all fields market with *', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+    
+            }
+            
+        }
+        const OuterForm=(e)=>{
+            e.preventDefault();
+            console.log("Outer Form")
+           
+         if(FirstForm.areaName&&FirstForm.pinCode&&FirstForm.ProfilePic){
+                const OuterFormData=new FormData();
+                OuterFormData.append('Picture',FirstForm.ProfilePic)
+                 OuterFormData.append('bio',FirstForm.bio)
+                OuterFormData.append('facebook',FirstForm.facebook)
+                OuterFormData.append('instagram',FirstForm.instagram)
+                OuterFormData.append('areaName',FirstForm.areaName)
+                OuterFormData.append('pinCode',FirstForm.pinCode)
+                OuterFormData.append('sellerID',localStorage.getItem('SellerId'))
+               
+                axios.put(   'http://localhost:8080/seller/fillSellerDetails', OuterFormData)
+                 .then(res => {
+                    console.log(res);
+                    if(res.status===200){
+                        toast.success('Seller Info Saved Successfully', {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            });
+                            SetDone({FormFirst:true,FormSecond:Done.FormSecond})
+                    }
+                   
+                    
+                 })
+                 .catch(err => {
+                    console.log(err)
+                    
+                 });
+                
+            }
+            else{ toast.warn('Please Fill out all fields marked with *', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            }
+        }
+   
     return(
         <div className={classes.OuterContainer}>
             <Modal isOpen={ModalOpen}
@@ -102,13 +356,14 @@ const SellerFirst=()=>{
                         <div className={classes.ProfileInput}>
                         <label htmlFor="ProfileInputId">
               <div className={classes.LabelContainer}>
-               <i class="fas fa-upload"></i>
+               <i className="fas fa-upload"></i>
                <p>Upload Image</p>
               </div>
             </label>
             <input
               className={classes.FileInput}
               type="file"
+              id="ProfilePicId"
               name="ProfilePic"
               onChange={ProfilePicHandler}
               id="ProfileInputId"
@@ -145,11 +400,11 @@ const SellerFirst=()=>{
                             <p>SOCIAL MEDIA</p>
                         </div>
                         <div className={classes.FaceBookContainer}>
-                        <i class="fab fa-facebook"></i>
+                        <i className="fab fa-facebook"></i>
                         <input title="https://www.facebook.com/thor98571/   thor98571--->Username" type="text" placeholder="Facebook Username" name="facebook" value={FirstForm.facebook} onChange={FirstFormHandler}/>
                         </div>
                         <div className={classes.InstagramContainer}>
-                        <i class="fab fa-instagram"></i>
+                        <i className="fab fa-instagram"></i>
                         <input title="https://www.instagram.com/dsc_sitrc/   dsc_strc--->Username" type="text" placeholder="Instagram Username" name="instagram" value={FirstForm.instagram} onChange={FirstFormHandler} />
                         </div>
                        
@@ -217,9 +472,10 @@ const SellerFirst=()=>{
                                     </div>
                                 </div>
                                 {
-                                    response.specialDishesCount===3?<p className={classes.SpecialMessage}>Max Speciality Count Reached</p>:
+                                    (response.specialDishesCount===3||checkValid.special===true)?<p className={classes.SpecialMessage}>Max Speciality Count Reached</p>
+                                    :
                                 <div className={classes.CheckContainer}>
-                                 <input onChange={SecondFormHandler} name="isSpecial" value={true} type="checkbox"/>
+                                 <input  name="isSpecial" id="CheckBoxId"  defaultChecked={isSpecial} onChange={SetSpecial}  type="checkbox"/>
                                     <label>Mark as Speciality</label>
                                     <p>*You can add upto 3 special items</p>
                                     </div>
@@ -247,13 +503,13 @@ const SellerFirst=()=>{
                                         <p>Upload your Food Picture*</p>
                                     </div>
                                     <div className={classes.FoodImageInput}>
-                                        <input type="file" name="Picture" accept=".png,.jpg,.jpeg" onChange={FoodPicHandler} />
+                                        <input type="file" id="FoodPicId" name="Picture" accept=".png,.jpg,.jpeg" onChange={FoodPicHandler} />
                                     </div>
                                 </div>
                             </div>
                             </div>
                             {
-                                response.generalDishesCount===10?<p className={classes.SpecialMessage}>Max Menu Items Count Reached</p>:
+                               ( (response.generalDishesCount===10||checkValid.general===true)&&checkValid.special===true)?<p className={classes.SpecialMessage}>Max Menu Items Count Reached</p>:
                             <div className={response.generalDishesCount===10?classes.HideAddButton: classes.FirstButton}>
                                 <input type="submit" value="ADD ITEM"/>
                             </div>

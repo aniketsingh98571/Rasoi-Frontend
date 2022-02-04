@@ -43,7 +43,7 @@ const SellerSignUp=()=>{
                   <p>Upload Pan Card</p> 
                </div>
                <div className={classes.PanInput}>
-                   <input id={1} accept=".jpeg,.png,.jpg"  type="file" name="panImage"  onChange={HandleFileInput1}/>
+                   <input id={1} accept=".jpeg,.png,.jpg" id="PanImageId"  type="file" name="panImage"  onChange={HandleFileInput1}/>
                </div>
            </div>
             </div>
@@ -71,7 +71,7 @@ const SellerSignUp=()=>{
                     <p>Upload Profile Picture</p>
                 </div>
                 <div className={classes.ProfileInput}>
-                    <input id={2} type="file"  accept=".jpeg,.png,.jpg" name="profileImage" onChange={HandleFileInput2}/>
+                    <input id={2} type="file" id="ProfileImageId"  accept=".jpeg,.png,.jpg" name="profileImage" onChange={HandleFileInput2}/>
                 </div>
             </div>
             </div>
