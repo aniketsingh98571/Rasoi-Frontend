@@ -21,7 +21,7 @@ const UserSignIn=()=>{
                         <p>Mobile Number</p>
                     </div>
                     <div className={classes.MobileInput}>
-                        <input type="number" name="Mobile" value={Consumerlog.Mobile} onChange={HandleInput}/>
+                        <input type="number" name="mobileNo" value={Consumerlog.mobileNo} onChange={HandleInput}/>
                     </div>
                 </div>
                 <div className={classes.PasswordContainer}>
@@ -29,7 +29,7 @@ const UserSignIn=()=>{
                         <p>Password</p>
                     </div>
                     <div className={classes.PasswordInput}>
-                        <input type="password" name="Password" value={Consumerlog.Password} onChange={HandleInput}/>
+                        <input type="password" name="password" value={Consumerlog.password} onChange={HandleInput}/>
                     </div>
                 </div>
             </div>

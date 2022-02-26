@@ -1,9 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
 import { toast}  from 'react-toastify';
 const UserSignInLogic=()=>{
     const [Consumerlog,SetConsumerlog]=useState({
-        Mobile:"",
-        Password:""
+        mobileNo:"",
+        password:""
     })
     const HandleInput=(e)=>{
         const name=e.target.name;
@@ -13,29 +14,42 @@ const UserSignInLogic=()=>{
     }
     const SubmitHandler=(e)=>{
         e.preventDefault();
-        if(Consumerlog.Mobile&&Consumerlog.Password){
-             //     fetch('http://localhost:8080/consumer/signup', {
-    //     method: 'POST', // or 'PUT'
-    //     mode: 'cors',
-    //     headers: {
-    //        'Content-Type': 'application/json',
-    //              },
-    //    body: JSON.stringify(ConsumerRegistration),
-    //        })
-    //  .then(response =>{ response.json() //status 403=user already exists.
-    //     if(response.status===403)console.log("User already exists")
-    //  })
-    //  .then(data => {
-         
-    //   console.log('Success:', data);
-    //   console.log(data.message+"aniket")
-      
-    //  })
-    //   .catch((error) => {
-    //   console.error('Error:', error);
-      
-    //  });
-        SetConsumerlog({Mobile:"",Password:""})
+        console.log(Consumerlog)
+        if(Consumerlog.mobileNo&&Consumerlog.password){
+            axios.post('http://localhost:8080/consumer/login', Consumerlog)
+              .then(response=> {
+                console.log(response);
+                if(response.status===200){
+                    toast.success('Login Successful', {
+                        position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        });
+                        SetConsumerlog({mobileNo:"",password:""})
+                }
+                
+              
+              })
+              .catch(function (error) {
+                if(error.response.status===401||error.response.status===403){
+                    toast.error('Mobile Number or Password Incorrect', {
+                        position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        });
+                        SetConsumerlog({mobileNo:"",password:""})
+                }
+                
+              });
+        
         }
         else toast.warn('Please fill out all fields', {
             position: "top-center",
