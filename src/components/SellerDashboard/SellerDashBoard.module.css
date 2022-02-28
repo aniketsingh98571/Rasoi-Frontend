@@ -5,7 +5,8 @@
 .InnerContainer{
     width:90%;
     margin: 10px auto 0 auto;
-
+    border: 2px solid var(--Yellow);
+    padding: 10px 0 10px 0;
 }
 .ButtonContainer{
     margin: 15px 0 0 75px;
@@ -24,11 +25,9 @@
     margin: 0 0 0 15px;
 }
 .FirstContainer{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
-    
-    
-}
+    }
 .ImageContainer{
     border: 2px solid var(--Black);
     height: 200px;
@@ -44,9 +43,9 @@
  
 }
 .TextContainer{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     width: 30%;
-    margin: 0 0 0 40px;
+    margin: 15px 0 0 220px;
 }
 .TextContainer i{
     font-size: 30px;
@@ -68,9 +67,11 @@
     align-items: center;
 }
 .SocialContainer{
-    border: 2px solid orange;
+    /* border: 2px solid orange; */
     width: 30%;
-    margin:  0 0 0 40px;
+    margin:  50px 0 0 40px;
+    text-align: center;
+  
 }
 .NameContainer p{
     font-size: 18px;
@@ -86,4 +87,86 @@
     font-size: 18px;
     font-family: CircularStd-Book;
     margin: 15px 0 0 27px;
+}
+.EditButtonContainer button{
+    background-color: var(--Yellow);
+    padding: 10px 0;
+    width: 30%;
+    border-radius: 5px;
+    font-family: AvenirNextLTPro-Bold;
+    margin: 10px 0 0 0;
+    font-size: 16px;
+}
+.Iclass i{
+    color: var(--Yellow);
+    font-size: 30px;
+    margin: 0 5px 0 0 ; 
+}
+.BioContainer{
+    width:90%;
+    margin: 10px auto 0 auto;
+    border: 2px solid var(--Yellow);
+}
+.BioHeader{
+    background-color: var(--Yellow);
+    text-align: center;
+    padding: 10px 0;
+   
+}
+.BioHeader p{
+    font-family: CircularSTD-Black;
+    font-size: 22px;
+}
+.BioContent{
+    padding: 10px 5px;
+    font-family: AvenirNextLTPro-Regular;
+    font-size: 17px;
+}
+.SpecialityContainer{
+    border: 2px solid var(--Yellow);
+    width:90%;
+    margin: 10px auto 0 auto;
+
+}
+.SpecialityHeader{
+    background-color: var(--Yellow);
+    text-align: center;
+    padding: 10px 0;
+    font-family: CircularSTD-Black;
+    font-size: 22px;
+}
+.SpecialCard{
+    border: 2px solid var(--Black);
+    width: 40%;
+    height: auto;
+    display: flex;
+   align-items: center;
+   padding: 5px;
+   margin: 15px 0;
+   padding: 10px;
+}
+.SpecialImage img{
+    width: 100px;
+    height: 100px;
+}
+.SpecialTimeContainer,.SpecialPriceContainer{
+    margin-left: 20px;
+    font-family: CircularSTD-Book;
+    font-size: 18px;
+}
+.SpecialText p:nth-child(1){
+    font-family: CircularSTD-Black;
+    font-size: 20px;
+  margin: 0 20px 0 20px;
+}
+.SpecialText p:nth-child(2){
+    font-family: CircularSTD-Book;
+    font-size: 18px;
+    margin: 0 20px 0 20px;
+}
+.SpecialDishes{
+    display: flex;
+   
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
