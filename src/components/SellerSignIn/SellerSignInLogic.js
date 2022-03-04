@@ -37,9 +37,9 @@ const SellerSignInLogic=()=>{
               }, 2000); 
     }
     else if(res.status===200&&res.data.configured===true){
-
+        localStorage.setItem('SellerId',res.data.seller_ID)
         setTimeout(() => {
-            window.location.href="/SellerSignIn"
+            window.location.href="/SellerDashboard"
           }, 2000); 
        
     }

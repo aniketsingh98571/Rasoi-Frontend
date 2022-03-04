@@ -74,7 +74,7 @@ const SellerFirstLogic=()=>{
         }
     }
     const NavigateNext=()=>{
-        window.location.href="/SellerSignIn"
+        window.location.href="/SellerDashboard"
     }
     const StopNavigation=()=>{
         SetModalOpen(false)

@@ -8,6 +8,7 @@ import ConsumerHeader from "./components/ConsumerHeader/ConsumerHeader";
 import SellerHeader from "./components/SellerHeader/SellerHeader";
 import Footer from "./components/Footer/Footer";
 import Cart from "./components/Cart/Cart";
+import Orders from "./components/SellerDashboard/Orders";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SellerFirst from "./components/SellerFirst/SellerFirst";
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/seller" element={<SellerHeader />} />
         <Route exact path="/SellerSetUp" element={<SellerFirst/>}/>
         <Route exact path="/SellerDashboard" element={<SellerDashBoard/>}/>
+        <Route exact path="/Orders" element={<Orders/>}/>
         </Routes>
  
         </BrowserRouter>

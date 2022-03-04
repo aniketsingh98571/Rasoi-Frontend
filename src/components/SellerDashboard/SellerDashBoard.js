@@ -1,68 +1,76 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import classes from './SellerDashBoard.module.css'
 import SellerHeader from '../SellerHeader/SellerHeader'
 const SellerDashBoard=()=>{
-    const [Speciality,SetSpeciality]=useState([{
-        name:"Paneer Masala",
-        Type:"Veg",
-        pic:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg",
-        Time:"240",
-        Price:150
-    },
-    {
-        name:"Paneer Masala",
-        Type:"Veg",
-        pic:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg",
-        Time:"240",
-        Price:150
-    },
-    {
-        name:"Paneer Masala",
-        Type:"Veg",
-        pic:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg",
-        Time:"240",
-        Price:150
-    },
-    {
-        name:"Paneer Masala",
-        Type:"Veg",
-        pic:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg",
-        Time:"240",
-        Price:150
-    }
-
-])
+   
+    const [Speciality,SetSpeciality]=useState({
+        img:"",
+        name:"",
+        areaName:"",
+        pinCode:"",
+        mobileNo:"",
+        facebook:"",
+        instagram:"",
+        specialDishes:[],
+        generalDishes:[]
+    })
+useEffect(()=>{
+    let sellerID=localStorage.getItem('SellerId')
+    console.log(sellerID)
+    
+    axios.get('http://localhost:8080/seller/sellerDashboard', {
+        params: {
+          sellerID: sellerID
+        }
+      })
+      .then(function (response) {
+          console.log(response)
+          SetSpeciality({img:response.data.data.img,name:response.data.data.name,areaName:response.data.data.areaName,
+            pinCode:response.data.data.pinCode,mobileNo:response.data.data.mobileNo,facebook:response.data.data.facebook,
+            instagram:response.data.data.instagram,specialDishes:response.data.data.specialDishes, generalDishes:response.data.data.generalDishes
+        
+        })
+          
+       })
+      .catch(function (error) {
+        console.log(error)
+        }) 
+},[])
+const NavigateNext=()=>{
+    window.location.href="/Orders"
+}
     return(
         <div className={classes.OuterContainer}>
             <SellerHeader/>
             
             <div className={classes.ButtonContainer}>
-                    <button type="button">Dashboard</button>
-                    <button className={classes.SecondButton} type="button">Orders</button>
+                    <button className={classes.ActiveClass} type="button">Dashboard</button>
+                    <button className={classes.SecondButton} onClick={NavigateNext} type="button">Orders</button>
             </div>
             <div className={classes.InnerContainer}>
                 <div className={classes.FirstContainer}>
                     <div className={classes.ImageContainer}>
-                        <img src="https://thumbs.dreamstime.com/z/seller-home-improvement-store-27594965.jpg" alt="Seller Image" />
+                        <img src={`http://localhost:8080/${Speciality.img}`} alt="Seller Image" />
                     </div>
                     <div className={classes.TextContainer}>
                         <div className={classes.NameContainer}>
                         <i className="fas fa-address-card"></i>
-                        <p>Aniket Rajesh Singh</p>
+                        <p>{Speciality.name}</p>
                         </div>
                         <div className={classes.AddressContainer}>
                         <i className="fas fa-map-marker-alt"></i>
-                        <p>Siddhatek, 422009</p>
+                        <p>{Speciality.areaName}, {Speciality.pinCode}</p>
                         </div>
                         <div className={classes.MobileContainer}>
                         <i className="fas fa-mobile-alt"></i>
-                        <p>8600469998</p>
+                        <p>{Speciality.mobileNo}</p>
                         </div>
                     </div>
                     <div className={classes.SocialContainer}>
                         <div className={classes.Iclass}>
-                 <a href="/">  <i className="fab fa-facebook"></i></a> 
-                  <a href="/">  <i className="fab fa-instagram"></i></a>
+                 <a href={Speciality.facebook}>  <i className="fab fa-facebook"></i></a> 
+                  <a href={Speciality.instagram}>  <i className="fab fa-instagram"></i></a>
                   </div>
                   <div className={classes.EditButtonContainer}>
                       <button type="button">Edit Profile</button>
@@ -90,20 +98,20 @@ const SellerDashBoard=()=>{
                 </div>
                 <div className={classes.SpecialDishes}>
                 {   
-                Speciality.map((ele)=>{
-                    return  <div className={classes.SpecialCard}>
+                Speciality.specialDishes.map((ele)=>{
+                    return  <div className={classes.SpecialCard} key={ele._id}>
                     <div className={classes.SpecialImage}>
-                        <img src={ele.pic} />
+                        <img src={`http://localhost:8080/${ele.imageURL}`} alt="Special Image" />
                     </div>
                     <div className={classes.SpecialText}>
                         <p>{ele.name}</p>
-                        <p>{ele.Type}</p>
+                        <p>{ele.type}</p>
                     </div>
                     <div className={classes.SpecialTimeContainer}>
-                        <p>{ele.Time} minutes</p>
+                        <p>{ele.timeReq} minutes</p>
                     </div>
                     <div className={classes.SpecialPriceContainer}>
-                        <p>Rs {ele.Price}</p>
+                        <p>Rs {ele.price}</p>
                     </div>
                 </div>
             
@@ -117,20 +125,20 @@ const SellerDashBoard=()=>{
                 </div>
                 <div className={classes.SpecialDishes}>
                 {   
-                Speciality.map((ele)=>{
-                    return  <div className={classes.SpecialCard}>
+                Speciality.generalDishes.map((ele)=>{
+                    return  <div className={classes.SpecialCard} key={ele._id}>
                     <div className={classes.SpecialImage}>
-                        <img src={ele.pic} />
+                        <img src={`http://localhost:8080/${ele.imageURL}`} alt="General Image" />
                     </div>
                     <div className={classes.SpecialText}>
                         <p>{ele.name}</p>
-                        <p>{ele.Type}</p>
+                        <p>{ele.type}</p>
                     </div>
                     <div className={classes.SpecialTimeContainer}>
-                        <p>{ele.Time} minutes</p>
+                        <p>{ele.timeReq} minutes</p>
                     </div>
                     <div className={classes.SpecialPriceContainer}>
-                        <p>Rs {ele.Price}</p>
+                        <p>Rs {ele.price}</p>
                     </div>
                 </div>
             
