@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./SellerSignUp.module.css";
@@ -119,6 +120,23 @@ const SellerSignUp = () => {
   return (
     <div className={classes.Container}>
       <div className={classes.InnerContainer}>
+=======
+import React from "react"
+import { Link } from "react-router-dom"
+import classes from './SellerSignUp.module.css'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SellerSignUpLogic from "./SellerSignUpLogic";
+
+const SellerSignUp=()=>{
+    const  {ConsumerRegistration,ConfirmPass,ErrorMessage,HandleInput,
+        HandleFileInput1,HandleFileInput2,SubmitHandler,ConfirmPassword} =SellerSignUpLogic();
+
+ 
+    return(
+        <div className={classes.Container}>
+        <div className={classes.InnerContainer}>
+>>>>>>> aniket
         <div className={classes.SignUpText}>
           <p>Sign Up</p>
         </div>
@@ -140,6 +158,7 @@ const SellerSignUp = () => {
               </div>
             </div>
             <div className={classes.Password}>
+<<<<<<< HEAD
               <div className={classes.PasswordText}>
                 <p>Password</p>
               </div>
@@ -152,6 +171,24 @@ const SellerSignUp = () => {
                 />
                 <p id="passId"></p>
               </div>
+=======
+                    <div className={classes.PasswordText}>
+                        <p>Password</p>
+                    </div>
+                    <div className={classes.PasswordInput}>
+                        <input type="password" name="password" value={ConsumerRegistration.password} onChange={HandleInput}/>
+                        <p id="passId"></p>
+                    </div>
+                </div>
+           <div className={classes.PanCardContainer}>
+               <div className={classes.PanText}>
+                  <p>Upload Pan Card</p> 
+               </div>
+               <div className={classes.PanInput}>
+                   <input id={1} accept=".jpeg,.png,.jpg" id="PanImageId"  type="file" name="panImage"  onChange={HandleFileInput1}/>
+               </div>
+           </div>
+>>>>>>> aniket
             </div>
             <div className={classes.PanCardContainer}>
               <div className={classes.PanText}>
@@ -167,6 +204,7 @@ const SellerSignUp = () => {
                 />
               </div>
             </div>
+<<<<<<< HEAD
           </div>
           <div className={classes.RightForm}>
             <div className={classes.MobileNumber}>
@@ -182,6 +220,15 @@ const SellerSignUp = () => {
                 />
                 <p id="mobileId"></p>
               </div>
+=======
+            <div className={classes.ProfileContainer}>
+                <div className={classes.ProfileText}>
+                    <p>Upload Profile Picture</p>
+                </div>
+                <div className={classes.ProfileInput}>
+                    <input id={2} type="file" id="ProfileImageId"  accept=".jpeg,.png,.jpg" name="profileImage" onChange={HandleFileInput2}/>
+                </div>
+>>>>>>> aniket
             </div>
             <div className={classes.ConfirmPassword}>
               <div className={classes.ConfirmPasswordText}>
@@ -221,6 +268,7 @@ const SellerSignUp = () => {
         <div className={classes.ButtonContainer}>
           {/* <button type="button" onClick={SubmitHandler}>Sign Up</button> */}
         </div>
+<<<<<<< HEAD
         <div className={classes.SignInText}>
           <p>
             Already have an account?{" "}
@@ -234,3 +282,11 @@ const SellerSignUp = () => {
   );
 };
 export default SellerSignUp;
+=======
+        <ToastContainer />
+        </div>
+
+    )
+    }
+export default SellerSignUp;
+>>>>>>> aniket

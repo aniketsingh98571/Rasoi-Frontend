@@ -1,82 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "react-router-dom"
 import classes from './UserSignUp.module.css'
-
+import { ToastContainer } from 'react-toastify';
+import UserSignUpLogic from "./UserSignUpLogic";
 const UserSignUp=()=>{
-    const [ConsumerRegistration,SetConsumerRegistration]=useState({
-        name:"",
-        address:"",
-        mobileNo:"",
-        password:""
-    })
-    const [ConfirmPass,SetConfirmPass]=useState("")
-    const [ErrorMessage,SetMessage]=useState("")
-    const HandleInput=(e)=>{
-        const name=e.target.name;
-        const value=e.target.value;
-        SetConsumerRegistration({...ConsumerRegistration,[name]:value})
-        
-    }
-const ConfirmPassword=(e)=>{
-    SetConfirmPass(e.target.value)
-    
-}
-    const SubmitHandler=(e)=>{
-        e.preventDefault();
-     
-        if(ConsumerRegistration.address&&ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password&&ConfirmPass){ console.log("filled")}
-        else{ alert("Please fill all details")}
-        
-        if(ConsumerRegistration.mobileNo.length!==10){
-            document.getElementById("MobileId").innerHTML="Invalid Mobile Length";
-            SetConsumerRegistration({name:ConsumerRegistration.name,address:ConsumerRegistration.address,mobileNo:"", password:ConsumerRegistration.password})
-        }
-            
-        
-        if(ConsumerRegistration.password.length<5){
-            document.getElementById("PswrdId").innerHTML="Password Length too short";
-            SetConsumerRegistration({name:ConsumerRegistration.name,address:ConsumerRegistration.address,mobileNo:ConsumerRegistration.mobileNo, password:""})
-            
-         }
-       
-         if(ConsumerRegistration.password!==ConfirmPass){
-            SetMessage("Password do not Match") 
-            SetConfirmPass("")
-          
-        }
-       
-        else if(ConsumerRegistration.password===ConfirmPass&&ConsumerRegistration.password.length>5&&ConsumerRegistration.mobileNo.length===10
-            &&ConsumerRegistration.address&&ConsumerRegistration.mobileNo&&ConsumerRegistration.name&&ConsumerRegistration.password&&ConfirmPass){
-      
-                console.log("All okay")
-        fetch('http://localhost:8080/consumer/signup', {
-        method: 'POST', // or 'PUT'
-        mode: 'cors',
-        headers: {
-           'Content-Type': 'application/json',
-                 },
-       body: JSON.stringify(ConsumerRegistration),
-           })
-     .then(response =>{ response.json() //status 403=user already exists.
-        if(response.status===403)console.log("User already exists")
-        else if(response.status===201)console.log("Data Sent")
-        SetConsumerRegistration({name:"",address:"",mobileNo:"",password:""})
-        SetConfirmPass("")
-     })
-     .then(data => {
-         
-    })
-      .catch((error) => {
-      console.error('Error:', error);
-      
-     });
-    }
-    setTimeout(()=>{
-        SetMessage("")
-        document.getElementById("PswrdId").innerHTML="";
-        document.getElementById("MobileId").innerHTML="";
-      },2000)  
-    }
+    const {ConsumerRegistration,HandleInput,ConfirmPass,ConfirmPassword,ErrorMessage,SubmitHandler} =UserSignUpLogic()
     return(
         <div className={classes.Container}>
             <div className={classes.InnerContainer}>
@@ -142,6 +70,7 @@ const ConfirmPassword=(e)=>{
                     <p>Already have an account? <Link className={classes.LinkEdit} to="/"><span className={classes.SignText} >Sign in</span></Link></p>
                 </div>
             </div>
+            <ToastContainer />
             </div>
     
     )
