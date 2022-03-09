@@ -12,6 +12,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Dashboard from "./components/Verification/Dashboard/Dashboard";
 import VerificationLogin from "./components/Verification/VerificationLogin";
+import SellerMenu from "./components/SellerMenu/SellerMenu";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
             element={<VerificationLogin />}
           />
           <Route exact path="/verification" element={<Dashboard />} />
+          <Route exact path="/sellerMenu" element={<SellerMenu />} />
         </Routes>
       </BrowserRouter>
     </div>
