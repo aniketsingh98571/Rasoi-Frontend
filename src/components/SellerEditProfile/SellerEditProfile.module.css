@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.InnerContainer{
+    width: 90%;
+    margin: 0px auto 0 auto;
+    /* border: 2px solid red; */
+}
+.EditProfileTextContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0 15px 0;
+    align-items: center;
+}
+.EditProfileText p{
+    font-family: CircularStd-Book;
+    font-size: 22px;
+    font-weight: bold;
+}
+.BackDashboardButton{
+    /* border: 2px solid red; */
+    margin: 0 180px 0 0;
+}
+.BackDashboardButton button{
+    width: 120%;
+    background-color: var(--Yellow);
+    padding: 8px;
+    font-family: AvenirNextLTPro-Bold;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.FirstContainer{
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ImageContainer{
+    border: 2px solid var(--Black);
+    height: 200px;
+    width: 200px;
+    
+    margin: 0 0 0 40px;
+}
+.ImageContainer img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.InputOne{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.InputTwo{
+    display: flex;
+    align-items: center;
+}
+.InputContainer{
+    margin: 0 250px 0 0;
+    border: 2px solid red;
+    width: 60%;
+}
+.AreaName p{
+    font-family: CircularStd-Book;
+    font-size: 18px;
+}
+.AreaName input{
+    padding: 5px;
+}

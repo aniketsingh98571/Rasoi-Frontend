@@ -13,6 +13,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SellerFirst from "./components/SellerFirst/SellerFirst";
 import SellerDashBoard from "./components/SellerDashboard/SellerDashBoard";
+import SellerEditProfile from "./components/SellerEditProfile/SellerEditProfile";
 function App() {
   return (
     <div className="App">
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/SellerSetUp" element={<SellerFirst/>}/>
         <Route exact path="/SellerDashboard" element={<SellerDashBoard/>}/>
         <Route exact path="/Orders" element={<Orders/>}/>
+        <Route exact path="/Edit" element={<SellerEditProfile/>}/>
         </Routes>
  
         </BrowserRouter>

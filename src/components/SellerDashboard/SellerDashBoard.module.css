@@ -57,17 +57,17 @@
 }
 .TextContainer i{
     font-size: 30px;
-    color: var(--Yellow);
+    color: var(--Black);
     margin: 15px 0 0 10px;
 }
 .AddressContainer i{
     font-size: 30px;
-    color: var(--Yellow);
+    color: var(--Black);
     margin: 15px 0 0 15px;
 }
 .MobileContainer i{
     font-size: 30px;
-    color: var(--Yellow);
+    color: var(--Black);
     margin: 15px 0 0 17px;
 }
 .NameContainer,.AddressContainer,.MobileContainer{
@@ -109,7 +109,7 @@
     cursor: pointer;
 }
 .Iclass i{
-    color: var(--Yellow);
+    color: var(--Black);
     font-size: 30px;
     margin: 0 5px 0 0 ; 
 }

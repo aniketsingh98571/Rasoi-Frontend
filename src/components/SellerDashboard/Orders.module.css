@@ -48,7 +48,7 @@
     align-items: center;
 }
 .NameContainer i,.MobileContainer i{
-    color: var(--Yellow);
+    color: var(--Black);
     font-size: 22px;
     margin: 0 0 10px 5px;
 }
