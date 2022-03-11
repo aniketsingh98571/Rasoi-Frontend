@@ -363,10 +363,10 @@ const SellerFirst=()=>{
             <input
               className={classes.FileInput}
               type="file"
-              id="ProfilePicId"
+              id="ProfileInputId"
               name="ProfilePic"
               onChange={ProfilePicHandler}
-              id="ProfileInputId"
+             
               accept=".png,.jpg,.jpeg"
             />
                         </div>

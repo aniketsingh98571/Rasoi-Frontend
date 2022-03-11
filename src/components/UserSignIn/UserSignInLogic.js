@@ -29,6 +29,8 @@ const UserSignInLogic=()=>{
                         draggable: true,
                         progress: undefined,
                         });
+                        localStorage.setItem('ConsumerId',response.data.consumerID)
+                        window.location.href="/Home"
                         SetConsumerlog({mobileNo:"",password:""})
                 }
                 

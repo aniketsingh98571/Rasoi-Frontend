@@ -15,9 +15,25 @@ const SellerEditProfile=()=>{
             </div>
         </div>
         <div className={classes.FirstContainer}>
-            <div className={classes.ImageContainer}>
-                <img src="https://thumbs.dreamstime.com/z/seller-home-improvement-store-27594965.jpg" alt="Seller Image"/>
-            </div>
+    
+        <div className={classes.ProfilePicContainer}>
+                        
+                        <div className={classes.ProfileInput}>
+                        <label htmlFor="ProfileInputId">
+              <div className={classes.LabelContainer}>
+              <img src="https://thumbs.dreamstime.com/z/seller-home-improvement-store-27594965.jpg"/>
+               <p>Update Image</p>
+              </div>
+            </label>
+            <input
+              className={classes.FileInput}
+              type="file"
+              id="ProfileInputId"
+              name="ProfilePic"
+           accept=".png,.jpg,.jpeg"
+            />
+                        </div>
+                    </div>
                 <div className={classes.InputContainer}>
                     <div className={classes.InputOne}>
                     <div className={classes.AreaName}>

@@ -13,7 +13,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Dashboard from "./components/Verification/Dashboard/Dashboard";
 import VerificationLogin from "./components/Verification/VerificationLogin";
-import SellerMenu from "./components/SellerMenu/SellerMenu";
+
 
 import SellerFirst from "./components/SellerFirst/SellerFirst";
 import SellerDashBoard from "./components/SellerDashboard/SellerDashBoard";
@@ -54,7 +54,7 @@ function App() {
             element={<VerificationLogin />}
           />
           <Route exact path="/verification" element={<Dashboard />} />
-          <Route exact path="/sellerMenu" element={<SellerMenu />} />
+          
         
         <Route exact path="/" element={<UserSignIn/>}/>
         <Route exact path="/UserSignUp" element={<UserSignUp/>}/>

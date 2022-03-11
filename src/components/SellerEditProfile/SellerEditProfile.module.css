@@ -35,9 +35,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 2px solid var(--Yellow);
 }
 .ImageContainer{
-    border: 2px solid var(--Black);
+    
     height: 200px;
     width: 200px;
     
@@ -56,16 +57,89 @@
 .InputTwo{
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    /* border: 2px solid red; */
+    margin: 10px 0 0 10px;
 }
 .InputContainer{
     margin: 0 250px 0 0;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: 60%;
 }
 .AreaName p{
     font-family: CircularStd-Book;
     font-size: 18px;
 }
-.AreaName input{
+.AreaName{
+    width: 30%;
+}
+
+.InstagramContainer,.FaceBookContainer{
+    display: flex;
+    align-items: center;
+    /* border: 2px solid red; */
+    width: 30%;
+    margin: 20px 0 0 0;
+}
+.FaceBookContainer input,.InstagramContainer input, .AreaName input{
+   padding: 5px;
+   width: 100%;
+   outline: none;
+}
+.FaceBookContainer i,.InstagramContainer i{
+    font-size: 30px;
+    margin: 0 5px 0 0;
+}
+.PinCodeContainer{
+    width: 35%;
+    /* border: 2px solid green; */
+}
+.PinCodeContainer input,.BioContainer textarea{
+    width: 90%;
     padding: 5px;
+    outline: none;
+}
+.BioContainer {
+    width: 65%;
+}
+
+
+
+.ProfileInput{
+    height: 200px;
+    width: 200px;
+    
+    margin: 0 0 0 40px;
+    border: 2px solid  var(--Black);
+    border-radius: 50%;
+    /* margin: 10px  auto 10px auto; */
+}
+.ProfileInput input{
+    display: none;
+   
+}
+.LabelContainer{
+    height: 100%;
+    width: 100%;
+    /* border: 2px solid orange; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.LabelContainer img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    opacity: 0.4;
+    
+}
+
+.LabelContainer p{
+    font-family:AvenirNextLTPro-Bold;
+    font-size: 18px;
+    position: absolute;
+    top: 280px;
+    font-weight: bold;
 }
