@@ -90,11 +90,11 @@
     font-size: 30px;
     margin: 0 5px 0 0;
 }
-.PinCodeContainer{
+.PinCodeContainerFirst{
     width: 35%;
     /* border: 2px solid green; */
 }
-.PinCodeContainer input,.BioContainer textarea{
+.PinCodeContainerFirst input,.BioContainer textarea{
     width: 90%;
     padding: 5px;
     outline: none;
@@ -102,9 +102,6 @@
 .BioContainer {
     width: 65%;
 }
-
-
-
 .ProfileInput{
     height: 200px;
     width: 200px;
@@ -118,6 +115,10 @@
     display: none;
    
 }
+.PinCodeContainerFirst p,.BioContainer p{
+    font-family:CircularStd-Book;
+}
+
 .LabelContainer{
     height: 100%;
     width: 100%;
@@ -142,4 +143,84 @@
     position: absolute;
     top: 280px;
     font-weight: bold;
+    cursor: pointer;
+}
+.SaveButtonContainer{
+    text-align: center;
+    margin: 10px 0 0 0;
+}
+.SaveButtonContainer input{
+    background-color: var(--Yellow);
+    width: 15%;
+    padding: 8px 5px;
+    border: none;
+    outline: none;
+    font-family: AvenirNextLTPro-Bold;
+    font-size: 18px;
+}
+.SpecialityCardContainer{
+    display: flex;
+ justify-content: space-around;
+    flex-wrap: wrap;
+}
+.SecondInnerContainer{
+    /* border: 2px solid red; */
+    margin: 10px 0 0 0;
+}
+.SpecialityHeader{
+    text-align: center;
+    background-color: var(--Yellow);
+    padding: 10px 0;
+}
+.SpecialityHeader p{
+    font-family:CircularStd-Black;
+    font-size: 22px;
+}
+.InnerSpecialContainer{
+    display: flex;
+    border: 2px solid var(--Black);
+    width: 500px;
+    justify-content: space-between;
+    margin: 10px 0 0 0;
+}
+.ButtonContainer{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    /* border: 2px solid blue; */
+    width: 40%;
+
+}
+.SpecialImageContainer{
+    width: 100px;
+    height: 120px;
+}
+.SpecialImageContainer img{
+    width: 100%;
+    height: 100%;
+}
+.EditButtonContainer button,.DeleteButtonContainer button{
+    background-color: var(--Yellow);
+    width: 100%;
+    padding: 5px 10px;
+    font-family: AvenirNextLTPro-Bold;
+    font-size: 16px;
+
+    position: relative;
+    top: 60px;
+}
+.FoodNameContainer p{
+    font-family: CircularStd-Black;
+    font-size: 18px;
+    margin: 20px 0 0 5px;
+}
+.DishType p,.TimeContainer p{
+    font-family: AvenirNextLTPro-Regular;
+    font-size:16px;
+    margin: 5px 0 0 5px;
+}
+.PriceContainer p{
+    font-size: 18px;
+    margin: 20px 0 0 10px;
+    font-family:CircularStd-Black;;
 }
