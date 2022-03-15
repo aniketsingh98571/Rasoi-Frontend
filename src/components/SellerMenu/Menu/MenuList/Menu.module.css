@@ -1,0 +1,21 @@
+.menuCard {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5vw;
+  margin-top: 2vh;
+  width: 31vw;
+}
+.heading {
+  display: flex;
+  flex-direction: column;
+  height: 6vh;
+}
+
+.heading > p {
+  display: flex;
+  font-family: CircularStd-Bold;
+  font-size: 160%;
+  height: 100%;
+  align-items: center;
+  color: var(--Black);
+}

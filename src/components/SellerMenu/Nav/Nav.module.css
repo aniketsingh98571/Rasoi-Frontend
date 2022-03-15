@@ -1,0 +1,41 @@
+.container {
+  width: 90vw;
+  height: 7vh;
+  margin: 0 auto;
+  /* background-color: blue; */
+}
+
+.nav {
+  display: flex;
+  width: 40vw;
+  height: 95%;
+  font-family: CircularStd-Bold;
+  font-size: 130%;
+  /* border: 2px solid var(--Black); */
+}
+
+.orderOnline {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  border: 2px solid var(--Black);
+  justify-content: center;
+  align-items: center;
+  /* padding: 5px 0px; */
+}
+
+.contact {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  border: 2px solid var(--Black);
+  justify-content: center;
+  align-items: center;
+  /* padding: 5px 0px; */
+}
+
+.contactSelected,
+.orderOnlineSelected {
+  background-color: var(--Yellow);
+  color: var(--Black);
+}

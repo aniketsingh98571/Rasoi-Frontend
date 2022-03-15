@@ -1,0 +1,79 @@
+.cartCard {
+  display: flex;
+  width: 100%;
+  height: 60px;
+  /* border: 1px solid black; */
+  font-size: 120%;
+  font-family: AvenirNextLTPro-Bold;
+  align-items: center;
+  margin-bottom: 5px;
+  /* border: 2px solid red; */
+}
+
+.itemName {
+  display: flex;
+  width: 30%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemType {
+  display: flex;
+  width: 8%;
+  height: 60%;
+  border: 2px solid green;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: 2%;
+}
+
+.itemType > i {
+  display: flex;
+  width: 60%;
+  height: 70%;
+  color: green;
+  /* font-size: 120%; */
+  justify-content: center;
+  align-items: center;
+}
+
+.quantity {
+  display: flex;
+  text-align: center;
+  width: 30%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantity > button {
+  width: 30%;
+  height: 80%;
+  text-align: center;
+  outline: none;
+  background-color: var(--Yellow);
+  font-size: 160%;
+}
+
+.quantity > button:hover {
+  cursor: pointer;
+}
+.quantity > p {
+  display: flex;
+  width: 30%;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--White);
+  color: var(--Black);
+}
+
+.itemPrice {
+  display: flex;
+  width: 30%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}

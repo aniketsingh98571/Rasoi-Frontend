@@ -1,0 +1,88 @@
+.Intro {
+  display: flex;
+  width: 90vw;
+  height: 30vh;
+  margin: 3vh auto;
+  border: 4px solid var(--Yellow);
+}
+.sellerImage {
+  height: 100%;
+  width: 30vw;
+}
+img {
+  max-width: 100%;
+  height: 100%;
+  background-color: black;
+}
+.sellerDetail {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.details {
+  display: flex;
+  padding-left: 3%;
+  height: 20%;
+  align-items: center;
+  font-size: large;
+}
+
+#name {
+  font-family: AvenirNextLTPro-Bold;
+  font-size: xx-large;
+}
+
+#special {
+  font-family: CircularStd-Book;
+  font-size: x-large;
+}
+
+#address {
+  font-family: AvenirNextLTPro-Regular;
+  font-size: larger;
+}
+
+.lastDiv {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+  justify-content: center;
+  margin-left: 25vw;
+}
+.rating {
+  display: flex;
+  width: 100%;
+  height: 50%;
+  font-family: AvenirNextLTPro-Bold;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.rating i {
+  display: flex;
+  align-items: center;
+  margin-left: 1%;
+  justify-content: center;
+}
+.socials {
+  display: flex;
+  width: 100%;
+  height: 50%;
+  font-family: AvenirNextLTPro-Bold;
+  justify-content: center;
+  font-size: xx-large;
+}
+
+#fb {
+  margin-right: 10%;
+  font-size: 140%;
+}
+#insta {
+  margin-left: 5%;
+  font-size: 140%;
+}

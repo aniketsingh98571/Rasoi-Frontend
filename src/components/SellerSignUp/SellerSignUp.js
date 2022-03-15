@@ -1,142 +1,25 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./SellerSignUp.module.css";
-import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import SellerSignUpLogic from "./SellerSignUpLogic";
 
 const SellerSignUp = () => {
-  const [ConsumerRegistration, SetConsumerRegistration] = useState({
-    sellerName: "",
-    mobileNo: "",
-    password: "",
-    panImage: null,
-    profileImage: null,
-  });
+  const {
+    ConsumerRegistration,
+    ConfirmPass,
+    ErrorMessage,
+    HandleInput,
+    HandleFileInput1,
+    HandleFileInput2,
+    SubmitHandler,
+    ConfirmPassword,
+  } = SellerSignUpLogic();
 
-  const [ConfirmPass, SetConfirmPass] = useState("");
-  const [ErrorMessage, SetMessage] = useState("");
-
-  const HandleInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    SetConsumerRegistration({ ...ConsumerRegistration, [name]: value });
-  };
-  const ConfirmPassword = (e) => {
-    SetConfirmPass(e.target.value);
-  };
-  const HandleFileInput1 = (e) => {
-    SetConsumerRegistration({
-      ...ConsumerRegistration,
-      panImage: e.target.files[0],
-    });
-  };
-  const HandleFileInput2 = (e) => {
-    SetConsumerRegistration({
-      ...ConsumerRegistration,
-      profileImage: e.target.files[0],
-    });
-  };
-  const SubmitHandler = (e) => {
-    e.preventDefault();
-    if (
-      ConsumerRegistration.mobileNo &&
-      ConsumerRegistration.sellerName &&
-      ConsumerRegistration.password &&
-      ConsumerRegistration.panImage &&
-      ConsumerRegistration.profileImage &&
-      ConfirmPass
-    )
-      console.log("hi");
-    else alert("Please fill all details");
-
-    if (ConsumerRegistration.mobileNo.length !== 10) {
-      document.getElementById("mobileId").innerHTML =
-        "Enter valid Mobile Number";
-      SetConsumerRegistration({
-        sellerName: ConsumerRegistration.sellerName,
-        mobileNo: "",
-        password: ConsumerRegistration.password,
-        panImage: ConsumerRegistration.panImage,
-        profileImage: ConsumerRegistration.profileImage,
-      });
-    }
-
-    if (ConsumerRegistration.password.length < 5) {
-      document.getElementById("passId").innerHTML = "Password too short";
-      SetConsumerRegistration({
-        sellerName: ConsumerRegistration.sellerName,
-        mobileNo: ConsumerRegistration.mobileNo,
-        password: "",
-        panImage: ConsumerRegistration.panImage,
-        profileImage: ConsumerRegistration.profileImage,
-      });
-    }
-
-    if (ConsumerRegistration.password !== ConfirmPass) {
-      SetMessage("Password do not Match");
-      SetConfirmPass("");
-    } else if (
-      ConsumerRegistration.sellerName &&
-      ConsumerRegistration.mobileNo &&
-      ConsumerRegistration.password &&
-      ConsumerRegistration.profileImage &&
-      ConsumerRegistration.panImage &&
-      ConfirmPass &&
-      ConsumerRegistration.password === ConfirmPass &&
-      ConsumerRegistration.mobileNo.length === 10 &&
-      ConsumerRegistration.password.length > 5
-    ) {
-      console.log("All okay");
-
-      const formData = new FormData();
-      formData.append("sellerName", ConsumerRegistration.sellerName);
-      formData.append("mobileNo", ConsumerRegistration.mobileNo);
-      formData.append("password", ConsumerRegistration.password);
-      formData.append("panImage", ConsumerRegistration.panImage);
-      formData.append("profileImage", ConsumerRegistration.profileImage);
-      axios
-        .post("http://localhost:8000/seller/signup", formData)
-        .then((res) => {
-          console.log(res);
-          SetConsumerRegistration({
-            sellerName: "",
-            mobileNo: "",
-            password: "",
-            panImage: null,
-            profileImage: null,
-          });
-          SetConfirmPass("");
-        })
-        .catch((err) => {
-          if (err.response.status === 403) console.log("Seller Already Exists");
-        });
-    }
-    setTimeout(() => {
-      SetMessage("");
-      document.getElementById("mobileId").innerHTML = "";
-      document.getElementById("passId").innerHTML = "";
-    }, 2000);
-  };
   return (
     <div className={classes.Container}>
       <div className={classes.InnerContainer}>
-=======
-import React from "react"
-import { Link } from "react-router-dom"
-import classes from './SellerSignUp.module.css'
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import SellerSignUpLogic from "./SellerSignUpLogic";
-
-const SellerSignUp=()=>{
-    const  {ConsumerRegistration,ConfirmPass,ErrorMessage,HandleInput,
-        HandleFileInput1,HandleFileInput2,SubmitHandler,ConfirmPassword} =SellerSignUpLogic();
-
- 
-    return(
-        <div className={classes.Container}>
-        <div className={classes.InnerContainer}>
->>>>>>> aniket
         <div className={classes.SignUpText}>
           <p>Sign Up</p>
         </div>
@@ -158,7 +41,6 @@ const SellerSignUp=()=>{
               </div>
             </div>
             <div className={classes.Password}>
-<<<<<<< HEAD
               <div className={classes.PasswordText}>
                 <p>Password</p>
               </div>
@@ -171,24 +53,6 @@ const SellerSignUp=()=>{
                 />
                 <p id="passId"></p>
               </div>
-=======
-                    <div className={classes.PasswordText}>
-                        <p>Password</p>
-                    </div>
-                    <div className={classes.PasswordInput}>
-                        <input type="password" name="password" value={ConsumerRegistration.password} onChange={HandleInput}/>
-                        <p id="passId"></p>
-                    </div>
-                </div>
-           <div className={classes.PanCardContainer}>
-               <div className={classes.PanText}>
-                  <p>Upload Pan Card</p> 
-               </div>
-               <div className={classes.PanInput}>
-                   <input id={1} accept=".jpeg,.png,.jpg" id="PanImageId"  type="file" name="panImage"  onChange={HandleFileInput1}/>
-               </div>
-           </div>
->>>>>>> aniket
             </div>
             <div className={classes.PanCardContainer}>
               <div className={classes.PanText}>
@@ -204,7 +68,6 @@ const SellerSignUp=()=>{
                 />
               </div>
             </div>
-<<<<<<< HEAD
           </div>
           <div className={classes.RightForm}>
             <div className={classes.MobileNumber}>
@@ -220,15 +83,6 @@ const SellerSignUp=()=>{
                 />
                 <p id="mobileId"></p>
               </div>
-=======
-            <div className={classes.ProfileContainer}>
-                <div className={classes.ProfileText}>
-                    <p>Upload Profile Picture</p>
-                </div>
-                <div className={classes.ProfileInput}>
-                    <input id={2} type="file" id="ProfileImageId"  accept=".jpeg,.png,.jpg" name="profileImage" onChange={HandleFileInput2}/>
-                </div>
->>>>>>> aniket
             </div>
             <div className={classes.ConfirmPassword}>
               <div className={classes.ConfirmPasswordText}>
@@ -268,7 +122,6 @@ const SellerSignUp=()=>{
         <div className={classes.ButtonContainer}>
           {/* <button type="button" onClick={SubmitHandler}>Sign Up</button> */}
         </div>
-<<<<<<< HEAD
         <div className={classes.SignInText}>
           <p>
             Already have an account?{" "}
@@ -278,15 +131,8 @@ const SellerSignUp=()=>{
           </p>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
 export default SellerSignUp;
-=======
-        <ToastContainer />
-        </div>
-
-    )
-    }
-export default SellerSignUp;
->>>>>>> aniket
