@@ -10,7 +10,7 @@ const Dashboard = () => {
   useEffect(() => {
     console.log("Mai useeffect hu");
     axios
-      .get("http://localhost:8000/validator/getAllNonVadidatedSeller")
+      .get("http://localhost:8080/validator/getAllNonVadidatedSeller")
       .then(function (response) {
         // console.log(response);
         setReq(response.data.sellers);
