@@ -20,7 +20,7 @@ const VerificationLogin = () => {
     e.preventDefault();
     if (VerifierLog.username && VerifierLog.password) {
       axios
-        .post("http://localhost:8000/validator/signin", VerifierLog)
+        .post("http://localhost:8080/validator/signin", VerifierLog)
         .then((res) => {
           console.log(res);
           localStorage.setItem("verifierId", "SMLAD");
