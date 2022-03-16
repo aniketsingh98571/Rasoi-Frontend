@@ -13,7 +13,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Dashboard from "./components/Verification/Dashboard/Dashboard";
 import VerificationLogin from "./components/Verification/VerificationLogin";
-
+import EditModal from "./components/SellerEditProfile/EditModal";
 
 import SellerFirst from "./components/SellerFirst/SellerFirst";
 import SellerDashBoard from "./components/SellerDashboard/SellerDashBoard";
@@ -67,6 +67,7 @@ function App() {
         <Route exact path="/SellerDashboard" element={<SellerDashBoard/>}/>
         <Route exact path="/Orders" element={<Orders/>}/>
         <Route exact path="/Edit" element={<SellerEditProfile/>}/>
+        <Route exact path="/EditModal" element={<EditModal/>}/>
         </Routes>
       </BrowserRouter>
     </div>

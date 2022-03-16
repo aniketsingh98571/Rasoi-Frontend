@@ -1,0 +1,151 @@
+.Modal{
+    width: 40%;
+    margin: 0 auto;
+    height: auto;
+    position: relative;
+    top: 20%;
+    opacity: 1;
+    border: 2px solid var(--Black);
+    z-index: 9999;
+    background-color: var(--white);
+}
+.Outer{
+    width: 100%;
+    background-color: white;
+    height: 100%;
+}
+.TitleContainer{
+    background-color: var(--Yellow);
+    padding: 15px 0;
+}
+.TitleContainer p{
+    text-align: center;
+    font-family: AvenirNextLTPro-Bold;
+    font-size: 22px;
+}
+.FormContainer{
+    width: 70%;
+    margin: 0px auto 0px auto;
+    text-align: center;
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+.FoodNameContainer{
+width: 100%;
+    /* border: 2px solid red;   */
+    margin: 10px 0 0 0;
+}
+.FoodName p{
+
+}
+.FoodInput input{
+    width: 40%;
+    outline: none;
+    margin: 5px 0 0 0;
+}
+.TypeContainer{
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+.TypeSelect select{
+    width: 40%;
+    outline: none;
+    margin: 5px 0 0 0;
+}
+.PriceText p,.TimeText p,.TypeText p,.FoodName p{
+    /* text-align:left; */
+    font-family: AvenirNextLTPro-Regular;
+    font-size: 18px;
+}
+.PriceContainer{
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+.PriceInput input{
+    width: 40%;
+    outline: none;
+    margin: 5px 0 0 0;
+}
+.ImageContainer{
+    width: 100px;
+    height: 100px;
+    margin: 10px 0 0 0;
+}
+.TimeContainer{
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+.TimeInput input{
+    width: 40%;
+    outline: none;
+    margin: 5px 0 0 0;
+}
+.ImageContainer{
+   height: 100px;
+   width: 100px;
+}
+.ImageContainer img{
+    width: 100%;
+    height: 100%;
+}
+.UpdateButton{
+    width: 100%;
+}
+.UpdateButton button{
+    width: 30%;
+    padding: 8px 0;
+    background-color: var(--Yellow);
+    margin: 10px 0 0 0;
+    outline: none;
+    font-family: CircularStd-Black;
+    font-size: 18px;
+}
+ .OverlayClass{
+    opacity: 1;
+    height: 100vh;
+} 
+.LabelContainer{
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--Black);
+    height: 100px;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.LabelContainer img{
+    height: 100%;
+    width: 100%;
+    /* border-radius: 50%; */
+    opacity: 0.4;
+    
+}
+
+.LabelContainer p{
+    font-family:AvenirNextLTPro-Bold;
+    font-size: 14px;
+    position: absolute;
+    top: 330px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.ProfileInput{
+    /* height: 200px;
+    width: 200px; */
+    /* border: 2px solid var(--Black); */
+    /* margin: 0 0 0 40px;
+    border: 2px solid  var(--Black); */
+  
+    /* margin: 10px  auto 10px auto; */
+}
+.ProfileInput input{
+    display: none;
+   
+}

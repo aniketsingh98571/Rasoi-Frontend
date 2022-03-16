@@ -1,8 +1,11 @@
 import React, { useState } from "react"
 import classes from './SellerEditProfile.module.css'
 import SellerHeader from "../SellerHeader/SellerHeader"
+import EditModal from "./EditModal"
 const SellerEditProfile=()=>{
     const [url,seturl]=useState("https://thumbs.dreamstime.com/z/seller-home-improvement-store-27594965.jpg")
+    const [modal,setmodal]=useState(false)
+    const [dish,setdish]=useState({})
     const [Edit,SetEdit]=useState({
         image:"https://thumbs.dreamstime.com/z/seller-home-improvement-store-27594965.jpg",
         areaName:"Siddhatek Nagar",
@@ -77,11 +80,25 @@ const SellerEditProfile=()=>{
     const FirstSubmitHandler=(e)=>{
         e.preventDefault();
         console.log("submitted")
+     
+    }
+    const EditHandler=(item)=>{
+        console.log("Edited" +item.id)
+        setdish(item)
+        setmodal(true)
+    }
+    const AddHandler=()=>{
+        console.log("Add Handler")
+        setdish({})
+        setmodal(true)
     }
     return(
      <div className={classes.Container}>
          <SellerHeader/>
          <div className={classes.InnerContainer}>
+             {
+                 modal?<EditModal open={modal} item={dish}/>:""
+             }
              <form onSubmit={FirstSubmitHandler} encType='multipart/form-data'>
          <div className={classes.EditProfileTextContainer}>
              <div className={classes.EditProfileText}>
@@ -152,6 +169,8 @@ const SellerEditProfile=()=>{
                     {  
                     Edit.speciality.map((ele)=>{
                             return (
+                            
+                               
                                 <div key={ele.id} className={classes.InnerSpecialContainer}>
                             <div className={classes.SpecialImageContainer}>
                                 <img src={ele.image}/>
@@ -172,17 +191,73 @@ const SellerEditProfile=()=>{
                             </div>
                             <div className={classes.ButtonContainer}>
                                 <div className={classes.EditButtonContainer}>
-                                    <button type="button">Edit</button>
+                                    <button type="button" onClick={()=>{EditHandler(ele)}}>Edit</button>
                                 </div>
                                 <div className={classes.DeleteButtonContainer}>
                                     <button type="button">Delete</button>
                                 </div>
                             </div>
+                            
                         </div>
+                      
                             )
+                            
                     })  
 }
+    
                     </div>
+                    <div className={classes.AddItemContainer}>
+        <button type="button" onClick={AddHandler}>Add Item</button>
+    </div>
+                </div>
+                <div className={classes.SecondInnerContainer}>
+                    <div className={classes.SpecialityHeader}>
+                        <p>Menu Items</p>
+                    </div>
+                    <div className={classes.SpecialityCardContainer}>
+                    {  
+                    Edit.general.map((ele)=>{
+                            return (
+                            
+                               
+                                <div key={ele.id} className={classes.InnerSpecialContainer}>
+                            <div className={classes.SpecialImageContainer}>
+                                <img src={ele.image}/>
+                            </div>
+                            <div className={classes.LeftContainer}>
+                                <div className={classes.FoodNameContainer}>
+                                    <p>{ele.foodName}</p>
+                                </div>
+                                <div className={classes.DishType}>
+                                    <p>{ele.type}</p>
+                                </div>
+                                <div className={classes.TimeContainer}>
+                                    <p>{ele.time} mins</p>
+                                </div>
+                            </div>
+                            <div className={classes.PriceContainer}>
+                                <p> {ele.price} Rs</p>
+                            </div>
+                            <div className={classes.ButtonContainer}>
+                                <div className={classes.EditButtonContainer}>
+                                    <button type="button"  onClick={()=>{EditHandler(ele)}}>Edit</button>
+                                </div>
+                                <div className={classes.DeleteButtonContainer}>
+                                    <button type="button">Delete</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                      
+                            )
+                            
+                    })  
+}
+    
+                    </div>
+                    <div className={classes.AddItemContainer}>
+        <button type="button">Add Item</button>
+    </div>
                 </div>
         </div>
     </div>
