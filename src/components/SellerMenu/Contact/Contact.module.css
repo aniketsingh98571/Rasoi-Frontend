@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  width: 90vw;
+  height: 50vh;
+  margin: 5vh auto;
+  border: 2px solid var(--Yellow);
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+  color: var(--Black);
+  justify-content: center;
+  font-family: AvenirNextLTPro-Bold;
+  font-size: 150%;
+}
+.details > p {
+  display: flex;
+  width: 45%;
+  padding: 2%;
+  margin-left: 25%;
+}
+.details > p > i {
+  margin-right: 6%;
+}
+.map {
+  display: flex;
+  width: 55%;
+  height: 100%;
+  margin-left: 5vw;
+  font-family: AvenirNextLTPro-Bold;
+}
