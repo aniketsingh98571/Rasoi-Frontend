@@ -30,6 +30,9 @@
     font-size: 16px;
     border-radius: 5px;
 }
+.BackDashboardButton button:hover{
+    cursor: pointer;
+}
 .FirstContainer{
     /* border: 2px solid red; */
     display: flex;

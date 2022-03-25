@@ -134,7 +134,7 @@ const SellerEditProfile=()=>{
                  <p>Edit Your Profile</p>
             </div>
             <div className={classes.BackDashboardButton}>
-                <button type="button">Back to Dashboard</button>
+                <button type="button" onClick={()=>{window.location.href="/SellerDashboard"}}>Back to Dashboard</button>
             </div>
         </div>
         <div className={classes.FirstContainer}>

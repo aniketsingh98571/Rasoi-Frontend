@@ -16,7 +16,7 @@ import SellerDashBoard from "./components/SellerDashboard/SellerDashBoard";
 import SellerEditProfile from "./components/SellerEditProfile/SellerEditProfile";
 import CartState from "./context/CartState.js";
 import { ToastContainer } from "react-toastify";
-
+import EditModal from "./components/SellerEditProfile/EditModal";
 function App() {
   return (
     <div className="App">
@@ -58,7 +58,7 @@ function App() {
             <Route exact path="/UserSignUp" element={<UserSignUp />} />
             <Route exact path="/SellerSignUp" element={<SellerSignUp />} />
             <Route exact path="/SellerSignIn" element={<SellerSignIn />} />
-
+            <Route exact path="/EditModal" element={<EditModal/>}/>
             <Route exact path="/seller" element={<SellerHeader />} />
             <Route exact path="/SellerSetUp" element={<SellerFirst />} />
             <Route
