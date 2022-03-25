@@ -17,7 +17,7 @@ const Menu = () => {
       id: 102,
       name: "Special2",
       type: "Veg",
-      price: 150,
+      price: 250,
       timeRequired: "40min",
       imageUrl:
         "https://ichef.bbci.co.uk/onesport/cps/976/cpsprodpb/C036/production/_113660294_053127032.jpg",
@@ -25,8 +25,8 @@ const Menu = () => {
     {
       id: 103,
       name: "Special3",
-      type: "Veg",
-      price: 150,
+      type: "NonVeg",
+      price: 190,
       timeRequired: "40min",
       imageUrl:
         "https://ichef.bbci.co.uk/onesport/cps/976/cpsprodpb/C036/production/_113660294_053127032.jpg",
@@ -55,7 +55,7 @@ const Menu = () => {
     {
       id: 3,
       name: "Dish3",
-      type: "Veg",
+      type: "NonVeg",
       price: 150,
       timeRequired: "40min",
       imageUrl:

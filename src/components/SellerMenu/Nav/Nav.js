@@ -1,24 +1,40 @@
 import React from "react";
+import MenuFilter from "./MenuFilter";
 import classes from "./Nav.module.css";
 
-const Nav = () => {
+const Nav = (props) => {
   const orderClicked = () => {
-    console.log("order clicked");
+    props.setOrderClick(true);
   };
 
   const contactClicked = () => {
-    console.log("contact clicked");
+    props.setOrderClick(false);
   };
   return (
     <div className={classes.container}>
       <div className={classes.nav}>
-        <div className={classes.orderOnline} onClick={orderClicked}>
+        <div
+          className={
+            props.orderClick === true
+              ? `${classes.orderOnline} ${classes.orderOnlineSelected}`
+              : `${classes.orderOnline}`
+          }
+          onClick={orderClicked}
+        >
           Order Online
         </div>
-        <div className={classes.contact} onClick={contactClicked}>
+        <div
+          className={
+            props.orderClick === false
+              ? `${classes.contact} ${classes.contactSelected}`
+              : `${classes.contact}`
+          }
+          onClick={contactClicked}
+        >
           Contact
         </div>
       </div>
+      {props.orderClick && <MenuFilter />}
     </div>
   );
 };

@@ -50,9 +50,16 @@ const CartItem = (props) => {
   return (
     <div className={classes.cartCard}>
       <div className={classes.itemName}>{props.itemName}</div>
-      <div className={classes.itemType}>
-        <i className="fa-solid fa-circle"></i>
-      </div>
+      {/* <div className={classes.itemType}> */}
+      {props.type === "Veg" ? (
+        <div className={classes.vItemType}>
+          <i className={`fa-solid fa-circle ${classes.vegType}`}></i>
+        </div>
+      ) : (
+        <div className={classes.nItemType}>
+          <i className={`fa-solid fa-circle ${classes.nVegType}`}></i>
+        </div>
+      )}
       <div className={classes.quantity}>
         <button onClick={handleDecClick}>-</button>
         <p>{props.quantity}</p>
@@ -60,7 +67,7 @@ const CartItem = (props) => {
       </div>
       <div className={classes.itemPrice}>
         <i className="fa-solid fa-indian-rupee-sign"></i>
-        {props.price}
+        {props.price * props.quantity}
       </div>
     </div>
   );

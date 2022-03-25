@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import CartContext from "../../context/CartContext";
 import classes from "./ConsumerHeader.module.css";
 import Logo from "../../assets/images/logo.png";
 import Dropdown from "./Dropdown.js";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-const ConsumerHeader = () => {
+const ConsumerHeader = (props) => {
+  const { cart } = useContext(CartContext);
   const [clickStatus, setclickStatus] = useState(false);
   const [search, setsearch] = useState({ searchInput: "" });
 
@@ -22,15 +26,81 @@ const ConsumerHeader = () => {
   const handleSearchInput = (e) => {
     setsearch({ ...search, [e.target.name]: e.target.value });
     // setNote({ ...note, [e.target.name]: e.target.value })
-    console.log(search.searchInput);
+    // console.log(search.searchInput);
   };
 
   const handleSearchIconClick = (e) => {
-    alert("Search Icon was clicked");
+    if (search.searchInput.length > 0) {
+      console.log(search);
+      axios
+        .get("http://localhost:8080/consumer/search", {
+          params: {
+            searchingString: search.searchInput,
+          },
+        })
+        .then(function (response) {
+          if (response.status === 404) {
+            toast.error("Search Results NOT FOUND!", {
+              position: "top-center",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else {
+            console.log(response);
+            props.setSellers(response.data.sellerList);
+          }
+        })
+        .catch(function (error) {
+          if (error.response.status === 404) {
+            toast.error("Search Results NOT FOUND!", {
+              position: "top-center",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        });
+    } else {
+      toast.warn("Search Field cannot be empty", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   const handleCartClick = (e) => {
     // alert("The cart icon was clicked");
+    if (cart.length === 0) {
+      toast.warn("The Cart is Empty!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } else {
+      localStorage.setItem("sellerID", localStorage.getItem("cartSellerID"));
+      localStorage.setItem(
+        "sellerName",
+        localStorage.getItem("cartSellerName")
+      );
+      window.location.href = "/sellerMenu";
+    }
   };
 
   return (
@@ -50,7 +120,11 @@ const ConsumerHeader = () => {
               onChange={handleSearchInput}
               value={search.searchInput}
             />
-            <div className={classes.searchIcon} onClick={handleSearchIconClick}>
+            <div
+              className={classes.searchIcon}
+              onClick={handleSearchIconClick}
+              onKeyUp={handleSearchIconClick}
+            >
               <i className="fas fa-search"></i>
               {/* <span>s</span> */}
             </div>
@@ -67,16 +141,16 @@ const ConsumerHeader = () => {
         </div>
 
         {/* <Link to="/cart"> */}
-        <Link to="/cart" className={classes.cartArea} onClick={handleCartClick}>
+        <div className={classes.cartArea} onClick={handleCartClick}>
           <div className={classes.cart}>
             <div className={classes.cartIcon}>
               <i className="fas fa-shopping-cart"></i>
             </div>
           </div>
           <div className={classes.count}>
-            <p>0</p>
+            <p>{cart.length}</p>
           </div>
-        </Link>
+        </div>
         {/* </Link> */}
       </div>
       {clickStatus && <Dropdown />}

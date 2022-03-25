@@ -1,4 +1,5 @@
 .container {
+  display: flex;
   width: 90vw;
   height: 7vh;
   margin: 0 auto;
@@ -19,6 +20,7 @@
   width: 50%;
   height: 100%;
   border: 2px solid var(--Black);
+  border-right: 1px solid var(--Black);
   justify-content: center;
   align-items: center;
   /* padding: 5px 0px; */
@@ -29,9 +31,15 @@
   width: 50%;
   height: 100%;
   border: 2px solid var(--Black);
+  border-left: 1px solid var(--Black);
   justify-content: center;
   align-items: center;
   /* padding: 5px 0px; */
+}
+
+.orderOnline:hover,
+.contact:hover {
+  cursor: pointer;
 }
 
 .contactSelected,

@@ -2,8 +2,11 @@ import React, { useEffect, useContext } from "react";
 import CartContext from "../../../context/CartContext";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
+// import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  // let navigate = useNavigate();
+
   // const Items = [
   //   // {
   //   //   name: "Dish 1",
@@ -37,7 +40,20 @@ const Cart = () => {
   //   // },
   // ];
 
-  const { cart } = useContext(CartContext);
+  const { cart, sellerName } = useContext(CartContext);
+
+  const totalPrice = cart.reduce(
+    (price, product) => price + product.dishQty * product.dishPrice,
+    0
+  );
+
+  const handleSellerClick = () => {
+    localStorage.setItem("sellerID", localStorage.getItem("cartSellerID"));
+    localStorage.setItem("sellerName", localStorage.getItem("cartSellerName"));
+    // navigate("/sellerMenu");
+    window.location.href = "/sellerMenu";
+  };
+
   const handleScroll = () => {
     // console.log(window.scrollY);
     if (window.scrollY > 395) {
@@ -62,6 +78,9 @@ const Cart = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     // document.getElementById("ccontain").style.height = "min-content";
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -70,6 +89,9 @@ const Cart = () => {
         Cart
       </h2>
       <div className={classes.cartContainer} id="ccontain">
+        {cart.length === 0 && (
+          <div className={classes.emptyCart}>The Cart is Empty</div>
+        )}
         {cart.map((item) => {
           return (
             <CartItem
@@ -78,9 +100,26 @@ const Cart = () => {
               itemName={item.dishName}
               quantity={item.dishQty}
               price={item.dishPrice}
+              type={item.dishType}
             />
           );
         })}
+
+        <div className={classes.subTotal}>
+          <p>Seller Name:</p>
+          <p>
+            <span onClick={handleSellerClick} className={classes.sellerName}>
+              {sellerName}
+            </span>
+          </p>
+        </div>
+        <div className={classes.subTotal}>
+          <p>Sub Total:</p>
+          <p>
+            <i className="fa-solid fa-indian-rupee-sign"></i>
+            {totalPrice}
+          </p>
+        </div>
         <div className={classes.chkoutBtn}>
           <p>Checkout</p>
         </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "./Filter.module.css";
 import Dropdown from "./Dropdown.js";
 
-const Filter = () => {
+const Filter = (props) => {
   const [clickStatus, setclickStatus] = useState(false);
   const handleFilterClick = () => {
     setclickStatus(!clickStatus);
@@ -22,7 +22,13 @@ const Filter = () => {
           </div>
         </div>
       </div>
-      {clickStatus && <Dropdown />}
+      {clickStatus && (
+        <Dropdown
+          Sellers={props.Sellers}
+          setSellers={props.setSellers}
+          setClickStatus={setclickStatus}
+        />
+      )}
     </div>
   );
 };

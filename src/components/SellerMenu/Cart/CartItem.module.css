@@ -18,7 +18,7 @@
   align-items: center;
 }
 
-.itemType {
+.vItemType {
   display: flex;
   width: 8%;
   height: 60%;
@@ -28,15 +28,34 @@
   text-align: center;
   margin-right: 2%;
 }
+.nItemType {
+  display: flex;
+  width: 8%;
+  height: 60%;
+  border: 2px solid red;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: 2%;
+}
 
-.itemType > i {
+.vItemType > i,
+.nItemType > i {
   display: flex;
   width: 60%;
   height: 70%;
-  color: green;
+  /* color: green; */
   /* font-size: 120%; */
   justify-content: center;
   align-items: center;
+}
+
+.vegType {
+  color: green;
+}
+
+.nVegType {
+  color: red;
 }
 
 .quantity {

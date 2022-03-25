@@ -11,6 +11,7 @@
   background-color: #ffffee;
   color: var(--Black);
   border: 2px solid var(--Black);
+  transition: 1.2s;
 }
 .menuItem {
   border: 2px solid var(--Black);

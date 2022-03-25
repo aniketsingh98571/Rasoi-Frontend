@@ -11,7 +11,13 @@ const Dropdown = () => {
     navigate("/orders");
   };
   const handleLogoutClick = () => {
-    localStorage.removeItem("consumerID");
+    localStorage.removeItem("ConsumerId");
+    localStorage.removeItem("cart");
+    localStorage.removeItem("sellerName");
+    localStorage.removeItem("sellerID");
+    localStorage.removeItem("cartSellerID");
+    localStorage.removeItem("cartSellerName");
+
     navigate("/");
   };
   return (

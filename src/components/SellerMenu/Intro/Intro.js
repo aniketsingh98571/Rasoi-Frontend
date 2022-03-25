@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./Intro.module.css";
+
 const Intro = () => {
+  const sellerName = localStorage.getItem("sellerName");
   return (
     <div className={classes.Intro}>
       <div className={classes.selllerImage}>
@@ -11,7 +13,7 @@ const Intro = () => {
       </div>
       <div className={classes.sellerDetail}>
         <p id={classes.name} className={classes.details}>
-          Seller Name
+          {sellerName}
         </p>
         <p id={classes.special} className={classes.details}>
           Special Dishes
