@@ -23,6 +23,12 @@
     font-family: AvenirNextLTPro-Bold;
     font-size: 22px;
 }
+.TitleContainer i{
+    font-size: 30px;
+   float: right;
+    /* border: 2px solid red; */
+    margin: -30px 15px 0 0;
+}
 .FormContainer{
     width: 70%;
     margin: 0px auto 0px auto;
@@ -32,43 +38,49 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    /* background-color: aqua; */
 }
 .FoodNameContainer{
 width: 100%;
     /* border: 2px solid red;   */
-    margin: 10px 0 0 0;
+    margin: 10px 0 10px 0;
 }
-.FoodName p{
 
-}
 .FoodInput input{
     width: 40%;
     outline: none;
     margin: 5px 0 0 0;
+ height: 20px;
 }
 .TypeContainer{
     width: 100%;
-    margin: 10px 0 0 0;
+    margin: 10px 0 10px 0;
 }
 .TypeSelect select{
     width: 40%;
     outline: none;
     margin: 5px 0 0 0;
+    height: 25px;
 }
 .PriceText p,.TimeText p,.TypeText p,.FoodName p{
     /* text-align:left; */
-    font-family: AvenirNextLTPro-Regular;
-    font-size: 18px;
+   
+    font-size: 17px;
+    /* background-color: blue; */
+    margin: 0 auto;
+    text-align: left;
+    font-family: CircularStd-Book;
+    width: 40%;
 }
 .PriceContainer{
     width: 100%;
-    margin: 10px 0 0 0;
+    margin: 10px 0 10px 0;
 }
 .PriceInput input{
     width: 40%;
     outline: none;
     margin: 5px 0 0 0;
+    height: 20px;
 }
 .ImageContainer{
     width: 100px;
@@ -77,12 +89,13 @@ width: 100%;
 }
 .TimeContainer{
     width: 100%;
-    margin: 10px 0 0 0;
+    margin: 10px 0 10px 0;
 }
 .TimeInput input{
     width: 40%;
     outline: none;
     margin: 5px 0 0 0;
+    height: 20px;
 }
 .ImageContainer{
    height: 100px;
@@ -95,11 +108,11 @@ width: 100%;
 .UpdateButton{
     width: 100%;
 }
-.UpdateButton button{
+.UpdateButton input{
     width: 30%;
     padding: 8px 0;
     background-color: var(--Yellow);
-    margin: 10px 0 0 0;
+    margin: 15px 0 10px 0;
     outline: none;
     font-family: CircularStd-Black;
     font-size: 18px;
@@ -132,19 +145,11 @@ width: 100%;
     font-family:AvenirNextLTPro-Bold;
     font-size: 14px;
     position: absolute;
-    top: 330px;
+    top: 380px;
     font-weight: bold;
     cursor: pointer;
 }
-.ProfileInput{
-    /* height: 200px;
-    width: 200px; */
-    /* border: 2px solid var(--Black); */
-    /* margin: 0 0 0 40px;
-    border: 2px solid  var(--Black); */
-  
-    /* margin: 10px  auto 10px auto; */
-}
+
 .ProfileInput input{
     display: none;
    
