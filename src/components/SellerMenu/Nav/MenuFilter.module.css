@@ -1,0 +1,56 @@
+.filterWrapper {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+  margin-left: 35%;
+}
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--Yellow);
+  color: var(--Black);
+  cursor: pointer;
+}
+.filterText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: AvenirNextLTPro-Regular;
+  font-size: x-large;
+  margin: 5%;
+}
+.filterIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+  font-family: AvenirNextLTPro-Regular;
+  font-size: x-large;
+  margin: 5%;
+}
+.filterText h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-family: AvenirNextLTPro-Regular;
+  font-size: x-large;
+}
+.filterIcon i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: x-large;
+}
