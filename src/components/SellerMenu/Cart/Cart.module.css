@@ -1,0 +1,84 @@
+#cont {
+  background-color: blue;
+  border: 2px solid red;
+}
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  position: absolute;
+  top: 68vh;
+  right: 5vw;
+  width: 30vw;
+  /* height: 30vh; */
+  border: 3px solid var(--Yellow);
+}
+
+.cartHead {
+  display: flex;
+  position: absolute;
+  /* position: fixed; */
+  top: 64vh;
+  right: 32vw;
+  font-family: CircularStd-Black;
+}
+
+.chkoutBtn {
+  display: flex;
+  position: relative;
+  margin: 3% auto;
+  width: 100%;
+  height: 8vh;
+  text-align: center;
+  justify-content: center;
+}
+
+.subTotal {
+  display: flex;
+  position: relative;
+  margin: 3% 0px;
+  width: 100%;
+  height: 5vh;
+  text-align: center;
+  justify-content: space-between;
+}
+.chkoutBtn:hover {
+  cursor: pointer;
+}
+
+.subTotal > p,
+.chkoutBtn > p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: AvenirNextLTPro-Bold;
+  font-size: 130%;
+  background-color: var(--Yellow);
+  width: 90%;
+}
+
+.subTotal > p {
+  background-color: var(--White);
+}
+
+.emptyCart {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 3% auto;
+  font-family: AvenirNextLTPro-Bold;
+  font-size: 140%;
+}
+
+.subTotal > p > i {
+  margin: 0 1%;
+  font-size: 90%;
+}
+
+.sellerName {
+  cursor: pointer;
+}
+.sellerName:hover {
+  transform: scale(1.2, 1.2);
+  transition-duration: 0.8s;
+}

@@ -9,14 +9,15 @@ const SellerCard = (props) => {
   const handleViewClick = () => {
     // alert(`Clicked on the seller with id ${props.sellerID}`);
     localStorage.setItem("sellerID", props.sellerID);
-    navigate(`/sellerDetails`);
+    localStorage.setItem("sellerName", props.sellerName);
+    navigate(`/sellerMenu`);
     // navigate(`/cart`);
   };
   return (
     <>
       <div className={classes.card}>
         <div className={classes.sellerImage}>
-          <img src={props.sellerImg} alt="Seller" />
+          <img src={`http://localhost:8080/${props.sellerImg}`} alt="Seller" />
         </div>
         <div className={classes.sellerDesc}>
           <h3>{props.sellerName}</h3>
