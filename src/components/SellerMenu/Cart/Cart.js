@@ -75,6 +75,10 @@ const Cart = () => {
     }
   };
 
+  const handleCheckout = () => {
+    window.location.href = "/checkout";
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     // document.getElementById("ccontain").style.height = "min-content";
@@ -120,7 +124,7 @@ const Cart = () => {
             {totalPrice}
           </p>
         </div>
-        <div className={classes.chkoutBtn}>
+        <div className={classes.chkoutBtn} onClick={handleCheckout}>
           <p>Checkout</p>
         </div>
       </div>
