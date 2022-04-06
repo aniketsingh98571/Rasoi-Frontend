@@ -86,6 +86,19 @@
     margin: 10px 0 0 0;
     border-radius: 5px;
     font-family: AvenirNextLTPro-Bold;
-
+font-size: 16px;
+}
+.ButtonOneContainer button:hover,.ButtonTwoContainer button:hover{
+    cursor: pointer;
+}
+.DeliveredButton button{
+    background-color: var(--Yellow);
+    padding: 10px;
+    border-radius: 5px;
+    font-family: AvenirNextLTPro-Bold;
+   margin: 10px 10px 0 0;
     font-size: 16px;
+}
+.DeliveredButton button:hover{
+    cursor: pointer;
 }

@@ -29,6 +29,9 @@
     /* border: 2px solid red; */
     margin: -30px 15px 0 0;
 }
+.TitleContainer i:hover{
+    cursor: pointer;
+}
 .FormContainer{
     width: 70%;
     margin: 0px auto 0px auto;
@@ -116,6 +119,9 @@ width: 100%;
     outline: none;
     font-family: CircularStd-Black;
     font-size: 18px;
+}
+.UpdateButton input:hover{
+    cursor: pointer;
 }
  .OverlayClass{
     opacity: 1;

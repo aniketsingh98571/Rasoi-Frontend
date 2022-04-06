@@ -133,6 +133,9 @@
     font-family: AvenirNextLTPro-Regular;
     font-size: 17px;
 }
+.BioContent p{
+    text-align: center;
+}
 .SpecialityContainer{
     border: 2px solid var(--Yellow);
     width:90%;

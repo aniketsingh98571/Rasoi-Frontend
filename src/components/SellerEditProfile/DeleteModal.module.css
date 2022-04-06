@@ -1,0 +1,49 @@
+.Modal{
+    width: 40%;
+    /* border: 2px solid green; */
+    height: 20vh;
+    position: relative;
+    top: 40%;
+    left: 30%;
+    opacity: 1;
+    border: 2px solid var(--Black);
+    z-index: 9999;
+    /* background-color: var(--white); */
+    background-color: var(--White);
+   
+}
+.OuterContainer{
+    background-color: var(--White);
+    padding: 15px;
+    margin: 20px 0 0 0;
+}
+.FirstTextContainer p{
+    font-size: 18px;
+    font-family: AvenirNextLTPro-Bold;
+    text-align: center;
+}
+.ButtonContainer{
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid red; */
+    margin: 15px 0 0 0;
+}
+.YesButton button{
+    background-color: var(--Yellow);
+    width:100%;
+    padding:10px  15px;
+    margin: 0 30px 0 0;
+    font-family: AvenirNextLTPro-Bold;
+    font-size: 16px;
+}
+.NoButton button{
+    background-color: var(--Yellow);
+    width:100%;
+    margin: 0 0 0 30px;
+    padding:10px  15px;
+    font-family: AvenirNextLTPro-Bold;
+    font-size: 16px;
+}
+.YesButton button:hover,.NoButton button:hover{
+    cursor: pointer;
+}

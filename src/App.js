@@ -17,6 +17,7 @@ import SellerEditProfile from "./components/SellerEditProfile/SellerEditProfile"
 import CartState from "./context/CartState.js";
 import { ToastContainer } from "react-toastify";
 import EditModal from "./components/SellerEditProfile/EditModal";
+import UserDashboard from "./components/UserDashboard/UserDashboard";
 function App() {
   return (
     <div className="App">
@@ -68,6 +69,7 @@ function App() {
             />
             <Route exact path="/Orders" element={<Orders />} />
             <Route exact path="/Edit" element={<SellerEditProfile />} />
+           <Route exact path="/UserDashboard" element={<UserDashboard/>}/>
           </Routes>
         </BrowserRouter>
       </CartState>

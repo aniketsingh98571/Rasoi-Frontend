@@ -1,89 +1,61 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import classes from './SellerEditProfile.module.css'
 import SellerHeader from "../SellerHeader/SellerHeader"
 import EditModal from "./EditModal"
+import axios from "axios"
+import DeleteModal from "./DeleteModal"
+import Loader from "../SellerDashboard/Loader"
 const SellerEditProfile=()=>{
-    const [url,seturl]=useState("https://thumbs.dreamstime.com/z/seller-home-improvement-store-27594965.jpg")
+    
+    const [Edit,SetEdit]=useState({})
     const [modal,setmodal]=useState(false)
     const [dish,setdish]=useState({})
-    const [firstForm,SetFirstForm]=useState({
-        ProfilePic:null,
-        AreaName:"",
-        Facebook:"",
-        Instagram:"",
-        Pincode:"",
-        Bio:""
+    const [UI,setUI]=useState(true)
+    const [add,setadd]=useState("")
+    const [Delete,setdelete]=useState({
+        open:false,
+        dishID:null,
+        sellerID:null
     })
-    const [Edit,SetEdit]=useState({
-        image:"https://thumbs.dreamstime.com/z/seller-home-improvement-store-27594965.jpg",
-        areaName:"Siddhatek Nagar",
-        facebook:"aniket98571",
-        instagram:"aniket98571",
-        bio:"Hi I am Aniket",
-        speciality:[
-            {
-                id:"gg1",
-                dishName:"Paneer Masala",
-                price:240,
-                dishType:"Veg",
-                isSpecial:true,
-                timeReq:240,
-                Picture:"https://www.tasteofhome.com/wp-content/uploads/2021/01/tasty-butter-chicken-curry-dish-from-indian-cuisine-1277362334.jpg?fit=700,700"
+  
+    const [url,seturl]=useState("")
+ 
+//    console.log("Empty "+Edit)
+    useEffect(() => {
+        let sellerID = localStorage.getItem("SellerId");
+        console.log(sellerID);
+    
+        axios
+          .get("http://localhost:8080/seller/sellerDashboard", {
+            params: {
+              sellerID: sellerID,
             },
-            {
-                id:"gg2",
-                dishName:"Paneer Masala",
-                price:240,
-                dishType:"Veg",
-                isSpecial:true,
-                timeReq:240,
-                Picture:"https://www.tasteofhome.com/wp-content/uploads/2021/01/tasty-butter-chicken-curry-dish-from-indian-cuisine-1277362334.jpg?fit=700,700"
-            },
-            {
-                id:"gg3",
-                dishName:"Paneer Masala",
-                price:240,
-                dishType:"Veg",
-                isSpecial:true,
-                timeReq:240,
-                Picture:"https://www.tasteofhome.com/wp-content/uploads/2021/01/tasty-butter-chicken-curry-dish-from-indian-cuisine-1277362334.jpg?fit=700,700"
-            }
-        ],
-        general:[
-            {
-                id:"gg4",
-                dishName:"Paneer Masala",
-                price:240,
-                dishType:"Veg",
-                isSpecial:false,
-                timeReq:240,
-                Picture:"https://www.tasteofhome.com/wp-content/uploads/2021/01/tasty-butter-chicken-curry-dish-from-indian-cuisine-1277362334.jpg?fit=700,700"
-            },
-            {
-                id:"gg5",
-                dishName:"Paneer Masala",
-                price:240,
-                dishType:"Veg",
-                isSpecial:false,
-                timeReq:240,
-                Picture:"https://www.tasteofhome.com/wp-content/uploads/2021/01/tasty-butter-chicken-curry-dish-from-indian-cuisine-1277362334.jpg?fit=700,700"
-            },
-            {
-                id:"gg6",
-                dishName:"Paneer Masala",
-                price:240,
-                dishType:"Veg",
-                isSpecial:false,
-                timeReq:240,
-                Picture:"https://www.tasteofhome.com/wp-content/uploads/2021/01/tasty-butter-chicken-curry-dish-from-indian-cuisine-1277362334.jpg?fit=700,700"
-            }
-        ]
+          })
+          .then(function (response) {
+            console.log(response)
+            SetEdit(response.data)
+             setUI(false)
+                // seturl(response.data.sellerInfo.img)
+            })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }, []);
+      const [firstForm,SetFirstForm]=useState({
+        sellerID:localStorage.getItem("SellerId"),
+        ProfilePic:null,
+        areaName:null,
+        facebook:null,
+        instagram:null,
+        pinCode:null,
+        bio:null
     })
     const ImageHandler=(e)=>{
         const file=e.target.files[0]
         console.log("In Seller Edit Image")
         const url=URL.createObjectURL(file)
-        seturl(url)
+        document.getElementById("SellerPersonalImageID").src=url
+        // seturl(url)
         SetFirstForm({...firstForm,ProfilePic:e.target.files[0]})
         // SetEdit({...Edit,image:file})
         // const reader = new FileReader();
@@ -97,6 +69,23 @@ const SellerEditProfile=()=>{
         e.preventDefault();
         console.log("submitted")
         console.log(firstForm)
+        const SubmitFirstForm=new FormData();
+        SubmitFirstForm.append("sellerID",firstForm.sellerID)
+        SubmitFirstForm.append("areaName",firstForm.areaName)
+        SubmitFirstForm.append("pinCode",firstForm.pinCode)
+        SubmitFirstForm.append("picture",firstForm.ProfilePic)
+        SubmitFirstForm.append("bio",firstForm.bio)
+        SubmitFirstForm.append("facebook",firstForm.facebook)
+        SubmitFirstForm.append("instagram",firstForm.instagram)
+        axios
+        .put("http://localhost:8080/seller/editSellerInfo", SubmitFirstForm)
+        .then((res) => {
+          console.log(res);
+           }
+        )
+        .catch((err) => {
+          console.log(err);
+        });
      
     }
 
@@ -105,15 +94,17 @@ const SellerEditProfile=()=>{
         console.log("Edited" +item.id)
         setdish(item)
         setmodal(true)
+        setadd("")
     }
     const closeModal=()=>{
         setmodal(false);
     }
 
     //Add Item
-    const AddHandler=()=>{
+    const AddHandler=(speciality,add)=>{
         console.log("Add Handler")
-        setdish({})
+        setadd(add)
+        setdish({isSpecial:speciality})
         setmodal(true)
     }
     const FirstFormHandler=(e)=>{
@@ -121,12 +112,30 @@ const SellerEditProfile=()=>{
         const value=e.target.value;
       SetFirstForm({...firstForm,[name]:value})
     }
+
+    //Delete Dish
+    const DeleteHandler=(id)=>{
+        console.log(" Deleted "+id)
+        setdelete({dishID:id,sellerID:Edit.sellerInfo.id,open:true})
+        
+    }
+    const closeDelete=()=>{
+        setdelete({open:false})
+    }
+
     return(
+        <>
+        {
+            !UI&&Object.keys(Edit).length !== 0?
+
+            
      <div className={classes.Container}>
+      {()=>{seturl(Edit.sellerInfo.img)}}
          <SellerHeader/>
+      {  Delete.open? <DeleteModal config={Delete} close={closeDelete}/>:""}
          <div className={classes.InnerContainer}>
              {
-                 modal?<EditModal open={modal} item={dish} close={closeModal}/>:""
+                 modal?<EditModal open={modal} item={dish} close={closeModal} AddUpdate={add} SellerId={Edit.sellerInfo.id}/>:""
              }
              <form onSubmit={FirstSubmitHandler} encType='multipart/form-data'>
          <div className={classes.EditProfileTextContainer}>
@@ -144,7 +153,7 @@ const SellerEditProfile=()=>{
                         <div className={classes.ProfileInput}>
                         <label htmlFor="ProfileInputId">
               <div className={classes.LabelContainer}>
-              <img src={url}/>
+              <img src={`http://localhost:8080/${Edit.sellerInfo.img}`} id="SellerPersonalImageID"/>
                <p>Update Image</p>
               </div>
             </label>
@@ -162,25 +171,25 @@ const SellerEditProfile=()=>{
                     <div className={classes.InputOne}>
                     <div className={classes.AreaName}>
                         <p>AREA NAME</p>
-                        <input type="text" placeholder="Area Name" name="AreaName" value={firstForm.AreaName} onChange={FirstFormHandler}/>
+                        <input type="text" placeholder="Area Name" name="areaName" value={firstForm.areaName} onChange={FirstFormHandler} defaultValue={Edit.sellerInfo.areaName}/>
                         </div>
                         <div className={classes.FaceBookContainer}>
                         <i className="fab fa-facebook"></i>
-                        <input type="text" placeholder="Enter Facebook User Name" name="Facebook" value={firstForm.Facebook} onChange={FirstFormHandler}/>
+                        <input type="text" placeholder="Enter Facebook User Name" name="facebook" value={firstForm.facebook} onChange={FirstFormHandler} defaultValue={Edit.sellerInfo.facebook}/>
                             </div>
                             <div className={classes.InstagramContainer}>
                             <i className="fab fa-instagram"></i>
-                            <input type="text" placeholder="Enter Instagram User Name " name="Instagram" value={firstForm.Instagram} onChange={FirstFormHandler}/>
+                            <input type="text" placeholder="Enter Instagram User Name " name="instagram" value={firstForm.instagram} onChange={FirstFormHandler} defaultValue={Edit.sellerInfo.instagram}/>
                                 </div>
                                 </div>
                                 <div className={classes.InputTwo}>
                                     <div className={classes.PinCodeContainerFirst}>
                                         <p>PINCODE</p>
-                                        <input type="number" placeholder="Your area pincode" name="Pincode" value={firstForm.Pincode} onChange={FirstFormHandler} />
+                                        <input type="number" placeholder="Your area pincode" name="pinCode" value={firstForm.pinCode} onChange={FirstFormHandler} defaultValue={Edit.sellerInfo.pinCode} />
                                         </div>
                                         <div className={classes.BioContainer}>
                                             <p>BIO</p>
-                                            <textarea name="Bio" value={firstForm.Bio} onChange={FirstFormHandler}/>
+                                            <textarea name="bio" value={firstForm.bio} onChange={FirstFormHandler} defaultValue={Edit.sellerInfo.bio}/>
                                             </div>
                                     </div>
                 </div>
@@ -196,20 +205,18 @@ const SellerEditProfile=()=>{
                     </div>
                     <div className={classes.SpecialityCardContainer}>
                     {  
-                    Edit.speciality.map((ele)=>{
+                    Edit.specialDishes.specialDishes.map((ele)=>{
                             return (
-                            
-                               
-                                <div key={ele.id} className={classes.InnerSpecialContainer}>
+                            <div key={ele._id} className={classes.InnerSpecialContainer}>
                             <div className={classes.SpecialImageContainer}>
-                                <img src={ele.Picture}/>
+                                <img src={`http://localhost:8080/${ele.imageURL}`} loading="lazy"/>
                             </div>
                             <div className={classes.LeftContainer}>
                                 <div className={classes.FoodNameContainer}>
-                                    <p>{ele.dishName}</p>
+                                    <p>{ele.name}</p>
                                 </div>
                                 <div className={classes.DishType}>
-                                    <p>{ele.dishType}</p>
+                                    <p>{ele.type}</p>
                                 </div>
                                 <div className={classes.TimeContainer}>
                                     <p>{ele.timeReq} mins</p>
@@ -223,7 +230,7 @@ const SellerEditProfile=()=>{
                                     <button type="button" onClick={()=>{EditHandler(ele)}}>Edit</button>
                                 </div>
                                 <div className={classes.DeleteButtonContainer}>
-                                    <button type="button">Delete</button>
+                                    <button type="button" onClick={()=>{DeleteHandler(ele._id)}}>Delete</button>
                                 </div>
                             </div>
                             
@@ -236,7 +243,7 @@ const SellerEditProfile=()=>{
     
                     </div>
                     <div className={classes.AddItemContainer}>
-        <button type="button" onClick={AddHandler}>Add Item</button>
+        <button type="button" onClick={()=>{AddHandler(true,"add")}}>Add Item</button>
     </div>
                 </div>
                 <div className={classes.SecondInnerContainer}>
@@ -245,20 +252,20 @@ const SellerEditProfile=()=>{
                     </div>
                     <div className={classes.SpecialityCardContainer}>
                     {  
-                    Edit.general.map((ele)=>{
+                    Edit.generalDishes.generalDishes.map((ele)=>{
                             return (
                             
                                
-                                <div key={ele.id} className={classes.InnerSpecialContainer}>
+                                <div key={ele._id} className={classes.InnerSpecialContainer}>
                             <div className={classes.SpecialImageContainer}>
-                                <img src={ele.Picture}/>
+                                <img src={`http://localhost:8080/${ele.imageURL}` }/>
                             </div>
                             <div className={classes.LeftContainer}>
                                 <div className={classes.FoodNameContainer}>
-                                    <p>{ele.dishName}</p>
+                                    <p>{ele.name}</p>
                                 </div>
                                 <div className={classes.DishType}>
-                                    <p>{ele.dishType}</p>
+                                    <p>{ele.type}</p>
                                 </div>
                                 <div className={classes.TimeContainer}>
                                     <p>{ele.timeReq} mins</p>
@@ -272,7 +279,7 @@ const SellerEditProfile=()=>{
                                     <button type="button"  onClick={()=>{EditHandler(ele)}}>Edit</button>
                                 </div>
                                 <div className={classes.DeleteButtonContainer}>
-                                    <button type="button">Delete</button>
+                                    <button type="button" onClick={()=>{DeleteHandler(ele._id)}}>Delete</button>
                                 </div>
                             </div>
                             
@@ -285,11 +292,14 @@ const SellerEditProfile=()=>{
     
                     </div>
                     <div className={classes.AddItemContainer}>
-        <button type="button">Add Item</button>
+        <button type="button" onClick={()=>{AddHandler(false,"add")}}>Add Item</button>
     </div>
                 </div>
         </div>
-    </div>
+    </div>:null
+}
+{UI?<Loader/>:null}
+    </>
     )
 }
 export default SellerEditProfile;

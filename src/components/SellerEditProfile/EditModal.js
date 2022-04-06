@@ -1,23 +1,35 @@
 import React, { useState } from "react"
 import classes from './EditModal.module.css'
 import Modal from 'react-modal'
+import { toast } from "react-toastify"
+import axios from "axios"
 const EditModal=(props)=>{
     // console.log(props.item)
     const [menu,Setmenu]=useState({
-        dishName:"",
-        price:"",
-        dishType:"Veg",
+        dishID:props.item._id,
+        sellerID:props.SellerId,
+        name:null,
+        price:null,
+        type:props.AddUpdate==="add"?"Veg":null,
         isSpecial:props.item.isSpecial,
-        timeReq:"",
+        time:null,
         MenuPicture:null
     })
+
+    const [url,seturl]=useState(props.item.imageURL)
     const ChangeHandler=(e)=>{
         const name=e.target.name;
         const value=e.target.value;
         Setmenu({...menu,[name]:value})
     }
     const PictureChange=(e)=>{
+        const file=e.target.files[0]
+        // console.log("In Seller Edit Image")
+        const url=URL.createObjectURL(file)
+        // seturl(url)
+        document.getElementById("EditDishImageID").src=url
         Setmenu({...menu,MenuPicture:e.target.files[0]})
+
         console.log("in edit modal picture")
 
     }
@@ -27,8 +39,59 @@ const EditModal=(props)=>{
         e.preventDefault();
         // console.log(props.item.isSpecial)
         // Setmenu({...menu,isSpecial:props.item.isSpecial})
+        const AddMenuItem=new FormData();
+        AddMenuItem.append("dishID",menu.dishID)
+        AddMenuItem.append("sellerID",menu.sellerID)
+        AddMenuItem.append("dishName",menu.name)
+        AddMenuItem.append("price",menu.price)
+        AddMenuItem.append("timeReq",menu.time)
+        AddMenuItem.append("dishType",menu.type)
+        AddMenuItem.append("MenuPicture",menu.MenuPicture)
+        AddMenuItem.append("isSpecial",menu.isSpecial)
+
+
+        const EditMenuItem=new FormData();
+        EditMenuItem.append("dishID",menu.dishID)
+        EditMenuItem.append("sellerID",menu.sellerID)
+        EditMenuItem.append("name",menu.name)
+        EditMenuItem.append("price",menu.price)
+        EditMenuItem.append("time",menu.time)
+        EditMenuItem.append("type",menu.type)
+        EditMenuItem.append("MenuPicture",menu.MenuPicture)
+        EditMenuItem.append("isSpecial",menu.isSpecial)
+        if(props.AddUpdate==="add"){
+            console.log("Item to be added")
+            // if(menu.dishType===null)
+            //     Setmenu({...menu,dishType:"Veg"})
+             console.log(menu)
+                axios
+        .post("http://localhost:8080/seller/addDishes", AddMenuItem)
+        .then((res) => {
+          console.log(res);
+          })
+        .catch((err) => {
+          console.log(err);
+        });
+            
+        }
+        else{
+            console.log("Item not to be added")
+           axios
+                .put("http://localhost:8080/seller/editDish", EditMenuItem)
+                .then((res) => {
+                  console.log(res);
+                  
+                  }
+                )
+                .catch((err) => {
+                  console.log(err);
+                
+                });
+          
+        }
        console.log(props.item.id + "edited in Modal")
        console.log(menu)
+       console.log(props.SellerId)
     }
     return(
         <Modal isOpen={props.open}
@@ -49,7 +112,7 @@ const EditModal=(props)=>{
                                 <p>Name of the Food:</p>
                             </div>
                             <div className={classes.FoodInput}>
-                                <input type="text" name="dishName" value={menu.dishName} defaultValue={props.item.dishName} onChange={ChangeHandler}/>
+                                <input type="text" name="name" value={menu.name} defaultValue={props.item.name} onChange={ChangeHandler}/>
                             </div>
                     </div>
                     <div className={classes.TypeContainer}>
@@ -58,8 +121,8 @@ const EditModal=(props)=>{
                         </div>
                         <div className={classes.TypeSelect}>
                         <select name="dishType" id="type" onChange={ChangeHandler} value={menu.dishType}>
-                          <option selected={props.item.dishType==="Veg"?"selected":""} value="Veg">Veg</option>
-                           <option selected={props.item.dishType==="Non-Veg"?"selected":""} value="Non-Veg">Non-Veg</option>
+                          <option selected={props.item.type==="Veg"?"selected":""} value="Veg">Veg</option>
+                           <option selected={props.item.type==="Non-Veg"?"selected":""} value="Non-Veg">Non-Veg</option>
                          </select>
                         </div>
                     </div>
@@ -76,7 +139,7 @@ const EditModal=(props)=>{
                             <p>Time to cook:</p>
                         </div>
                         <div className={classes.TimeInput}>
-                            <input type="number" max="240" min="30" value={menu.timeReq} name="timeReq" defaultValue={props.item.timeReq} onChange={ChangeHandler}/>
+                            <input type="number" max="240" min="30" value={menu.time} name="time" defaultValue={props.item.timeReq} onChange={ChangeHandler}/>
                         </div>
                     </div>
                     <div className={classes.ImageContainer}>
@@ -85,7 +148,7 @@ const EditModal=(props)=>{
                         <div className={classes.ProfileInput}>
                         <label htmlFor="ProfileInputId1">
               <div className={classes.LabelContainer}>
-              <img src={props.item.Picture}/>
+              <img src={props.AddUpdate==="add"?"":`http://localhost:8080/${url}`} id="EditDishImageID" alt="Add Image"/>
                <p>Update Image</p>
               </div>
             </label>
@@ -101,7 +164,7 @@ const EditModal=(props)=>{
                     </div>
                     </div>
                     <div className={classes.UpdateButton}>
-                        <input type="submit" value="Update"/>
+                        <input type="submit" value={props.AddUpdate==="add"?"Add":"Update"}/>
                     </div>
                 </div>
                 </form>

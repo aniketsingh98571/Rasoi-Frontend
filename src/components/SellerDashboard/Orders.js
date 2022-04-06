@@ -3,6 +3,8 @@ import classes from './Orders.module.css'
 import axios from "axios"
 import SellerHeader from "../SellerHeader/SellerHeader"
 const Orders=()=>{
+    const [delivered,setdelivered]=useState(false)
+    const [expandDiv, setExpandDiv] = useState({})
     const [Orders,SetOrders]=useState([
         {
             dishes:[{
@@ -18,6 +20,7 @@ const Orders=()=>{
                 dishQuantity:2
             }
         ],
+        id:"gg1",
         customerName:"Aniket Singh",
         customerPhoneNo:8600469998,
         totalCost:350
@@ -36,6 +39,7 @@ const Orders=()=>{
                 dishQuantity:2
             }
         ],
+        id:"gg2",
         customerName:"Aniket Singh",
         customerPhoneNo:8600469998,
         totalCost:350
@@ -54,6 +58,7 @@ const Orders=()=>{
             dishQuantity:2
         }
     ],
+    id:"gg3",
     customerName:"Aniket Singh",
     customerPhoneNo:8600469998,
     totalCost:350
@@ -62,6 +67,23 @@ const Orders=()=>{
     ])
     const NavigateNext=()=>{
         window.location.href="/SellerDashboard"
+    }
+    const MarkDelivered=(id)=>{
+        console.log(id + " Delivered ")
+    }
+    const OrderAcceptance=(id,state)=>{
+        setdelivered(true)
+        for (var key in expandDiv) {
+            expandDiv[key] = true
+        }
+        setExpandDiv({
+            ...expandDiv,
+            ['div' + id]: state
+        })
+        console.log(id + " Order Accepted")
+    }
+    const OrderRejection=(id)=>{
+        console.log(id + " Order Rejected")
     }
     return (
       <div className={classes.OuterContainer}>
@@ -76,7 +98,7 @@ const Orders=()=>{
           <div className={classes.CardContainer}>
               {
                   Orders.map((ele1)=>{
-                 return   <div className={classes.InnerCardContainer}>
+                 return   <div className={classes.InnerCardContainer} key={ele1.id}>
                     <div className={classes.LeftContainer}>
                         {
                             ele1.dishes.map((ele)=>{
@@ -99,12 +121,21 @@ const Orders=()=>{
                             <i class="fa-solid fa-mobile-button"></i>
                         </div>
                         <div className={classes.ButtonContainerInner}>
-                            <div className={classes.ButtonOneContainer}>
-                                <button type="button">Accept Order</button>
+                            {
+                                 delivered&& expandDiv["div"+ele1.id]?
+                                 <div className={classes.DeliveredButton}>
+                                <button type="button" onClick={()=>{MarkDelivered(ele1.id)}}>Mark as Delivered</button>
+                            </div>:
+                            <> 
+                             <div className={classes.ButtonOneContainer}>
+                                <button type="button" onClick={()=>{OrderAcceptance(ele1.id,true)}}>Accept Order</button>
                             </div>
                             <div className={classes.ButtonTwoContainer}>
-                                <button type="button">Reject Order</button>
+                                <button type="button" onClick={()=>{OrderRejection(ele1.id)}}>Reject Order</button>
                             </div>
+                            </>
+                            
+                         }
                         </div>
                     </div>
                 </div>

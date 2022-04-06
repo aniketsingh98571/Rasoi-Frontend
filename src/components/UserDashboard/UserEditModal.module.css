@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.ProfileInput{
+    height: 180px;
+    width: 180px;
+    
+    margin: 0 0 0 0px;
+    border: 2px solid  var(--Black);
+    border-radius: 50%;
+    /* margin: 10px  auto 10px auto; */
+}
+.ProfileInput input{
+    display: none;
+   
+}
+.LabelContainer{
+    height: 100%;
+    width: 100%;
+    /* border: 2px solid orange; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.LabelContainer img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    opacity: 0.4;
+    
+}
+
+.LabelContainer p{
+    font-family:AvenirNextLTPro-Bold;
+    font-size: 18px;
+    position: absolute;
+    top: 150px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.FormContainer{
+    /* border: 2px solid red; */
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: var(--White);
+    padding: 20px;
+}
+.OuterContainer{
+    /* border: 2px solid blue; */
+    background-color: var(--White);
+    
+}
+.Modal{
+    width: 40%;
+    /* border: 2px solid green; */
+    height: auto;
+    position: relative;
+    top: 20%;
+    left: 25%;
+    opacity: 1;
+    border: 2px solid var(--Black);
+    z-index: 9999;
+    /* background-color: var(--white); */
+   
+}
+.NameContainer,.AddressContainer{
+    margin: 0 0 20px 0;
+}
+.SaveButton{
+    text-align: center;
+}
+.SaveButton input{
+    font-family: AvenirNextLTPro-Bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: var(--Yellow);
+    border: none;
+    outline: none;
+}
+.SaveButton input:hover{
+    cursor: pointer;
+}
+.NameLabel p,.AddressText p{
+    font-family: CircularSTD-Book;
+    margin: 0 0 5px 0;
+}
+.NameInput input,.AddressInput input{
+    outline: none;
+    padding: 5px;
+    width: 100%;
+}
+.EditBox{
+    background-color: var(--Yellow);
+    padding: 15px 0;
+}
+.EditBox p{
+    font-family: AvenirNextLTPro-Bold;
+    font-size: 22px;
+    text-align: center;
+}
+.EditBox i{
+    font-size: 30px;
+   float: right;
+    /* border: 2px solid red; */
+    margin: -30px 15px 0 0;
+}
+.EditBox i:hover{
+    cursor: pointer;
+}

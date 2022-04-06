@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./SellerFirst.module.css";
 import logo from "../../assets/images/logo.png";
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../SellerDashboard/Loader";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Modal from "react-modal";
@@ -11,6 +12,7 @@ const SellerFirst = () => {
     special: false,
     general: false,
   });
+  const [UI,setUI]=useState(true)
   const [isSpecial, SetIsSpecial] = useState(false);
   const SetSpecial = (e) => {
     SetIsSpecial(!isSpecial);
@@ -58,6 +60,7 @@ const SellerFirst = () => {
       })
       .then(function (response) {
         console.log(response);
+        setUI(false)
         setResponse({
           generalDishesCount: response.data.generalDishesCount,
           message: response.data.message,
@@ -323,6 +326,9 @@ const SellerFirst = () => {
   };
 
   return (
+    <>
+    {
+       !UI&&Object.keys(response).length !== 0?
     <div className={classes.OuterContainer}>
       <Modal
         isOpen={ModalOpen}
@@ -629,7 +635,10 @@ const SellerFirst = () => {
         </button>
       </div>
       <ToastContainer />
-    </div>
+    </div>:null
+}
+{UI?<Loader/>:null}
+    </>
   );
 };
 export default SellerFirst;

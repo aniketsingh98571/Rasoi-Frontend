@@ -161,6 +161,9 @@
     font-family: AvenirNextLTPro-Bold;
     font-size: 18px;
 }
+.SaveButtonContainer input:hover{
+    cursor: pointer;
+}
 .SpecialityCardContainer{
     display: flex;
  justify-content: space-around;
@@ -212,6 +215,9 @@
     position: relative;
     top: 60px;
 }
+.EditButtonContainer button:hover,.DeleteButtonContainer button:hover{
+    cursor: pointer;
+}
 .FoodNameContainer p{
     font-family: CircularStd-Black;
     font-size: 18px;
@@ -237,4 +243,7 @@
     background-color: var(--Yellow);
     font-family: AvenirNextLTPro-Bold;
     font-size: 18px;
+}
+.AddItemContainer button:hover{
+    cursor: pointer;
 }

@@ -2,53 +2,41 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import classes from "./SellerDashBoard.module.css";
 import SellerHeader from "../SellerHeader/SellerHeader";
+import Loader from "./Loader";
 const SellerDashBoard = () => {
-  const [Speciality, SetSpeciality] = useState({
-    img: "",
-    name: "",
-    bio:"",
-    areaName: "",
-    pinCode: "",
-    mobileNo: "",
-    facebook: "",
-    instagram: "",
-    specialDishes: [],
-    generalDishes: [],
-  });
+  const [Speciality, SetSpeciality] = useState({});
+  const [UI,setUI]=useState(true)
   useEffect(() => {
     let sellerID = localStorage.getItem("SellerId");
     console.log(sellerID);
-
-    axios
-      .get("http://localhost:8080/seller/sellerDashboard", {
-        params: {
-          sellerID: sellerID,
-        },
-      })
-      .then(function (response) {
-        console.log(response);
-        SetSpeciality({
-          img: response.data.data.img,
-          name: response.data.data.name,
-          areaName: response.data.data.areaName,
-          pinCode: response.data.data.pinCode,
-          mobileNo: response.data.data.mobileNo,
-          facebook: response.data.data.facebook,
-          instagram: response.data.data.instagram,
-          specialDishes: response.data.data.specialDishes,
-          generalDishes: response.data.data.generalDishes,
-          bio:response.data.data.bio
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+     axios
+    .get("http://localhost:8080/seller/sellerDashboard", {
+      params: {
+        sellerID: sellerID,
+      },
+    })
+    .then(function (response) {
+      console.log(response);
+     
+        setUI(false)
+     
+      
+      SetSpeciality(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    }, []);
+  
   const NavigateNext = () => {
     window.location.href = "/Orders";
   };
   return (
+   <>
+   {
+     !UI&&Object.keys(Speciality).length !== 0?
     <div className={classes.OuterContainer}>
+      {console.log(Speciality)}
       <SellerHeader />
 
       <div className={classes.ButtonContainer}>
@@ -66,34 +54,35 @@ const SellerDashBoard = () => {
       <div className={classes.InnerContainer}>
         <div className={classes.FirstContainer}>
           <div className={classes.ImageContainer}>
+            
             <img
-              src={`http://localhost:8080/${Speciality.img}`}
+              src={`http://localhost:8080/${Speciality.sellerInfo.img}`}
               alt="Seller Image"
             />
           </div>
           <div className={classes.TextContainer}>
             <div className={classes.NameContainer}>
               <i className="fas fa-address-card"></i>
-              <p>{Speciality.name}</p>
+              <p>{Speciality.sellerInfo.name}</p>
             </div>
             <div className={classes.AddressContainer}>
               <i className="fas fa-map-marker-alt"></i>
               <p>
-                {Speciality.areaName}, {Speciality.pinCode}
+                {Speciality.sellerInfo.areaName}, {Speciality.sellerInfo.pinCode}
               </p>
             </div>
             <div className={classes.MobileContainer}>
               <i className="fas fa-mobile-alt"></i>
-              <p>{Speciality.mobileNo}</p>
+              <p>{Speciality.sellerInfo.mobileNo}</p>
             </div>
           </div>
           <div className={classes.SocialContainer}>
             <div className={classes.Iclass}>
-              <a href={Speciality.facebook}>
+              <a href={Speciality.sellerInfo.facebook}>
                 {" "}
                 <i className="fab fa-facebook"></i>
               </a>
-              <a href={Speciality.instagram}>
+              <a href={Speciality.sellerInfo.instagram}>
                 {" "}
                 <i className="fab fa-instagram"></i>
               </a>
@@ -110,7 +99,7 @@ const SellerDashBoard = () => {
         </div>
         <div className={classes.BioContent}>
           <p>
-           {Speciality.bio}
+           {Speciality.sellerInfo.bio}
           </p>
         </div>
       </div>
@@ -119,7 +108,7 @@ const SellerDashBoard = () => {
           <p>SPECIALITY</p>
         </div>
         <div className={classes.SpecialDishes}>
-          {Speciality.specialDishes.map((ele) => {
+          {Speciality.specialDishes.specialDishes.map((ele) => {
             return (
               <div className={classes.SpecialCard} key={ele._id}>
                 <div className={classes.SpecialImage}>
@@ -148,7 +137,7 @@ const SellerDashBoard = () => {
           <p>MENU ITEMS</p>
         </div>
         <div className={classes.SpecialDishes}>
-          {Speciality.generalDishes.map((ele) => {
+          {Speciality.generalDishes.generalDishes.map((ele) => {
             return (
               <div className={classes.SpecialCard} key={ele._id}>
                 <div className={classes.SpecialImage}>
@@ -172,7 +161,10 @@ const SellerDashBoard = () => {
           })}
         </div>
       </div>
-    </div>
+    </div>:null
+}
+{UI?<Loader/>:null}
+    </>
   );
 };
 export default SellerDashBoard;
