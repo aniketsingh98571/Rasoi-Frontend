@@ -17,6 +17,9 @@ const Dropdown = () => {
     localStorage.removeItem("sellerID");
     localStorage.removeItem("cartSellerID");
     localStorage.removeItem("cartSellerName");
+    localStorage.removeItem("img");
+    localStorage.removeItem("order");
+    localStorage.removeItem("consumerData");
 
     navigate("/");
   };

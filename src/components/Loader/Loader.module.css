@@ -1,0 +1,30 @@
+.Loader{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    background-color: var(--White);
+    opacity: 0.5;
+}
+
+.Loader .load2{
+    width: 40%;
+    height: 10%;
+    background-color: transparent;
+    color: var(--Yellow);
+    z-index: 3;
+}
+.Loader .load1{
+    width: 15%;
+    height: 2%;
+    opacity: 1.2;
+    /* background-color: var(--White); */
+    background-color: transparent;
+    color: var(--Yellow);
+    z-index: 3;
+}

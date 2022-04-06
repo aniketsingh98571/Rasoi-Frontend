@@ -78,11 +78,20 @@ img {
   font-size: xx-large;
 }
 
+.socials a{
+  display: flex;
+  width: fit-content;
+  height: 50%;
+  font-family: AvenirNextLTPro-Bold;
+  justify-content: center;
+  font-size: xx-large;
+}
+
 #fb {
-  margin-right: 10%;
+  margin-right: 30%;
   font-size: 140%;
 }
 #insta {
-  margin-left: 5%;
+  margin-left: 20%;
   font-size: 140%;
 }

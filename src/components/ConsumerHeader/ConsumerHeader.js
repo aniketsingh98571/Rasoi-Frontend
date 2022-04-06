@@ -6,6 +6,7 @@ import Dropdown from "./Dropdown.js";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import userHeader from "../../assets/images/userHeader.jpg";
 
 const ConsumerHeader = (props) => {
   const { cart } = useContext(CartContext);
@@ -137,13 +138,16 @@ const ConsumerHeader = (props) => {
         </div>
 
         <div className={classes.user} onClick={handleUserClick}>
-          <div className={classes.avatar}>
-            {props.img === "null" || props.img === undefined ? (
-              <i className="fas fa-user-circle"></i>
-            ) : (
-              <img src={Logo} alt="logo" />
-            )}
-          </div>
+          {props.img === "null" || props.img === undefined ? (
+            <div className={classes.avatar}>
+              <img src={userHeader} alt="" />
+            </div>
+          ) : (
+            <div className={classes.avatar}>
+              <img src={`http://localhost:8080/${props.uimg}`} alt="" />
+            </div>
+          )}
+
           <div className={classes.dropdown}>
             <i className="fas fa-angle-down"></i>
           </div>

@@ -5,8 +5,10 @@ import SellerCard from "./SellerCard";
 import axios from "axios";
 import ConsumerHeader from "../ConsumerHeader/ConsumerHeader";
 import Footer from "../Footer/Footer";
+import Loader from "../Loader/Loader";
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
   const [Sellers, setSellers] = useState([]);
   // const [uimg, setUimg] = useState();
   // let Sellers;
@@ -20,9 +22,15 @@ const Home = () => {
         },
       })
       .then(function (response) {
+        setLoading(true);
         console.log(response);
         setSellers(response.data.sellersData);
         localStorage.setItem("img", response.data.consumerData.consumerImage);
+        localStorage.setItem(
+          "consumerData",
+          JSON.stringify(response.data.consumerData)
+        );
+        setLoading(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -86,7 +94,7 @@ const Home = () => {
   // ];
   return (
     <>
-      <ConsumerHeader Sellers={Sellers} setSellers={setSellers} img={uimg} />
+      <ConsumerHeader Sellers={Sellers} setSellers={setSellers} uimg={uimg} />
       <div className={classes.container}>
         <Filter Sellers={Sellers} setSellers={setSellers} />
         {Sellers.map((seller) => {
@@ -103,6 +111,7 @@ const Home = () => {
         })}
       </div>
       <Footer />
+      {loading && <Loader />}
     </>
   );
 };

@@ -10,6 +10,9 @@
   background-color: var(--Yellow);
   height: 8vh;
 }
+.main{
+  z-index: 1;
+}
 .container {
   display: flex;
   width: 90vw;
@@ -22,7 +25,7 @@
   width: 50%;
   height: 100%;
   margin-left: 10%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
 .summary {
@@ -124,3 +127,20 @@
   justify-content: center;
   align-items: center;
 }
+
+.loading{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.2;
+  height:100%;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+

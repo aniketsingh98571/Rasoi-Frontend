@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import CartContext from "../../context/CartContext";
 import classes from "./CheckoutCard.module.css";
 import CheckoutItem from "./CheckoutItem";
+import { toast } from "react-toastify";
 
 const CheckoutCard = (props) => {
   const { cart } = useContext(CartContext);
@@ -46,7 +47,22 @@ const CheckoutCard = (props) => {
 
       <div className={classes.placeButton}>
         <button
-          onClick={props.handlePlaceClick}
+          onClick={() => {
+            if (cart.length > 0) {
+              props.handlePlaceClick(totalPrice);
+            } else {
+              toast.warn("Please add some items to checkout", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+            }
+          }}
           disabled={props.disable}
           // onClick="#divID"
         >

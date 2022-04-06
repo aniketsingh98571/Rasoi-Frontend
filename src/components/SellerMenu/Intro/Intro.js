@@ -1,37 +1,48 @@
 import React from "react";
 import classes from "./Intro.module.css";
 
-const Intro = () => {
-  const sellerName = localStorage.getItem("sellerName");
+const Intro = (props) => {
+  // console.log(props.info.name);
+  // const sellerName = localStorage.getItem("sellerName");
   return (
     <div className={classes.Intro}>
       <div className={classes.selllerImage}>
         <img
-          src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"
+          src={`http://localhost:8080/${props.res.sellerInfo.img}`}
           alt="sellerImage"
         />
       </div>
       <div className={classes.sellerDetail}>
         <p id={classes.name} className={classes.details}>
-          {sellerName}
+          {props.res.sellerInfo.name}
         </p>
         <p id={classes.special} className={classes.details}>
-          Special Dishes
+          {props.res.specialDishes.specialDishesNames
+            .toString()
+            .replaceAll(",", ", ")}
         </p>
         <p id={classes.address} className={classes.details}>
-          Address of Seller
+          {props.res.sellerInfo.areaName}
         </p>
       </div>
       <div className={classes.lastDiv}>
         <div className={classes.rating}>
-          <p className={classes.rate}>4.5</p>
+          <p className={classes.rate}>{props.res.sellerInfo.rating}</p>
           <div className={classes.starDiv}>
             <i className="fas fa-star"></i>
           </div>
         </div>
         <div className={classes.socials}>
-          <i className="fa-brands fa-facebook-square" id={classes.fb}></i>
-          <i className="fa-brands fa-instagram" id={classes.insta}></i>
+          <a href={props.res.sellerInfo.facebook}>
+            <i className="fa-brands fa-facebook-square" id={classes.fb}></i>
+          </a>
+          <a href={props.res.sellerInfo.facebook}>
+            <i
+              href={props.res.sellerInfo.instagram}
+              className="fa-brands fa-instagram"
+              id={classes.insta}
+            ></i>
+          </a>
         </div>
       </div>
     </div>

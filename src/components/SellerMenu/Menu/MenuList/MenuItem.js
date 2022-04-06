@@ -123,7 +123,7 @@ const MenuItem = (props) => {
     <>
       <div className={classes.card}>
         <div className={classes.dishImg}>
-          <img src={props.dishImg} alt="food" />
+          <img src={`http://localhost:8080/${props.dishImg}`} alt="food" />
         </div>
 
         <div className={classes.dishDetails}>

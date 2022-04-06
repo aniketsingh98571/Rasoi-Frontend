@@ -28,11 +28,11 @@
 .subTotal {
   display: flex;
   position: relative;
-  margin: 3% 0px;
+  margin: 4% 0px;
   width: 100%;
   height: 5vh;
-  text-align: center;
-  justify-content: space-between;
+  /* text-align: center; */
+  /* justify-content: space-between; */
 }
 .placeButton button:hover {
   cursor: pointer;

@@ -1,19 +1,18 @@
 import React from "react";
 import classes from "./Contact.module.css";
 
-const Contact = () => {
+const Contact = (props) => {
   return (
     <div className={classes.container}>
       <div className={classes.details}>
         <p>
-          <i className="fa-solid fa-mobile-screen"></i>1234567890
+          <i className="fa-solid fa-mobile-screen"></i>
+          {props.res.sellerInfo.mobileNo}
         </p>
+
         <p>
-          <i className="fa-solid fa-envelope"></i>seller@mail.com
-        </p>
-        <p>
-          <i className="fa-solid fa-location-dot"></i>Seller Name, building xyz,
-          pqr area, Nashik
+          <i className="fa-solid fa-location-dot"></i>
+          {props.res.sellerInfo.areaName},{props.res.sellerInfo.pinCode}
         </p>
       </div>
       <div className={classes.map}>
