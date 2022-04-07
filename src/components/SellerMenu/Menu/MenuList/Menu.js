@@ -172,45 +172,49 @@ const Menu = (props) => {
   // console.log(props.res.specialDishes.specialDishes);
   return (
     <>
-      <div className={classes.menuCard}>
-        <div className={classes.heading}>
-          <p>Speciality</p>
+      {props.special.length !== 0 && (
+        <div className={classes.menuCard}>
+          <div className={classes.heading}>
+            <p>Speciality</p>
+          </div>
+          {props.special.map((mitem) => {
+            return (
+              <MenuItem
+                key={mitem._id}
+                id={mitem._id}
+                dishImg={mitem.imageURL}
+                name={mitem.name}
+                dishType={mitem.type}
+                dishPrice={mitem.price}
+                dishTime={mitem.timeReq}
+                dishQty={mitem.dishQty}
+                // handleAddClick={handleAddClick}
+              />
+            );
+          })}
         </div>
-        {props.res.specialDishes.specialDishes.map((mitem) => {
-          return (
-            <MenuItem
-              key={mitem._id}
-              id={mitem._id}
-              dishImg={mitem.imageURL}
-              name={mitem.name}
-              dishType={mitem.type}
-              dishPrice={mitem.price}
-              dishTime={mitem.timeReq}
-              dishQty={mitem.dishQty}
-              // handleAddClick={handleAddClick}
-            />
-          );
-        })}
-      </div>
+      )}
 
-      <div className={classes.menuCard}>
-        <div className={classes.heading}>
-          <p>Other Dishes</p>
+      {props.general.length !== 0 && (
+        <div className={classes.menuCard}>
+          <div className={classes.heading}>
+            <p>Other Dishes</p>
+          </div>
+          {props.general.map((mitem) => {
+            return (
+              <MenuItem
+                key={mitem._id}
+                id={mitem._id}
+                dishImg={mitem.imageURL}
+                name={mitem.name}
+                dishType={mitem.type}
+                dishPrice={mitem.price}
+                dishTime={mitem.timeReq}
+              />
+            );
+          })}
         </div>
-        {props.res.generalDishes.generalDishes.map((mitem) => {
-          return (
-            <MenuItem
-              key={mitem._id}
-              id={mitem._id}
-              dishImg={mitem.imageURL}
-              name={mitem.name}
-              dishType={mitem.type}
-              dishPrice={mitem.price}
-              dishTime={mitem.timeReq}
-            />
-          );
-        })}
-      </div>
+      )}
       <Cart />
     </>
   );

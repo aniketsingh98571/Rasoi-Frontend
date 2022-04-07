@@ -11,6 +11,8 @@ import Loader from "../Loader/Loader";
 const SellerMenu = () => {
   const [loading, setLoading] = useState(true);
   const [res, setRes] = useState({});
+  const [special, setSpecial] = useState([]);
+  const [general, setGeneral] = useState([]);
   useEffect(() => {
     const sellerID = localStorage.getItem("sellerID");
     axios
@@ -20,7 +22,10 @@ const SellerMenu = () => {
         },
       })
       .then(function (response) {
+        setLoading(true);
         setRes(response.data);
+        setSpecial(response.data.specialDishes.specialDishes);
+        setGeneral(response.data.generalDishes.generalDishes);
         setLoading(false);
         // localStorage.setItem("response", JSON.stringify(response.data));
       })
@@ -31,15 +36,31 @@ const SellerMenu = () => {
   }, []);
 
   console.log(res);
+
+  // console.log("specials state", special);
+  // console.log("general dishes", general);
   const [orderClick, setOrderClick] = useState(true);
   return (
     <>
-      {!loading && Object.keys(res).length !== 0 ? (
+      {(!loading && Object.keys(general).length !== 0) ||
+      Object.keys(special).length !== 0 ? (
         <div>
           <ConsumerHeader />
           <Intro res={res} />
-          <Nav orderClick={orderClick} setOrderClick={setOrderClick} />
-          {orderClick === true ? <Menu res={res} /> : <Contact res={res} />}
+          <Nav
+            orderClick={orderClick}
+            setOrderClick={setOrderClick}
+            special={special}
+            setSpecial={setSpecial}
+            general={general}
+            setGeneral={setGeneral}
+            res={res}
+          />
+          {orderClick === true ? (
+            <Menu general={general} special={special} />
+          ) : (
+            <Contact res={res} />
+          )}
         </div>
       ) : null}
 

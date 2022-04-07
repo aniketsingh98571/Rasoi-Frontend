@@ -33,7 +33,7 @@ const Checkout = () => {
 
     // setOrder(...cart);
     window.location.href = "#divID";
-    console.log(disable);
+    // console.log(disable);
 
     setPlaced(true);
     localStorage.setItem("order", JSON.stringify(cart));

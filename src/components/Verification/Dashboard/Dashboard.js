@@ -8,7 +8,7 @@ const Dashboard = () => {
   const [req, setReq] = useState([]);
 
   useEffect(() => {
-    console.log("Mai useeffect hu");
+    // console.log("Mai useeffect hu");
     axios
       .get("http://localhost:8080/validator/getAllNonVadidatedSeller")
       .then(function (response) {

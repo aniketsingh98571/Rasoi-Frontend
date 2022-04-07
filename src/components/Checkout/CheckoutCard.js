@@ -17,7 +17,7 @@ const CheckoutCard = (props) => {
   //   props.setPlaced(true);
   // };
 
-  console.log(props.disable);
+  // console.log(props.disable);
 
   return (
     <div className={classes.checkoutCard}>

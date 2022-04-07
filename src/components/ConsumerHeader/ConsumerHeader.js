@@ -34,7 +34,7 @@ const ConsumerHeader = (props) => {
 
   const handleSearchIconClick = (e) => {
     if (search.searchInput.length > 0) {
-      console.log(search);
+      // console.log(search);
 
       axios
         .get("http://localhost:8080/consumer/search", {
@@ -52,6 +52,7 @@ const ConsumerHeader = (props) => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
           } else {
             // console.log(response);
@@ -68,6 +69,7 @@ const ConsumerHeader = (props) => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
           }
         });
@@ -80,6 +82,7 @@ const ConsumerHeader = (props) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
     }
   };

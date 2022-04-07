@@ -2,6 +2,9 @@
   background-color: blue;
   border: 2px solid red;
 }
+.Container{
+  margin-bottom: 20px;
+}
 .cartContainer {
   display: flex;
   flex-direction: column;
