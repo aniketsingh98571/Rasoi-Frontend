@@ -1,39 +1,29 @@
-import React, { useState, useContext } from "react";
-import ConsumerHeader from "../ConsumerHeader/ConsumerHeader";
+import React, { useState, useContext, useEffect } from "react";
 import classes from "./Checkout.module.css";
 import CheckoutCard from "./CheckoutCard";
 import CartContext from "../../context/CartContext";
 import Loader from "../Loader/Loader";
 import axios from "axios";
+import SecondaryHeader from "../SecondaryHeader/SecondaryHeader";
 
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
-  let consumerData = JSON.parse(localStorage.getItem("consumerData"));
   const { cart, setCart } = useContext(CartContext);
   const [placed, setPlaced] = useState(false);
   const [disable, setDisable] = useState(false);
-  // const [checkoutData, setCheckoutData] = useState({
-  //   consumerID: "",
-  //   sellerID: "",
-  //   totalCost: "",
-  //   dishes: [],
-  // });
-  // const [order, setOrder] = useState([]);
+  let consumerData = JSON.parse(localStorage.getItem("consumerData"));
+  useEffect(() => {
+    let ConsumerId = localStorage.getItem("ConsumerId");
+    if (ConsumerId === null) {
+      window.location.href = "/";
+    }
+  }, []);
 
   const handlePlaceClick = (totalPrice) => {
     setLoading(true);
-    // setCheckoutData({
-    //   consumerID: localStorage.getItem("ConsumerId"),
-    //   sellerID: localStorage.getItem("cartSellerID"),
-    //   totalCost: totalPrice,
-    //   dishes: cart,
-    // });
-
     setDisable(true);
 
-    // setOrder(...cart);
     window.location.href = "#divID";
-    // console.log(disable);
 
     setPlaced(true);
     localStorage.setItem("order", JSON.stringify(cart));
@@ -57,7 +47,7 @@ const Checkout = () => {
 
   return (
     <div id="main" className={classes.main}>
-      <ConsumerHeader />
+      <SecondaryHeader />
       <div className={classes.heading}>Checkout</div>
       <div className={classes.container} id="cont">
         <div className={classes.left}>

@@ -4,7 +4,6 @@ import UserSignUp from "./components/UserSignUp/UserSignUp";
 import UserSignIn from "./components/UserSignIn/UserSignIn";
 import SellerSignUp from "./components/SellerSignUp/SellerSignUp";
 import SellerSignIn from "./components/SellerSignIn/SellerSignIn";
-import SellerHeader from "./components/SellerHeader/SellerHeader";
 import Orders from "./components/SellerDashboard/Orders";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
@@ -16,31 +15,21 @@ import SellerDashBoard from "./components/SellerDashboard/SellerDashBoard";
 import SellerEditProfile from "./components/SellerEditProfile/SellerEditProfile";
 import CartState from "./context/CartState.js";
 import { ToastContainer } from "react-toastify";
-import EditModal from "./components/SellerEditProfile/EditModal";
 import Checkout from "./components/Checkout/Checkout";
+
 function App() {
   return (
     <div className="App">
       <CartState>
         <BrowserRouter>
           <Routes>
+            {/* CONSUMER ROUTES */}
             <Route exact path="/" element={<UserSignIn />} />
             <Route exact path="/UserSignUp" element={<UserSignUp />} />
-            <Route exact path="/SellerSignUp" element={<SellerSignUp />} />
-            <Route exact path="/SellerSignIn" element={<SellerSignIn />} />
 
             <Route
               exact
               path="/Home"
-              element={[
-                <>
-                  <Home />
-                </>,
-              ]}
-            />
-            <Route
-              exact
-              path="/search"
               element={[
                 <>
                   <Home />
@@ -56,21 +45,13 @@ function App() {
                 </>,
               ]}
             />
-            <Route exact path="/seller" element={<SellerHeader />} />
-            <Route
-              exact
-              path="/verificationLogin"
-              element={<VerificationLogin />}
-            />
-            <Route exact path="/verification" element={<Dashboard />} />
             <Route exact path="/sellerMenu" element={<SellerMenu />} />
+            <Route exact path="/checkout" element={<Checkout />} />
+            {/* CONSUMER ROUTES END */}
 
-            <Route exact path="/" element={<UserSignIn />} />
-            <Route exact path="/UserSignUp" element={<UserSignUp />} />
+            {/* SELLER ROUTES */}
             <Route exact path="/SellerSignUp" element={<SellerSignUp />} />
             <Route exact path="/SellerSignIn" element={<SellerSignIn />} />
-            <Route exact path="/EditModal" element={<EditModal />} />
-            <Route exact path="/seller" element={<SellerHeader />} />
             <Route exact path="/SellerSetUp" element={<SellerFirst />} />
             <Route
               exact
@@ -79,7 +60,16 @@ function App() {
             />
             <Route exact path="/Orders" element={<Orders />} />
             <Route exact path="/Edit" element={<SellerEditProfile />} />
-            <Route exact path="/checkout" element={<Checkout />} />
+            {/* SELLER ROUTES END */}
+
+            {/* VERIFICATION ROUTES */}
+            <Route
+              exact
+              path="/verificationLogin"
+              element={<VerificationLogin />}
+            />
+            <Route exact path="/verification" element={<Dashboard />} />
+            {/* VERIFICATION ROUTES END*/}
           </Routes>
         </BrowserRouter>
       </CartState>

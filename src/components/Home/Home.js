@@ -13,28 +13,32 @@ const Home = () => {
   // const [uimg, setUimg] = useState();
   // let Sellers;
   useEffect(() => {
-    const consumerID = localStorage.getItem("ConsumerId");
-    localStorage.removeItem("sellerID");
-    axios
-      .get("http://localhost:8080/consumer/consumerDashbord", {
-        params: {
-          consumerID: consumerID,
-        },
-      })
-      .then(function (response) {
-        setLoading(true);
-        // console.log(response);
-        setSellers(response.data.sellersData);
-        localStorage.setItem("img", response.data.consumerData.consumerImage);
-        localStorage.setItem(
-          "consumerData",
-          JSON.stringify(response.data.consumerData)
-        );
-        setLoading(false);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    if (localStorage.getItem("ConsumerId") === null) {
+      window.location.href = "/";
+    } else {
+      const consumerID = localStorage.getItem("ConsumerId");
+      localStorage.removeItem("sellerID");
+      axios
+        .get("http://localhost:8080/consumer/consumerDashbord", {
+          params: {
+            consumerID: consumerID,
+          },
+        })
+        .then(function (response) {
+          setLoading(true);
+          // console.log(response);
+          setSellers(response.data.sellersData);
+          localStorage.setItem("img", response.data.consumerData.consumerImage);
+          localStorage.setItem(
+            "consumerData",
+            JSON.stringify(response.data.consumerData)
+          );
+          setLoading(false);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
     //eslint-disable-next-line
   }, []);
 

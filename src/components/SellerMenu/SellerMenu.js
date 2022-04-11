@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ConsumerHeader from "../ConsumerHeader/ConsumerHeader";
+import SecondaryHeader from "../SecondaryHeader/SecondaryHeader.js";
 import Contact from "./Contact/Contact";
 import Intro from "./Intro/Intro";
 import Menu from "./Menu/MenuList/Menu";
@@ -14,24 +14,28 @@ const SellerMenu = () => {
   const [special, setSpecial] = useState([]);
   const [general, setGeneral] = useState([]);
   useEffect(() => {
-    const sellerID = localStorage.getItem("sellerID");
-    axios
-      .get("http://localhost:8080/seller/sellerDashboard", {
-        params: {
-          sellerID: sellerID,
-        },
-      })
-      .then(function (response) {
-        setLoading(true);
-        setRes(response.data);
-        setSpecial(response.data.specialDishes.specialDishes);
-        setGeneral(response.data.generalDishes.generalDishes);
-        setLoading(false);
-        // localStorage.setItem("response", JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    if (localStorage.getItem("ConsumerId") === null) {
+      window.location.href = "/";
+    } else {
+      const sellerID = localStorage.getItem("sellerID");
+      axios
+        .get("http://localhost:8080/seller/sellerDashboard", {
+          params: {
+            sellerID: sellerID,
+          },
+        })
+        .then(function (response) {
+          setLoading(true);
+          setRes(response.data);
+          setSpecial(response.data.specialDishes.specialDishes);
+          setGeneral(response.data.generalDishes.generalDishes);
+          setLoading(false);
+          // localStorage.setItem("response", JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
     //eslint-disable-next-line
   }, []);
 
@@ -45,7 +49,7 @@ const SellerMenu = () => {
       {(!loading && Object.keys(general).length !== 0) ||
       Object.keys(special).length !== 0 ? (
         <div>
-          <ConsumerHeader />
+          <SecondaryHeader />
           <Intro res={res} />
           <Nav
             orderClick={orderClick}
