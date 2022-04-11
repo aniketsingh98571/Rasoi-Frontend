@@ -53,6 +53,7 @@ const SellerSignUpLogic = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
     }
 
@@ -126,6 +127,7 @@ const SellerSignUpLogic = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
+                theme: "dark",
               }
             );
           }
@@ -140,6 +142,7 @@ const SellerSignUpLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
           }
           if (err.response.status === 406) {
@@ -151,6 +154,7 @@ const SellerSignUpLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
           }
           if (err.response.status === 422) {
@@ -162,6 +166,7 @@ const SellerSignUpLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
           }
         });

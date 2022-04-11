@@ -68,6 +68,23 @@ const EditModal=(props)=>{
         .post("http://localhost:8080/seller/addDishes", AddMenuItem)
         .then((res) => {
           console.log(res);
+          if(res.status===201){
+            toast.success("Dish Added Successfully", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+              setTimeout(()=>{
+                props.close();
+                props.load(!props.loadvar)
+              },5000)
+          
+          }
           })
         .catch((err) => {
           console.log(err);
@@ -80,6 +97,23 @@ const EditModal=(props)=>{
                 .put("http://localhost:8080/seller/editDish", EditMenuItem)
                 .then((res) => {
                   console.log(res);
+                  if(res.status===200){
+                    toast.success("Dish Updated Successfully", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                      });
+                      setTimeout(()=>{
+                        props.close();
+                        props.load(!props.loadvar)
+                      },5000)
+                  
+                  }
                   
                   }
                 )
@@ -99,7 +133,7 @@ const EditModal=(props)=>{
         overlayClassName={classes.OverlayClasses}>
             <div className={classes.Container}>
                 <div className={classes.TitleContainer}>
-                    <p>Edit Details</p>
+                    <p>{props.AddUpdate==="add"?"Add Details":"Edit Details"}</p>
                    
                     <i class="fa-solid fa-xmark" onClick={props.close}></i>
                    
@@ -149,7 +183,7 @@ const EditModal=(props)=>{
                         <label htmlFor="ProfileInputId1">
               <div className={classes.LabelContainer}>
               <img src={props.AddUpdate==="add"?"":`http://localhost:8080/${url}`} id="EditDishImageID" alt="Add Image"/>
-               <p>Update Image</p>
+               <p>{props.AddUpdate==="add"?"Add Image":"Update Image"}</p>
               </div>
             </label>
             <input

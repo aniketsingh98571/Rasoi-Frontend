@@ -65,6 +65,7 @@ const SellerFirstLogic = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
       console.log("Please fill out form first");
     }
@@ -111,6 +112,7 @@ const SellerFirstLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
             SetDone({ FormFirst: Done.FormFirst, FormSecond: 1 });
           }
@@ -127,6 +129,7 @@ const SellerFirstLogic = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
     }
   };
@@ -157,6 +160,7 @@ const SellerFirstLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
             SetDone({ FormFirst: true, FormSecond: Done.FormSecond });
           }
@@ -173,6 +177,7 @@ const SellerFirstLogic = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
     }
   };

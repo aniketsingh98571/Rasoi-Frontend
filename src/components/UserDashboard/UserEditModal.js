@@ -24,43 +24,40 @@ const SubmitHandler1=(e)=>{
     e.preventDefault()
     console.log(EditUser)
     console.log(props.ConsumerId)
+    const ConsumerEdit=new FormData()
+    ConsumerEdit.append("consumerID",props.ConsumerId)
+    ConsumerEdit.append("name",EditUser.name)
+    ConsumerEdit.append("image",EditUser.profilepic)
+    ConsumerEdit.append("address",EditUser.address)
+    
     axios
-        .put("http://localhost:8080/seller/fillSellerDetails", EditUser)
+        .put("http://localhost:8080/consumer/editProfile",ConsumerEdit)
         .then((res) => {
           console.log(res);
+          if(res.status===200){
+            toast.success("Profile Updated", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme:"dark"
+              });
+              setTimeout(()=>{
+                  props.close();
+                 
+              },5000)
+          }
            }
         )
         .catch((err) => {
           console.log(err);
         });
-        toast.success("Profile Updated", {
-            position: "top-center",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-}
-useEffect(() => {
-    let sellerID = localStorage.getItem("SellerId");
-    console.log(sellerID);
-
-    axios
-      .get("http://localhost:8080/seller/sellerDashboard", {
-        params: {
-          sellerID: sellerID,
-        },
-      })
-      .then(function (response) {
-        console.log(response);
         
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+}
+
    return( 
    <Modal isOpen={props.open}
    className={classes.Modal}>

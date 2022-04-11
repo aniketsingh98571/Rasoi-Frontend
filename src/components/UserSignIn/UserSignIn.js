@@ -25,6 +25,7 @@ const UserSignIn = () => {
               name="mobileNo"
               value={Consumerlog.mobileNo}
               onChange={HandleInput}
+              onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
             />
           </div>
         </div>
@@ -38,13 +39,14 @@ const UserSignIn = () => {
               name="password"
               value={Consumerlog.password}
               onChange={HandleInput}
+              
             />
           </div>
         </div>
       </div>
       <div className={classes.ButtonContainer}>
         <div className={classes.ButtonContainer1}>
-          <button type="button" onClick={SubmitHandler}>
+          <button type="button" onClick={(e)=>SubmitHandler(e)} >
             Login
           </button>
         </div>

@@ -14,7 +14,7 @@ const UserSignInLogic = () => {
   const SubmitHandler = (e) => {
     e.preventDefault();
     console.log(Consumerlog);
-    if (Consumerlog.mobileNo && Consumerlog.password) {
+    if ((Consumerlog.mobileNo && Consumerlog.password) ||(e.key==="Enter")) {
       axios
         .post("http://localhost:8080/consumer/login", Consumerlog)
         .then((response) => {
@@ -28,6 +28,7 @@ const UserSignInLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
             localStorage.setItem("ConsumerId", response.data.consumerID);
             window.location.href = "/Home";
@@ -44,6 +45,7 @@ const UserSignInLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
             SetConsumerlog({ mobileNo: "", password: "" });
           }
@@ -57,6 +59,7 @@ const UserSignInLogic = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
   };
   return { Consumerlog, HandleInput, SubmitHandler };

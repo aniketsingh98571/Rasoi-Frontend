@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.Modal{
+    width: 50%;
+    margin: 0 auto;
+    /* height: auto; */
+    position: relative;
+    top: 15%;
+    /* opacity: 1; */
+   
+    z-index: 9999;
+    /* background-color: var(--white); */
+    border: none;
+}
+.OverlayClass{
+    opacity: 1;
+    height: 100vh;
+}
+.OuterContainer{
+    /* border: 2px solid var(--Black); */
+    border: 2px solid var(--Black);
+    /* background-color: var(--white); */
+    
+}
+.InnerContainer{
+    background-color: var(--White);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* border: 2px solid red; */
+    height: 60vh;
+}
+.RateText{
+    background-color: var(--Yellow);
+    padding: 0 0 15px 0;
+}
+.RateText p{
+    font-size: 30px;
+    font-family: AvenirNextLTPro-Bold;
+    text-align: center;
+  /* padding: 15px 0 0 0; */
+}
+.ButtonContainer button{
+    width: 100%;
+    padding: 10px 30px;
+    background-color: var(--Yellow);
+    margin: 25px 0 10px 0;
+    outline: none;
+    font-family: CircularStd-Black;
+    font-size: 18px;
+
+}
+.ButtonContainer button:hover{
+    cursor: pointer;
+}
+ .RateText i{
+  
+        
+        /* border: 2px solid red; */
+      position: relative;
+      left: 220px;
+      font-size: 45px;
+      top: 5px;
+    font-weight: none;
+  
+}

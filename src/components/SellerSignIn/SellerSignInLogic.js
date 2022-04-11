@@ -26,6 +26,7 @@ const SellerSignInLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
             console.log(res);
             localStorage.setItem("SellerId", res.data.seller_ID);
@@ -35,6 +36,16 @@ const SellerSignInLogic = () => {
               window.location.href = "/SellerSetUp";
             }, 2000);
           } else if (res.status === 200 && res.data.configured === true) {
+            toast.success("Login Successful", {
+              position: "top-center",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            });
             localStorage.setItem("SellerId", res.data.seller_ID);
             setTimeout(() => {
               window.location.href = "/SellerDashboard";
@@ -51,6 +62,7 @@ const SellerSignInLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
           }
           if (err.response.status === 401) {
@@ -62,6 +74,7 @@ const SellerSignInLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
           }
           if (err.response.status === 403) {
@@ -73,6 +86,7 @@ const SellerSignInLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
           }
           if (err.response.status === 422) {
@@ -84,6 +98,7 @@ const SellerSignInLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
           }
         });
@@ -96,6 +111,7 @@ const SellerSignInLogic = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
   };
   return { Sellerlog, HandleInput, SubmitHandler };

@@ -31,6 +31,7 @@ const UserSignUp = () => {
                 name="name"
                 value={ConsumerRegistration.name}
                 onChange={HandleInput}
+                onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
               />
             </div>
           </div>
@@ -44,6 +45,7 @@ const UserSignUp = () => {
                 name="address"
                 value={ConsumerRegistration.address}
                 onChange={HandleInput}
+                onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
               />
             </div>
           </div>
@@ -57,6 +59,7 @@ const UserSignUp = () => {
                 name="confirmpassword"
                 value={ConfirmPass}
                 onChange={ConfirmPassword}
+                onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
               />
               <p>{ErrorMessage}</p>
             </div>
@@ -73,6 +76,7 @@ const UserSignUp = () => {
                 name="mobileNo"
                 value={ConsumerRegistration.mobileNo}
                 onChange={HandleInput}
+                onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
               />
               <p id="MobileId"></p>
             </div>
@@ -87,6 +91,7 @@ const UserSignUp = () => {
                 name="password"
                 value={ConsumerRegistration.password}
                 onChange={HandleInput}
+                onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
               />
               <p id="PswrdId"></p>
             </div>
@@ -95,7 +100,7 @@ const UserSignUp = () => {
       </div>
       <div className={classes.OuterButtonContainer}>
         <div className={classes.ButtonContainer}>
-          <button type="button" onClick={SubmitHandler}>
+          <button type="button" onClick={(e)=>{SubmitHandler(e)}}>
             Sign Up
           </button>
         </div>

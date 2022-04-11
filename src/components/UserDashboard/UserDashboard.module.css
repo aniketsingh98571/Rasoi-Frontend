@@ -20,7 +20,7 @@
 }
 .NameContainer,.AddressContainer,.MobileContainer{
     /* border: 2px solid red; */
-    width: 50%;
+    width: 100%;
 }
 .NameContainer p{
     font-family: CircularSTD-Black;
@@ -39,6 +39,7 @@
     justify-content: space-around;
     margin: 20px 20px 0 20px;
     padding: 10px;
+    
 }
 .ButtonContainer button{
     width: 100%;
@@ -135,6 +136,8 @@
 }
 .OrdersListContainer{
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
  
 }
 .ProfileImageContainer i{

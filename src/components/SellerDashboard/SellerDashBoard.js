@@ -8,6 +8,9 @@ const SellerDashBoard = () => {
   const [UI,setUI]=useState(true)
   useEffect(() => {
     let sellerID = localStorage.getItem("SellerId");
+    if(sellerID===null){
+      window.location.href="/SellerSignIn"
+    }
     console.log(sellerID);
      axios
     .get("http://localhost:8080/seller/sellerDashboard", {
@@ -17,11 +20,8 @@ const SellerDashBoard = () => {
     })
     .then(function (response) {
       console.log(response);
-     
-        setUI(false)
-     
-      
-      SetSpeciality(response.data);
+    setUI(false)
+    SetSpeciality(response.data);
     })
     .catch(function (error) {
       console.log(error);

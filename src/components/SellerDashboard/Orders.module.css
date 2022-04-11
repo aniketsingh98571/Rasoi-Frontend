@@ -102,3 +102,8 @@ font-size: 16px;
 .DeliveredButton button:hover{
     cursor: pointer;
 }
+.EmptyContainer p{
+    font-size: 40px;
+    font-family: AvenirNextLTPro-Bold;
+    text-align: center;
+}

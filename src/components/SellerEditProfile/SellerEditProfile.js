@@ -5,13 +5,19 @@ import EditModal from "./EditModal"
 import axios from "axios"
 import DeleteModal from "./DeleteModal"
 import Loader from "../SellerDashboard/Loader"
+import { toast } from "react-toastify"
+
 const SellerEditProfile=()=>{
-    
+    const [load,reload]=useState(false)
     const [Edit,SetEdit]=useState({})
     const [modal,setmodal]=useState(false)
     const [dish,setdish]=useState({})
     const [UI,setUI]=useState(true)
     const [add,setadd]=useState("")
+    const [dishesCount,SetDishCount]=useState({
+        SpecialDish:0,
+        GeneralDish:0
+    })
     const [Delete,setdelete]=useState({
         open:false,
         dishID:null,
@@ -23,8 +29,11 @@ const SellerEditProfile=()=>{
 //    console.log("Empty "+Edit)
     useEffect(() => {
         let sellerID = localStorage.getItem("SellerId");
-        console.log(sellerID);
-    
+        if(sellerID===null){
+            window.location.href="/SellerSignIn"
+        }
+        // console.log(sellerID);
+        console.log("Loading")
         axios
           .get("http://localhost:8080/seller/sellerDashboard", {
             params: {
@@ -32,15 +41,16 @@ const SellerEditProfile=()=>{
             },
           })
           .then(function (response) {
-            console.log(response)
+            // console.log(response)
             SetEdit(response.data)
              setUI(false)
+             SetDishCount({SpecialDish:response.data.specialDishes.specialDishes.length,GeneralDish:response.data.generalDishes.generalDishes.length})
                 // seturl(response.data.sellerInfo.img)
             })
           .catch(function (error) {
             console.log(error);
           });
-      }, []);
+      }, [load]);
       const [firstForm,SetFirstForm]=useState({
         sellerID:localStorage.getItem("SellerId"),
         ProfilePic:null,
@@ -52,7 +62,7 @@ const SellerEditProfile=()=>{
     })
     const ImageHandler=(e)=>{
         const file=e.target.files[0]
-        console.log("In Seller Edit Image")
+        // console.log("In Seller Edit Image")
         const url=URL.createObjectURL(file)
         document.getElementById("SellerPersonalImageID").src=url
         // seturl(url)
@@ -67,8 +77,8 @@ const SellerEditProfile=()=>{
     }
     const FirstSubmitHandler=(e)=>{
         e.preventDefault();
-        console.log("submitted")
-        console.log(firstForm)
+        // console.log("submitted")
+        // console.log(firstForm)
         const SubmitFirstForm=new FormData();
         SubmitFirstForm.append("sellerID",firstForm.sellerID)
         SubmitFirstForm.append("areaName",firstForm.areaName)
@@ -77,10 +87,23 @@ const SellerEditProfile=()=>{
         SubmitFirstForm.append("bio",firstForm.bio)
         SubmitFirstForm.append("facebook",firstForm.facebook)
         SubmitFirstForm.append("instagram",firstForm.instagram)
+        console.log(dishesCount)
         axios
         .put("http://localhost:8080/seller/editSellerInfo", SubmitFirstForm)
         .then((res) => {
           console.log(res);
+          if(res.status===200){
+            toast.success("Information Updated Successfully", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+          }
            }
         )
         .catch((err) => {
@@ -132,10 +155,10 @@ const SellerEditProfile=()=>{
      <div className={classes.Container}>
       {()=>{seturl(Edit.sellerInfo.img)}}
          <SellerHeader/>
-      {  Delete.open? <DeleteModal config={Delete} close={closeDelete}/>:""}
+      {  Delete.open? <DeleteModal config={Delete} close={closeDelete} load={reload} loadvar={load}/>:""}
          <div className={classes.InnerContainer}>
              {
-                 modal?<EditModal open={modal} item={dish} close={closeModal} AddUpdate={add} SellerId={Edit.sellerInfo.id}/>:""
+                 modal?<EditModal open={modal} item={dish} close={closeModal} AddUpdate={add} SellerId={Edit.sellerInfo.id} load={reload} loadvar={load}/>:""
              }
              <form onSubmit={FirstSubmitHandler} encType='multipart/form-data'>
          <div className={classes.EditProfileTextContainer}>
@@ -242,9 +265,12 @@ const SellerEditProfile=()=>{
 }
     
                     </div>
+                    {
+                        dishesCount.SpecialDish>=3?null:
                     <div className={classes.AddItemContainer}>
         <button type="button" onClick={()=>{AddHandler(true,"add")}}>Add Item</button>
     </div>
+}
                 </div>
                 <div className={classes.SecondInnerContainer}>
                     <div className={classes.SpecialityHeader}>
@@ -254,9 +280,7 @@ const SellerEditProfile=()=>{
                     {  
                     Edit.generalDishes.generalDishes.map((ele)=>{
                             return (
-                            
-                               
-                                <div key={ele._id} className={classes.InnerSpecialContainer}>
+                             <div key={ele._id} className={classes.InnerSpecialContainer}>
                             <div className={classes.SpecialImageContainer}>
                                 <img src={`http://localhost:8080/${ele.imageURL}` }/>
                             </div>
@@ -291,9 +315,12 @@ const SellerEditProfile=()=>{
 }
     
                     </div>
+                    {
+                        dishesCount.GeneralDish>=10?null:
                     <div className={classes.AddItemContainer}>
         <button type="button" onClick={()=>{AddHandler(false,"add")}}>Add Item</button>
     </div>
+}
                 </div>
         </div>
     </div>:null

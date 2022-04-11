@@ -50,7 +50,11 @@ const SellerFirst = () => {
   });
   useEffect(() => {
     let sellerID = localStorage.getItem("SellerId");
-    console.log(sellerID);
+    console.log(sellerID)
+    // console.log(sellerID);
+    if(sellerID===null){
+      window.location.href="/SellerSignIn"
+    }
 
     axios
       .get("http://localhost:8080/seller/getSellerConfig", {
@@ -80,6 +84,7 @@ const SellerFirst = () => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
+            theme: "dark",
           });
           setTimeout(() => {
             window.location.href = "/SellerSignIn";
@@ -94,6 +99,7 @@ const SellerFirst = () => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
+            theme: "dark",
           });
           setTimeout(() => {
             window.location.href = "/SellerDashboard";
@@ -125,6 +131,7 @@ const SellerFirst = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
+      theme: "dark",
     });
   };
   const DoneHandler = () => {
@@ -142,6 +149,7 @@ const SellerFirst = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
       console.log("Please fill out form first");
     }
@@ -196,6 +204,7 @@ const SellerFirst = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
 
             SetDone({ FormFirst: Done.FormFirst, FormSecond: 1 });
@@ -223,6 +232,7 @@ const SellerFirst = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
+                theme: "dark",
               }
             );
 
@@ -250,6 +260,7 @@ const SellerFirst = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
+                theme: "dark",
               }
             );
 
@@ -275,6 +286,7 @@ const SellerFirst = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
     }
   };
@@ -305,6 +317,7 @@ const SellerFirst = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
             SetDone({ FormFirst: true, FormSecond: Done.FormSecond });
           }
@@ -321,6 +334,7 @@ const SellerFirst = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
     }
   };
@@ -635,7 +649,8 @@ const SellerFirst = () => {
         </button>
       </div>
       <ToastContainer />
-    </div>:null
+      </div>
+    :null
 }
 {UI?<Loader/>:null}
     </>

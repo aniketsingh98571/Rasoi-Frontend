@@ -18,6 +18,7 @@
     height: auto;
     margin: 10px 0 0 30px;
 }
+
 .WelComeText p{
     margin: 0 50px 0 0;
     font-family: CircularStd-Book;
@@ -78,6 +79,9 @@
     font-size: 50px;
     color: var(--Yellow);
 }
+.LabelContainer i:hover{
+    cursor: pointer;
+}
 .LabelContainer p{
     font-family:AvenirNextLTPro-Regular;
     font-size: 18px;
@@ -85,6 +89,9 @@
 /* .ProfilePicContainer{
     border-bottom: 2px solid var(--Black);
 } */
+.LabelContainer p:hover{
+    cursor: pointer;
+}
 .NameContainer,.MobileContainer,.BioContainer{
     margin: 10px 0 10px 98px;
     /* border: 2px solid red; */
@@ -246,6 +253,9 @@
     outline: none;
 border: none;
 }
+.FirstButton input:hover{
+    cursor: pointer;
+}
 .InnerButton{
     text-align: center;
     
@@ -260,6 +270,9 @@ border: none;
 border: none;
 margin: 5px 0 10px 0;
 }
+.InnerButton input:hover{
+    cursor: pointer;
+}
 .OuterButton{
     text-align: center;
 }
@@ -272,6 +285,9 @@ margin: 5px 0 10px 0;
     font-size: 18px;
     outline: none;
 border: none;
+}
+.OuterButton button:hover{
+    cursor: pointer;
 }
 .ModalContainer{
     display: flex;

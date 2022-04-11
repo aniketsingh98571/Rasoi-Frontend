@@ -2,6 +2,7 @@ import React from "react"
 import classes from './DeleteModal.module.css'
 import Modal from 'react-modal'
 import axios from "axios"
+import { toast } from "react-toastify"
 const DeleteModal=(props)=>{
     const DeleteDish=()=>{
       
@@ -17,6 +18,22 @@ const DeleteModal=(props)=>{
         })
         .then((res) => {
           console.log(res);
+          if(res.status===200){
+            toast.success("Dish Deleted Successfully", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+              setTimeout(()=>{
+                props.close();
+                props.load(!props.loadvar)
+              },5000)
+          }
           
           }
         )
@@ -24,7 +41,7 @@ const DeleteModal=(props)=>{
           console.log(err);
         
         });
-        props.close();
+       
         console.log(Config)
     }
     return(

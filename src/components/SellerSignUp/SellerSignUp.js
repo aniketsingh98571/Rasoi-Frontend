@@ -24,7 +24,7 @@ const SellerSignUp = () => {
           <p>Sign Up</p>
         </div>
       </div>
-      <form onSubmit={SubmitHandler} encType="multipart/form-data">
+      <form onSubmit={(e)=>SubmitHandler(e)} encType="multipart/form-data">
         <div className={classes.ConsumerForm}>
           <div className={classes.LeftForm}>
             <div className={classes.NameContainer}>
@@ -37,6 +37,7 @@ const SellerSignUp = () => {
                   name="sellerName"
                   value={ConsumerRegistration.sellerName}
                   onChange={HandleInput}
+                  onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
                 />
               </div>
             </div>
@@ -50,6 +51,7 @@ const SellerSignUp = () => {
                   name="password"
                   value={ConsumerRegistration.password}
                   onChange={HandleInput}
+                  onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
                 />
                 <p id="passId"></p>
               </div>
@@ -65,6 +67,7 @@ const SellerSignUp = () => {
                   type="file"
                   name="panImage"
                   onChange={HandleFileInput1}
+                  onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
                 />
               </div>
             </div>
@@ -80,6 +83,7 @@ const SellerSignUp = () => {
                   name="mobileNo"
                   value={ConsumerRegistration.mobileNo}
                   onChange={HandleInput}
+                  onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
                 />
                 <p id="mobileId"></p>
               </div>
@@ -94,6 +98,7 @@ const SellerSignUp = () => {
                   name="confirmpassword"
                   value={ConfirmPass}
                   onChange={ConfirmPassword}
+                  onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
                 />
                 <p>{ErrorMessage}</p>
               </div>
@@ -109,6 +114,7 @@ const SellerSignUp = () => {
                   accept=".jpeg,.png,.jpg"
                   name="profileImage"
                   onChange={HandleFileInput2}
+                  onKeyDown={(e)=>{e.key==="Enter" && SubmitHandler(e)}}
                 />
               </div>
             </div>

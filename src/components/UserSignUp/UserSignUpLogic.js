@@ -37,6 +37,7 @@ const UserSignUpLogic = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        theme: "dark",
       });
     }
 
@@ -101,6 +102,7 @@ const UserSignUpLogic = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
+              theme: "dark",
             });
           } else if (response.status === 201) {
             toast.success(
@@ -113,6 +115,7 @@ const UserSignUpLogic = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
+                theme: "dark",
               }
             );
           }
