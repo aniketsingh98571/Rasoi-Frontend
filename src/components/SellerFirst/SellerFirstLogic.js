@@ -51,10 +51,10 @@ const SellerFirstLogic = () => {
     SetFirstForm({ ...FirstForm, ProfilePic: e.target.files[0] });
   };
   const DoneHandler = () => {
-    console.log(Done.FormFirst);
-    console.log(Done.FormSecond);
+    // console.log(Done.FormFirst);
+    // console.log(Done.FormSecond);
     if (Done.FormFirst === true && Done.FormSecond === 1) {
-      console.log("Dashboard filled");
+      // console.log("Dashboard filled");
       SetModalOpen(true);
     } else {
       toast.warn("Please fill out fields marked with *", {
@@ -67,7 +67,7 @@ const SellerFirstLogic = () => {
         progress: undefined,
         theme: "dark",
       });
-      console.log("Please fill out form first");
+      // console.log("Please fill out form first");
     }
   };
   const NavigateNext = () => {
@@ -78,7 +78,7 @@ const SellerFirstLogic = () => {
   };
   const InnerForm = (e) => {
     e.preventDefault();
-    console.log("InnerForm");
+    // console.log("InnerForm");
 
     if (
       SecondForm.dishName &&
@@ -135,7 +135,7 @@ const SellerFirstLogic = () => {
   };
   const OuterForm = (e) => {
     e.preventDefault();
-    console.log("Outer Form");
+    // console.log("Outer Form");
 
     if (FirstForm.areaName && FirstForm.pinCode && FirstForm.ProfilePic) {
       const OuterFormData = new FormData();

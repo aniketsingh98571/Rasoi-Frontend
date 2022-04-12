@@ -22,8 +22,8 @@ const ImageHandler1=(e)=>{
 }
 const SubmitHandler1=(e)=>{
     e.preventDefault()
-    console.log(EditUser)
-    console.log(props.ConsumerId)
+    // console.log(EditUser)
+    // console.log(props.ConsumerId)
     const ConsumerEdit=new FormData()
     ConsumerEdit.append("consumerID",props.ConsumerId)
     ConsumerEdit.append("name",EditUser.name)
@@ -33,7 +33,7 @@ const SubmitHandler1=(e)=>{
     axios
         .put("http://localhost:8080/consumer/editProfile",ConsumerEdit)
         .then((res) => {
-          console.log(res);
+        //   console.log(res);
           if(res.status===200){
             toast.success("Profile Updated", {
                 position: "top-center",

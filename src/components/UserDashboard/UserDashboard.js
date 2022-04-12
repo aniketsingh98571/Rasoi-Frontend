@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import classes from './UserDashboard.module.css'
 
 import UserEditModal from "./UserEditModal"
-
+import SecondaryHeader from '../SecondaryHeader/SecondaryHeader'
 import Consumer from '../../assets/images/Consumer.jpg'
 import axios from "axios"
 import Loader from "../SellerDashboard/Loader"
@@ -30,7 +30,7 @@ const UserDashboard =()=>{
             },
           })
           .then(function (response) {
-            console.log(response)
+            // console.log(response)
             setOrders(response.data)
             setUI(false)
          })
@@ -64,6 +64,7 @@ const UserDashboard =()=>{
         {
               !UI&&Object.keys(Orders).length !== 0?
        <div className={classes.OuterContainer}>
+           <SecondaryHeader/>
            {rating.rating?<RatingModal  close={closeRate} consumerID={localStorage.getItem("ConsumerId")} sellerID={rating.sellerID} orderID={rating.orderID}/>:null}
           { modal?<UserEditModal open={true} close={closeModal} ConsumerId={localStorage.getItem("ConsumerId")} ConsumerName={Orders.consumerInfo.name} ConsumerAddress={Orders.consumerInfo.address} ConsumerPic={Orders.consumerInfo.img} ConsumerData={Orders} SetConsumerData={setOrders}/>:null}
        <div className={classes.FirstContainer}>

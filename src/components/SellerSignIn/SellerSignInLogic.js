@@ -28,7 +28,7 @@ const SellerSignInLogic = () => {
               progress: undefined,
               theme: "dark",
             });
-            console.log(res);
+            // console.log(res);
             localStorage.setItem("SellerId", res.data.seller_ID);
             SetSellerlog({ mobileNo: "", password: "" });
 

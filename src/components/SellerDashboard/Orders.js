@@ -25,7 +25,7 @@ const Orders=()=>{
           },
         })
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
            
          if(response.data.message==="no orders till now!!!"){
             SetEmpty(true)
@@ -48,7 +48,7 @@ const Orders=()=>{
     const MarkDelivered=(id)=>{
         const sellerID=localStorage.getItem("SellerId")
         const orderID=id
-        console.log(id + " Delivered ")
+        // console.log(id + " Delivered ")
         axios
         .post("http://localhost:8080/seller/markAsDeliver", {
            sellerID: sellerID,
@@ -118,14 +118,14 @@ const Orders=()=>{
             ...expandDiv,
             ['div' + id]: state
         })
-        console.log(id + " Order Accepted")
+        // console.log(id + " Order Accepted")
         
     }
     const OrderRejection=(id)=>{
         const sellerID=localStorage.getItem("SellerId")
         const orderID=id
         const action=false;
-        console.log(id + " Order Rejected")
+        // console.log(id + " Order Rejected")
         axios
         .post("http://localhost:8080/seller/acceptOrRejectOrder", {
            sellerID: sellerID,

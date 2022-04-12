@@ -27,7 +27,7 @@ const UserSignUpLogic = () => {
       ConsumerRegistration.password &&
       ConfirmPass
     ) {
-      console.log("filled");
+      // console.log("filled");
     } else {
       toast.warn("Please Fill out all fields", {
         position: "top-center",
@@ -75,7 +75,7 @@ const UserSignUpLogic = () => {
       ConsumerRegistration.password &&
       ConfirmPass
     ) {
-      console.log("All okay");
+      // console.log("All okay");
       fetch("http://localhost:8080/consumer/signup", {
         method: "POST", // or 'PUT'
         mode: "cors",

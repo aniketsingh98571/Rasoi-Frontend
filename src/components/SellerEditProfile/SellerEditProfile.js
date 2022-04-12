@@ -33,7 +33,7 @@ const SellerEditProfile=()=>{
             window.location.href="/SellerSignIn"
         }
         // console.log(sellerID);
-        console.log("Loading")
+        // console.log("Loading")
         axios
           .get("http://localhost:8080/seller/sellerDashboard", {
             params: {
@@ -87,7 +87,7 @@ const SellerEditProfile=()=>{
         SubmitFirstForm.append("bio",firstForm.bio)
         SubmitFirstForm.append("facebook",firstForm.facebook)
         SubmitFirstForm.append("instagram",firstForm.instagram)
-        console.log(dishesCount)
+        // console.log(dishesCount)
         axios
         .put("http://localhost:8080/seller/editSellerInfo", SubmitFirstForm)
         .then((res) => {
@@ -114,7 +114,7 @@ const SellerEditProfile=()=>{
 
     //Edit Item
     const EditHandler=(item)=>{
-        console.log("Edited" +item.id)
+        // console.log("Edited" +item.id)
         setdish(item)
         setmodal(true)
         setadd("")
@@ -125,7 +125,7 @@ const SellerEditProfile=()=>{
 
     //Add Item
     const AddHandler=(speciality,add)=>{
-        console.log("Add Handler")
+        // console.log("Add Handler")
         setadd(add)
         setdish({isSpecial:speciality})
         setmodal(true)
@@ -138,7 +138,7 @@ const SellerEditProfile=()=>{
 
     //Delete Dish
     const DeleteHandler=(id)=>{
-        console.log(" Deleted "+id)
+        // console.log(" Deleted "+id)
         setdelete({dishID:id,sellerID:Edit.sellerInfo.id,open:true})
         
     }

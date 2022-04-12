@@ -30,7 +30,7 @@ const EditModal=(props)=>{
         document.getElementById("EditDishImageID").src=url
         Setmenu({...menu,MenuPicture:e.target.files[0]})
 
-        console.log("in edit modal picture")
+        // console.log("in edit modal picture")
 
     }
 
@@ -60,14 +60,14 @@ const EditModal=(props)=>{
         EditMenuItem.append("MenuPicture",menu.MenuPicture)
         EditMenuItem.append("isSpecial",menu.isSpecial)
         if(props.AddUpdate==="add"){
-            console.log("Item to be added")
+            // console.log("Item to be added")
             // if(menu.dishType===null)
             //     Setmenu({...menu,dishType:"Veg"})
-             console.log(menu)
+            //  console.log(menu)
                 axios
         .post("http://localhost:8080/seller/addDishes", AddMenuItem)
         .then((res) => {
-          console.log(res);
+        //   console.log(res);
           if(res.status===201){
             toast.success("Dish Added Successfully", {
                 position: "top-center",
@@ -92,11 +92,11 @@ const EditModal=(props)=>{
             
         }
         else{
-            console.log("Item not to be added")
+            // console.log("Item not to be added")
            axios
                 .put("http://localhost:8080/seller/editDish", EditMenuItem)
                 .then((res) => {
-                  console.log(res);
+                //   console.log(res);
                   if(res.status===200){
                     toast.success("Dish Updated Successfully", {
                         position: "top-center",
@@ -123,9 +123,9 @@ const EditModal=(props)=>{
                 });
           
         }
-       console.log(props.item.id + "edited in Modal")
-       console.log(menu)
-       console.log(props.SellerId)
+    //    console.log(props.item.id + "edited in Modal")
+    //    console.log(menu)
+    //    console.log(props.SellerId)
     }
     return(
         <Modal isOpen={props.open}

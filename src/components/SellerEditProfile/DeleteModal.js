@@ -6,18 +6,16 @@ import { toast } from "react-toastify"
 const DeleteModal=(props)=>{
     const DeleteDish=()=>{
       
-        const Config={
-            sellerID:props.config.sellerID,
-            dishID:props.config.dishID
-        }
+        
         axios
         .delete("http://localhost:8080/seller/deleteDish", {
-           params:{ sellerID:props.config.sellerID,
+           params:{ 
+               sellerID:props.config.sellerID,
             dishID:props.config.dishID
            }
         })
         .then((res) => {
-          console.log(res);
+        //   console.log(res);
           if(res.status===200){
             toast.success("Dish Deleted Successfully", {
                 position: "top-center",
@@ -42,7 +40,7 @@ const DeleteModal=(props)=>{
         
         });
        
-        console.log(Config)
+        // console.log(Config)
     }
     return(
         <Modal isOpen={true}

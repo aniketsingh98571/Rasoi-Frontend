@@ -11,7 +11,7 @@ const SellerDashBoard = () => {
     if(sellerID===null){
       window.location.href="/SellerSignIn"
     }
-    console.log(sellerID);
+    // console.log(sellerID);
      axios
     .get("http://localhost:8080/seller/sellerDashboard", {
       params: {
@@ -19,7 +19,7 @@ const SellerDashBoard = () => {
       },
     })
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
     setUI(false)
     SetSpeciality(response.data);
     })
@@ -36,7 +36,7 @@ const SellerDashBoard = () => {
    {
      !UI&&Object.keys(Speciality).length !== 0?
     <div className={classes.OuterContainer}>
-      {console.log(Speciality)}
+      {/* {console.log(Speciality)} */}
       <SellerHeader />
 
       <div className={classes.ButtonContainer}>

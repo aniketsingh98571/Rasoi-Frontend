@@ -50,7 +50,7 @@ const SellerFirst = () => {
   });
   useEffect(() => {
     let sellerID = localStorage.getItem("SellerId");
-    console.log(sellerID)
+    // console.log(sellerID)
     // console.log(sellerID);
     if(sellerID===null){
       window.location.href="/SellerSignIn"
@@ -63,7 +63,7 @@ const SellerFirst = () => {
         },
       })
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
         setUI(false)
         setResponse({
           generalDishesCount: response.data.generalDishesCount,
@@ -135,10 +135,10 @@ const SellerFirst = () => {
     });
   };
   const DoneHandler = () => {
-    console.log(Done.FormFirst);
-    console.log(Done.FormSecond);
+    // console.log(Done.FormFirst);
+    // console.log(Done.FormSecond);
     if (Done.FormFirst === true && Done.FormSecond === 1) {
-      console.log("Dashboard filled");
+      // console.log("Dashboard filled");
       SetModalOpen(true);
     } else {
       toast.warn("Please fill out fields marked with *", {
@@ -151,7 +151,7 @@ const SellerFirst = () => {
         progress: undefined,
         theme: "dark",
       });
-      console.log("Please fill out form first");
+      // console.log("Please fill out form first");
     }
   };
   const NavigateNext = () => {
@@ -163,7 +163,7 @@ const SellerFirst = () => {
   };
   const InnerForm = (e) => {
     e.preventDefault();
-    console.log("InnerForm");
+    // console.log("InnerForm");
 
     if (
       SecondForm.dishName &&
@@ -172,8 +172,8 @@ const SellerFirst = () => {
       SecondForm.timeReq
     ) {
       const InnerFormData = new FormData();
-      console.log(isSpecial);
-      console.log(SecondForm);
+      // console.log(isSpecial);
+      // console.log(SecondForm);
       InnerFormData.append("dishName", SecondForm.dishName);
       InnerFormData.append("price", SecondForm.price);
       InnerFormData.append("dishType", SecondForm.dishType);
@@ -188,7 +188,7 @@ const SellerFirst = () => {
       axios
         .post("http://localhost:8080/seller/addDishes", InnerFormData)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           // console.log(SecondForm)
 
           //    console.log(SecondForm)
@@ -218,7 +218,7 @@ const SellerFirst = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           if (
             err.response.data.message === "all special dishes slots are full"
           ) {
@@ -249,7 +249,7 @@ const SellerFirst = () => {
           if (
             err.response.data.message === "all Normal dishes slots are full"
           ) {
-            console.log("full");
+            // console.log("full");
             toast.warn(
               "Your Last Dish was not saved in our database due to max limit reached!",
               {
@@ -292,7 +292,7 @@ const SellerFirst = () => {
   };
   const OuterForm = (e) => {
     e.preventDefault();
-    console.log("Outer Form");
+    // console.log("Outer Form");
 
     if (FirstForm.areaName && FirstForm.pinCode && FirstForm.ProfilePic) {
       const OuterFormData = new FormData();
@@ -307,7 +307,7 @@ const SellerFirst = () => {
       axios
         .put("http://localhost:8080/seller/fillSellerDetails", OuterFormData)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             toast.success("Seller Info Saved Successfully", {
               position: "top-center",

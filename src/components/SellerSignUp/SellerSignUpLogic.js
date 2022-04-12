@@ -94,7 +94,7 @@ const SellerSignUpLogic = () => {
       ConsumerRegistration.mobileNo.length === 10 &&
       ConsumerRegistration.password.length > 5
     ) {
-      console.log("All okay");
+      // console.log("All okay");
 
       const formData = new FormData();
       formData.append("sellerName", ConsumerRegistration.sellerName);

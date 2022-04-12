@@ -8,14 +8,14 @@ const RatingModal=(props)=>{
     const [stars,setStars]=useState(0)
     const RatingHandler=(newRating)=>{
         setStars(newRating)
-        console.log(newRating)
+        // console.log(newRating)
     }
     const SubmitRating=()=>{
-        console.log(stars)
-        console.log("Order id "+props.orderID)
-        console.log("Seller Id"+props.sellerID)
-        console.log("Order id "+props.orderID)
-        console.log(stars+" rating")
+        // console.log(stars)
+        // console.log("Order id "+props.orderID)
+        // console.log("Seller Id"+props.sellerID)
+        // console.log("Order id "+props.orderID)
+        // console.log(stars+" rating")
         axios
         .post("http://localhost:8080/consumer/rateSeller", {
           consumerID:props.consumerID,
@@ -24,7 +24,7 @@ const RatingModal=(props)=>{
           rating:stars
 })
         .then(function (response) {
-          console.log(response);
+        //   console.log(response);
           if(response.status===200){
             toast.success("Seller Rated", {
                 position: "top-center",
