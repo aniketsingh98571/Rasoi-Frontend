@@ -13,7 +13,8 @@ const Home = () => {
   // const [uimg, setUimg] = useState();
   // let Sellers;
   useEffect(() => {
-    if (localStorage.getItem("ConsumerId") === null) {
+    let ConsumerId = localStorage.getItem("ConsumerId");
+    if (ConsumerId === null) {
       window.location.href = "/";
     } else {
       const consumerID = localStorage.getItem("ConsumerId");

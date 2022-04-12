@@ -12,11 +12,13 @@ const Checkout = () => {
   const [placed, setPlaced] = useState(false);
   const [disable, setDisable] = useState(false);
   let consumerData = JSON.parse(localStorage.getItem("consumerData"));
+
   useEffect(() => {
     let ConsumerId = localStorage.getItem("ConsumerId");
     if (ConsumerId === null) {
       window.location.href = "/";
     }
+    //eslint-disable-next-line
   }, []);
 
   const handlePlaceClick = (totalPrice) => {
@@ -54,8 +56,16 @@ const Checkout = () => {
           <p className={classes.head}>Your Details</p>
 
           <div className={classes.details}>
-            <p className={classes.detailItem}>{consumerData.consumerName}</p>
-            <p className={classes.detailItem}>{consumerData.consumerAddress}</p>
+            <p className={classes.detailItem}>
+              {localStorage.getItem("ConsumerId")
+                ? consumerData.consumerName
+                : ""}
+            </p>
+            <p className={classes.detailItem}>
+              {localStorage.getItem("ConsumerId")
+                ? consumerData.consumerAddress
+                : ""}
+            </p>
           </div>
           <div className={classes.pay}>
             <p>

@@ -5,10 +5,10 @@ import classes from "./Dropdown.module.css";
 const Dropdown = () => {
   let navigate = useNavigate();
   const handleProfileClick = (e) => {
-    navigate("/profile");
+    navigate("/ConsumerProfile");
   };
   const handleOrderClick = () => {
-    navigate("/orders");
+    navigate("/ConsumerProfile");
   };
   const handleLogoutClick = () => {
     localStorage.removeItem("ConsumerId");

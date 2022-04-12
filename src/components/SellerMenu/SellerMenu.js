@@ -14,7 +14,8 @@ const SellerMenu = () => {
   const [special, setSpecial] = useState([]);
   const [general, setGeneral] = useState([]);
   useEffect(() => {
-    if (localStorage.getItem("ConsumerId") === null) {
+    let ConsumerId = localStorage.getItem("ConsumerId");
+    if (ConsumerId === null) {
       window.location.href = "/";
     } else {
       const sellerID = localStorage.getItem("sellerID");
