@@ -16,29 +16,6 @@ const MenuItem = (props) => {
   } = useContext(CartContext);
   let menuSellerID, menuSellerName;
 
-  // const [item, setItem] = useState({
-  //   dishName: "",
-  //   dishQty: 1,
-  //   dishType: "",
-  //   dishPrice: "",
-  // });
-
-  // const initialState = [];
-  // let [cart, setCart] = useState(initialState);
-  // let cart = [];
-
-  // const handleCart = (cartItem) => {
-  //   setCart((prevCart) => {
-  //     const newCart = [...prevCart];
-  //     newCart.unshift({
-  //       dishName: cartItem.dishName,
-  //       dishPrice: cartItem.dishPrice,
-  //       dishQty: cartItem.dishQty,
-  //       dishType: cartItem.dishType,
-  //     });
-  //   });
-  // };
-
   const handleAddClick = (id) => {
     // e.preventDefault();
     // console.log(props.name);
@@ -123,7 +100,7 @@ const MenuItem = (props) => {
     <>
       <div className={classes.card}>
         <div className={classes.dishImg}>
-          <img src={props.dishImg} alt="food" />
+          <img src={`http://localhost:8080/${props.dishImg}`} alt="food" />
         </div>
 
         <div className={classes.dishDetails}>

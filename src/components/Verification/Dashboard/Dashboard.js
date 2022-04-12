@@ -8,16 +8,20 @@ const Dashboard = () => {
   const [req, setReq] = useState([]);
 
   useEffect(() => {
-    console.log("Mai useeffect hu");
-    axios
-      .get("http://localhost:8080/validator/getAllNonVadidatedSeller")
-      .then(function (response) {
-        // console.log(response);
-        setReq(response.data.sellers);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    if (localStorage.getItem("verifierId") === null) {
+      window.location.href = "/verificationLogin";
+    } else {
+      // console.log("Mai useeffect hu");
+      axios
+        .get("http://localhost:8080/validator/getAllNonVadidatedSeller")
+        .then(function (response) {
+          // console.log(response);
+          setReq(response.data.sellers);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   }, []);
 
   const getUpdated = (sellerID) => {

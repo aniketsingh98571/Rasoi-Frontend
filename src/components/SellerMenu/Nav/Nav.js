@@ -34,7 +34,15 @@ const Nav = (props) => {
           Contact
         </div>
       </div>
-      {props.orderClick && <MenuFilter />}
+      {props.orderClick && (
+        <MenuFilter
+          special={props.special}
+          setSpecial={props.setSpecial}
+          general={props.general}
+          setGeneral={props.setGeneral}
+          res={props.res}
+        />
+      )}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 let localCart = JSON.parse(localStorage.getItem("cart") || "[]");
 let cartSellerName = localStorage.getItem("cartSellerName") || "";
 let sellerIdFromCart = localStorage.getItem("cartSellerID");
+
 const CartState = (props) => {
   let [cart, setCart] = useState(localCart);
   const [cartSellerID, setCartSellerID] = useState(sellerIdFromCart);

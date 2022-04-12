@@ -9,6 +9,7 @@
   background-color: var(--White);
   margin: 0 5vw;
   border-top: 2px solid var(--Black);
+  margin-bottom: 10px;
   /* border: 2px solid black; */
 }
 .links {

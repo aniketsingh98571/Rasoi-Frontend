@@ -63,7 +63,10 @@ const Cart = () => {
       ele1.style.top = "3vh";
       ele2.style.position = "fixed";
       ele2.style.top = "8vh";
-    } else if (window.scrollY < 399) {
+    } else if (
+      (window.scrollY > 300 && window.scrollY < 399) ||
+      window.scrollY < 280
+    ) {
       const ele1 = document.getElementById("chead");
       const ele2 = document.getElementById("ccontain");
       ele1.style.position = "fixed";
@@ -72,7 +75,18 @@ const Cart = () => {
       ele2.style.top = "68vh";
       ele1.style.transition = "0.7s";
       ele2.style.transition = "0.7s";
+    } else if (window.scrollY >= 282 && window.scrollY < 300) {
+      const ele1 = document.getElementById("chead");
+      const ele2 = document.getElementById("ccontain");
+      ele1.style.position = "fixed";
+      ele1.style.top = "16vh";
+      ele2.style.position = "fixed";
+      ele2.style.top = "21vh";
     }
+  };
+
+  const handleCheckout = () => {
+    window.location.href = "/Checkout";
   };
 
   useEffect(() => {
@@ -120,7 +134,7 @@ const Cart = () => {
             {totalPrice}
           </p>
         </div>
-        <div className={classes.chkoutBtn}>
+        <div className={classes.chkoutBtn} onClick={handleCheckout}>
           <p>Checkout</p>
         </div>
       </div>

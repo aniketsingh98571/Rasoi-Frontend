@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./VerificationLogin.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const VerificationLogin = () => {
   const [VerifierLog, setVerifierLog] = useState({
@@ -24,9 +25,29 @@ const VerificationLogin = () => {
         .then((res) => {
           console.log(res);
           localStorage.setItem("verifierId", "SMLAD");
+          toast.success("Login Successfull!", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
           navigate("/verification");
         })
         .catch((err) => {
+          toast.error("Invalid Credentials!", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
           console.log(err);
         });
     } else alert("Please fill all the details");

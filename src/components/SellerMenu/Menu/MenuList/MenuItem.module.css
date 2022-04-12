@@ -1,8 +1,8 @@
 .card {
   display: flex;
-  width: 30vw;
+  width: 40vw;
   margin: 10px 0;
-  height: 12vh;
+  height: 17vh;
   border: 3px solid var(--Yellow);
   font-family: CircularStd-Bold;
 }

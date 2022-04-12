@@ -5,28 +5,47 @@ import SellerCard from "./SellerCard";
 import axios from "axios";
 import ConsumerHeader from "../ConsumerHeader/ConsumerHeader";
 import Footer from "../Footer/Footer";
+import Loader from "../Loader/Loader";
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
   const [Sellers, setSellers] = useState([]);
+  // const [uimg, setUimg] = useState();
   // let Sellers;
   useEffect(() => {
-    const consumerID = localStorage.getItem("ConsumerId");
-    localStorage.removeItem("sellerID");
-    axios
-      .get("http://localhost:8080/consumer/consumerDashbord", {
-        params: {
-          consumerID: consumerID,
-        },
-      })
-      .then(function (response) {
-        console.log(response);
-        setSellers(response.data.sellersData);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    let ConsumerId = localStorage.getItem("ConsumerId");
+    if (ConsumerId === null) {
+      window.location.href = "/";
+    } else {
+      const consumerID = localStorage.getItem("ConsumerId");
+      localStorage.removeItem("sellerID");
+      axios
+        .get("http://localhost:8080/consumer/consumerDashbord", {
+          params: {
+            consumerID: consumerID,
+          },
+        })
+        .then(function (response) {
+          setLoading(true);
+          // console.log(response);
+          setSellers(response.data.sellersData);
+          localStorage.setItem("img", response.data.consumerData.consumerImage);
+          localStorage.setItem(
+            "consumerData",
+            JSON.stringify(response.data.consumerData)
+          );
+          setLoading(false);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
     //eslint-disable-next-line
   }, []);
+
+  // setUimg(localStorage.getItem("img"));
+  // console.log(uimg);
+  const uimg = localStorage.getItem("img");
 
   // const Sellers = [
   //   {
@@ -80,7 +99,7 @@ const Home = () => {
   // ];
   return (
     <>
-      <ConsumerHeader Sellers={Sellers} setSellers={setSellers} />
+      <ConsumerHeader Sellers={Sellers} setSellers={setSellers} uimg={uimg} />
       <div className={classes.container}>
         <Filter Sellers={Sellers} setSellers={setSellers} />
         {Sellers.map((seller) => {
@@ -97,6 +116,7 @@ const Home = () => {
         })}
       </div>
       <Footer />
+      {loading && <Loader />}
     </>
   );
 };

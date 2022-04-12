@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./RequestCard.module.css";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const RequestCard = (props) => {
   const handleVerify = () => {
@@ -16,6 +17,16 @@ const RequestCard = (props) => {
         console.log(res);
         if (res.status === 200) {
           props.Update(props.sellerID);
+          toast.success("Seller Verified!", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
         }
       })
       .catch((err) => {
@@ -36,6 +47,16 @@ const RequestCard = (props) => {
 
         if (res.status === 200) {
           props.Update(props.sellerID);
+          toast.success("Seller Rejected!", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
         }
         // props.Update(props.sellerID);
       })

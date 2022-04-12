@@ -1,18 +1,33 @@
-.cartCard {
+.card {
   display: flex;
   width: 100%;
+  margin: 0 auto;
   height: 60px;
-  /* border: 1px solid black; */
   font-size: 120%;
   font-family: AvenirNextLTPro-Bold;
   align-items: center;
   margin-bottom: 5px;
-  /* border: 2px solid red; */
+  /* flex-direction: column; */
 }
 
-.itemName {
+.name {
   display: flex;
   width: 40%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.qty {
+  display: flex;
+  width: 20%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemPrice {
+  display: flex;
+  width: 30%;
   height: 100%;
   justify-content: center;
   align-items: center;
@@ -20,7 +35,7 @@
 
 .vItemType {
   display: flex;
-  width: 8%;
+  width: 6%;
   height: 60%;
   border: 2px solid green;
   justify-content: center;
@@ -30,7 +45,7 @@
 }
 .nItemType {
   display: flex;
-  width: 8%;
+  width: 6%;
   height: 60%;
   border: 2px solid red;
   justify-content: center;
@@ -56,43 +71,4 @@
 
 .nVegType {
   color: red;
-}
-
-.quantity {
-  display: flex;
-  text-align: center;
-  width: 30%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.quantity > button {
-  width: 30%;
-  height: 80%;
-  text-align: center;
-  outline: none;
-  background-color: var(--Yellow);
-  font-size: 160%;
-}
-
-.quantity > button:hover {
-  cursor: pointer;
-}
-.quantity > p {
-  display: flex;
-  width: 30%;
-  height: 80%;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--White);
-  color: var(--Black);
-}
-
-.itemPrice {
-  display: flex;
-  width: 20%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
 }
