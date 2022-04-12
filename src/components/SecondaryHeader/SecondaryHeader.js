@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import userHeader from "../../assets/images/userHeader.jpg";
 
-const ConsumerHeader = (props) => {
+const SecondaryHeader = (props) => {
   const { cart } = useContext(CartContext);
   const [clickStatus, setclickStatus] = useState(false);
 
@@ -47,6 +47,7 @@ const ConsumerHeader = (props) => {
     }
   };
 
+  const uimg = localStorage.getItem("img");
   return (
     <>
       <div className={classes.container}>
@@ -55,13 +56,13 @@ const ConsumerHeader = (props) => {
         </Link>
 
         <div className={classes.user} onClick={handleUserClick}>
-          {props.img === "null" || props.img === undefined ? (
+          {uimg === "null" || uimg === undefined ? (
             <div className={classes.avatar}>
               <img src={userHeader} alt="" />
             </div>
           ) : (
             <div className={classes.avatar}>
-              <img src={`http://localhost:8080/${props.uimg}`} alt="" />
+              <img src={`http://localhost:8080/${uimg}`} alt="" />
             </div>
           )}
 
@@ -88,4 +89,4 @@ const ConsumerHeader = (props) => {
   );
 };
 
-export default ConsumerHeader;
+export default SecondaryHeader;

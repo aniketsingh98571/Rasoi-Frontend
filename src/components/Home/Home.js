@@ -27,7 +27,7 @@ const Home = () => {
         })
         .then(function (response) {
           setLoading(true);
-          // console.log(response);
+          console.log(response);
           setSellers(response.data.sellersData);
           localStorage.setItem("img", response.data.consumerData.consumerImage);
           localStorage.setItem(

@@ -141,7 +141,7 @@ const ConsumerHeader = (props) => {
         </div>
 
         <div className={classes.user} onClick={handleUserClick}>
-          {props.img === "null" || props.img === undefined ? (
+          {props.uimg === "null" || props.uimg === undefined ? (
             <div className={classes.avatar}>
               <img src={userHeader} alt="" />
             </div>
