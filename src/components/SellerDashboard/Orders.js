@@ -17,7 +17,7 @@ const Orders = () => {
     if (sellerID === null) {
       window.location.href = "/SellerSignIn";
     }
-    // console.log(sellerID);
+    console.log(sellerID);
     axios
       .get("http://localhost:8080/seller/getOrders", {
         params: {
@@ -36,7 +36,7 @@ const Orders = () => {
         }
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error.response.data.message);
       });
   }, [load]);
   const NavigateNext = () => {
@@ -52,7 +52,7 @@ const Orders = () => {
         orderID: orderID,
       })
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
           toast.success("Order Delivered", {
             position: "top-center",
