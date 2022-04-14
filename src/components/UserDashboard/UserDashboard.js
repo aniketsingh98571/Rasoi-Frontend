@@ -99,7 +99,10 @@ const UserDashboard =()=>{
                    <div className={classes.OrderText}>                  
                     <p>Your Orders</p>
                     </div>
-            <div className={classes.OrdersListContainer}>
+                    {
+
+                    Orders.ordersInfo.length===0?<p className={classes.EmptyConsumer}>No Orders Placed Currently</p>:
+                        <div className={classes.OrdersListContainer}>
                 {
                     Orders.ordersInfo.map((ele)=>{
                         return (
@@ -154,6 +157,8 @@ const UserDashboard =()=>{
                 }
                
             </div>
+            
+}
                </div>
            </div>
       
