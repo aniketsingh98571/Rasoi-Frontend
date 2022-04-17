@@ -50,6 +50,10 @@ const SellerDashBoard = () => {
         >
           Orders
         </button>
+       <button type="button" className={classes.ThirdButton} onClick={()=>window.location.href="/Analytics"}>
+         Analytics
+       </button>
+        
       </div>
       <div className={classes.InnerContainer}>
         <div className={classes.FirstContainer}>

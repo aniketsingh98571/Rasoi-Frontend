@@ -32,6 +32,12 @@
 .ButtonContainer button:hover{
     cursor: pointer;
 }
+.ThirdButton{
+    /* background-color: var(--Yellow); */
+    margin: 0 0 0 15px;
+    background-color: var(--White);
+    border: 2px solid var(--Yellow);
+}
 .FirstContainer{
     /* border: 2px solid red; */
     display: flex;
