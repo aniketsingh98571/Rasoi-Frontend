@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Tooltip, Cell } from "recharts";
+import Loader from "../../../../Loader/Loader";
 import VerificationHeader from "../VerificationHeader";
+import axios from "axios";
 import classes from "./Analytics.module.css";
 const renderCustomizedLabel = ({
   cx,
@@ -28,16 +30,39 @@ const renderCustomizedLabel = ({
   );
 };
 const Analytics = () => {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState({});
+  useEffect(() => {
+    // console.log("Mai useeffect hu");
+    axios
+      .get("http://localhost:8080/validator/analytics", {
+        params: {
+          validatorUsername: "Somesh Lad",
+        },
+      })
+      .then(function (response) {
+        // console.log(response.data);
+        setData(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setLoading(false);
+  }, []);
   const data01 = [
-    { name: "Accepted", value: 15 },
-    { name: "Rejected", value: 15 },
-    { name: "Pending", value: 15 },
+    { name: "Validated", value: data.validatedSellers },
+    { name: "Rejected", value: data.rejectedSeller },
+    { name: "Pending", value: data.pendingSeller },
   ];
   const COLORS = ["#019267", "#FD5D5D", "#2FA4FF"];
   return (
     <>
+      {loading && <Loader />}
       <VerificationHeader />
-      <div>Analytics Page</div>
+      <div className={classes.heading}>
+        Lets have a look at the statistics about the Seller Validation and
+        Rejection:
+      </div>
       <div className={classes.Container}>
         <PieChart width={400} height={400} className={classes.Add}>
           <Pie
@@ -62,15 +87,15 @@ const Analytics = () => {
         <div className={classes.LegendContainer}>
           <div className={classes.AcceptContainer}>
             <div className={classes.AcceptColor}></div>
-            <p>Accepted Orders</p>
+            <p>Validated Sellers</p>
           </div>
           <div className={classes.RejectContainer}>
             <div className={classes.RejectColor}></div>
-            <p>Rejected Orders</p>
+            <p>Rejected Sellers</p>
           </div>
           <div className={classes.PendingContainer}>
             <div className={classes.PendingColor}></div>
-            <p>Pending Orders</p>
+            <p>Pending Sellers</p>
           </div>
         </div>
       </div>
