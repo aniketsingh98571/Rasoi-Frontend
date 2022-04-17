@@ -1,7 +1,9 @@
-import React from "react"
+import React,{useEffect,useState} from "react"
 import { PieChart, Pie, Legend, Tooltip, Cell } from "recharts";
 import classes from './Analytics.module.css'
 import SellerHeader from "../SellerHeader/SellerHeader";
+import axios from "axios";
+import Loader from "./Loader";
 const renderCustomizedLabel = ({
     cx,
     cy,
@@ -28,15 +30,39 @@ const renderCustomizedLabel = ({
     );
   };
 const Analytics=()=>{
+    const [data,setdata]=useState({})
+    const [UI,setUI]=useState(true)
+    useEffect(()=>{
+        const sellerID=localStorage.getItem("SellerId")
+        axios
+        .get("http://localhost:8080/seller/analytics", {
+          params: {
+            sellerID: sellerID,
+          },
+        })
+        .then(function (response) {
+          console.log(response);
+        // setUI(false)
+        // SetSpeciality(response.data);
+        setUI(false)
+        setdata(response.data)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },[])
     const data01 = [
-        { name: "Accepted", value: 15 },
-        { name: "Rejected", value: 15 },
-        {name:"Pending",value:15}
+        { name: "Accepted", value: data.accepted },
+        { name: "Rejected", value: data.rejected },
+        {name:"Pending",value:data.pending}
 ];
       const COLORS = ["#019267", "#FD5D5D","#2FA4FF"];
     //   const RADIAN = ;
       
     return(
+        <>
+        {
+         !UI&&Object.keys(data).length !== 0?
       <div className={classes.OuterContainer}>
           <SellerHeader/>
             <div className={classes.ButtonContainer}>
@@ -95,7 +121,11 @@ const Analytics=()=>{
      </div>
     </div>
        </div>
-       </div>
+       </div>:null
+}
+{UI?<Loader/>:null}
+       </>
+        
     )
 }
 export default Analytics;
