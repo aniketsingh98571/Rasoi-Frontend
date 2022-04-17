@@ -1,7 +1,7 @@
 import React from "react";
-import { PieChart, Pie, Tooltip, Cell } from "recharts";
-import VerificationHeader from "../VerificationHeader";
+import { PieChart, Pie, Legend, Tooltip, Cell } from "recharts";
 import classes from "./Analytics.module.css";
+import SellerHeader from "../SellerHeader/SellerHeader";
 const renderCustomizedLabel = ({
   cx,
   cy,
@@ -34,10 +34,37 @@ const Analytics = () => {
     { name: "Pending", value: 15 },
   ];
   const COLORS = ["#019267", "#FD5D5D", "#2FA4FF"];
+  //   const RADIAN = ;
+
   return (
-    <>
-      <VerificationHeader />
-      <div>Analytics Page</div>
+    <div className={classes.OuterContainer}>
+      <SellerHeader />
+      <div className={classes.ButtonContainer}>
+        <button
+          className={classes.ActiveClass}
+          type="button"
+          onClick={() => (window.location.href = "/SellerDashboard")}
+        >
+          Dashboard
+        </button>
+        <button
+          className={classes.SecondButton}
+          onClick={() => (window.location.href = "/Orders")}
+          type="button"
+        >
+          Orders
+        </button>
+        <button
+          type="button"
+          className={classes.ThirdButton}
+          onClick={() => (window.location.href = "/")}
+        >
+          Analytics
+        </button>
+      </div>
+      <div className={classes.TextContainer}>
+        <p>Lets have a look at your performance till now:</p>
+      </div>
       <div className={classes.Container}>
         <PieChart width={400} height={400} className={classes.Add}>
           <Pie
@@ -74,8 +101,7 @@ const Analytics = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
-
 export default Analytics;
