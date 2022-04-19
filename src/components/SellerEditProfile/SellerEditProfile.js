@@ -24,7 +24,7 @@ const SellerEditProfile=()=>{
         sellerID:null
     })
   
-    const [url,seturl]=useState("")
+    // const [url,seturl]=useState("")
  
 //    console.log("Empty "+Edit)
     useEffect(() => {
@@ -176,7 +176,7 @@ const SellerEditProfile=()=>{
                         <div className={classes.ProfileInput}>
                         <label htmlFor="ProfileInputId">
               <div className={classes.LabelContainer}>
-              <img src={`http://localhost:8080/${Edit.sellerInfo.img}`} id="SellerPersonalImageID"/>
+              <img src={`http://localhost:8080/${Edit.sellerInfo.img}`} id="SellerPersonalImageID" alt=""/>
                <p>Update Image</p>
               </div>
             </label>
@@ -232,7 +232,7 @@ const SellerEditProfile=()=>{
                             return (
                             <div key={ele._id} className={classes.InnerSpecialContainer}>
                             <div className={classes.SpecialImageContainer}>
-                                <img src={`http://localhost:8080/${ele.imageURL}`} loading="lazy"/>
+                                <img src={`http://localhost:8080/${ele.imageURL}`} loading="lazy" alt=""/>
                             </div>
                             <div className={classes.LeftContainer}>
                                 <div className={classes.FoodNameContainer}>
@@ -282,7 +282,7 @@ const SellerEditProfile=()=>{
                             return (
                              <div key={ele._id} className={classes.InnerSpecialContainer}>
                             <div className={classes.SpecialImageContainer}>
-                                <img src={`http://localhost:8080/${ele.imageURL}` }/>
+                                <img src={`http://localhost:8080/${ele.imageURL}` } alt=""/>
                             </div>
                             <div className={classes.LeftContainer}>
                                 <div className={classes.FoodNameContainer}>
