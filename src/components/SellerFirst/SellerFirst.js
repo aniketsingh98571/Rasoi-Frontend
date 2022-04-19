@@ -377,7 +377,7 @@ const SellerFirst = () => {
       </Modal>
       <div className={classes.NavContainer}>
         <div className={classes.LogoContainer}>
-          <img src={logo} alt="Rasoi logo" />
+          <img src={logo} alt="Rasoi" />
         </div>
 
         <div className={classes.WelComeText}>

@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react"
-import { PieChart, Pie, Legend, Tooltip, Cell } from "recharts";
+import { PieChart, Pie, Tooltip, Cell } from "recharts";
 import classes from './Analytics.module.css'
 import SellerHeader from "../SellerHeader/SellerHeader";
 import axios from "axios";
