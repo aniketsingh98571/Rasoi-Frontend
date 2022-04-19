@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react"
+import React, { useState} from "react"
 import Modal from "react-modal"
 import classes from './UserEditModal.module.css'
 import axios from "axios"
@@ -73,7 +73,7 @@ const SubmitHandler1=(e)=>{
                         <div className={classes.ProfileInput}>
                         <label htmlFor="ProfileInputId3">
               <div className={classes.LabelContainer}>
-              <img src={url}/>
+              <img src={url} alt=""/>
                <p>Update Image</p>
               </div>
             </label>

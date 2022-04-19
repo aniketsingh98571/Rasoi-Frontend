@@ -11,6 +11,12 @@
     border-radius: 5px;
     
 }
+.ThirdButton{
+    /* background-color: var(--Yellow); */
+    margin: 0 0 0 15px;
+    background-color: var(--White);
+    border: 2px solid var(--Yellow);
+}
 .ActiveClass{
     margin: 0 0 0 13px;
     background-color: var(--White);
@@ -20,7 +26,7 @@
     background-color: var(--Yellow);
     margin: 0 0 0 15px;
 }
-.ActiveClass:hover,.SecondButton:hover{
+.ActiveClass:hover,.SecondButton:hover,.ThirdButton:hover{
     cursor: pointer;
 }
 .HeaderContainer{

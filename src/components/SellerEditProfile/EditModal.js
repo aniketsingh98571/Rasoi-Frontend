@@ -16,7 +16,7 @@ const EditModal=(props)=>{
         MenuPicture:null
     })
 
-    const [url,seturl]=useState(props.item.imageURL)
+    // const [url,seturl]=useState()
     const ChangeHandler=(e)=>{
         const name=e.target.name;
         const value=e.target.value;
@@ -182,7 +182,7 @@ const EditModal=(props)=>{
                         <div className={classes.ProfileInput}>
                         <label htmlFor="ProfileInputId1">
               <div className={classes.LabelContainer}>
-              <img src={props.AddUpdate==="add"?"":`http://localhost:8080/${url}`} id="EditDishImageID" alt="Add Image"/>
+              <img src={props.AddUpdate==="add"?"":`http://localhost:8080/${props.item.imageURL}`} id="EditDishImageID" alt="Add"/>
                <p>{props.AddUpdate==="add"?"Add Image":"Update Image"}</p>
               </div>
             </label>

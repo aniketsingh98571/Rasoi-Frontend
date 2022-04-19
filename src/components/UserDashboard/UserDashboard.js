@@ -71,8 +71,8 @@ const UserDashboard =()=>{
                <div className={classes.LeftContainer}>
                   
                  <div className={classes.ProfileImageContainer}>
-                     {  Orders.consumerInfo.img===null?  <img src={Consumer} alt="Add User Image"/>:
-                       <img src={`http://localhost:8080/${Orders.consumerInfo.img}`} alt="User Image"/>
+                     {  Orders.consumerInfo.img===null?  <img src={Consumer} alt="Add User"/>:
+                       <img src={`http://localhost:8080/${Orders.consumerInfo.img}`} alt="User"/>
                      }
                    </div>
 

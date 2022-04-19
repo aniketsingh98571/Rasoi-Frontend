@@ -1,0 +1,72 @@
+.Container{
+    /* border: 2px solid red; */
+    width: 40%;
+    margin: 30px auto  0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.AcceptColor{
+    width: 25px;
+    height: 25px;
+    background-color: #019267;
+    margin: 0 10px 0 0px;
+}
+.RejectColor{
+    width: 25px;
+    height: 25px;
+    background-color: #FD5D5D;
+    margin: 0 10px 0 0px;
+}
+
+.PendingColor{
+    width: 25px;
+    height: 25px;
+    background-color: #2FA4FF;
+    margin: 0 10px 0 0px;
+}
+.PendingContainer,.RejectContainer,.AcceptContainer{
+    display: flex;
+    align-items: center;
+    margin: 10px 0 0 0;
+    font-family: AvenirNextLTPro-Regular;
+}
+.Add{
+    /* border: 2px solid blue; */
+    margin: 0 auto;
+    /* border: none; */
+}
+.TextContainer{
+    font-family: AvenirNextLTPro-Bold;
+    margin: 20px 0 0 80px;
+    font-size: 20px;
+}
+.ButtonContainer{
+    margin: 30px 0 0 0;
+}
+.ButtonContainer button{
+    
+    outline: none;
+    width: 10%;
+    padding: 8px 0;
+    font-size: 18px;
+    font-family: AvenirNextLTPro-Bold;
+    border-radius: 5px;
+}
+.ThirdButton{
+    background-color: var(--Yellow);
+    margin: 0 0 0 15px;
+}
+.ActiveClass{
+  margin: 0 0 0 100px;
+    background-color: var(--White);
+    border: 2px solid var(--Yellow);
+}
+.SecondButton{
+    margin: 0 0 0 15px;
+    background-color: var(--White);
+    border: 2px solid var(--Yellow);
+}
+.ButtonContainer button:hover{
+    cursor: pointer;
+}

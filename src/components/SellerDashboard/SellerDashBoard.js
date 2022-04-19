@@ -50,6 +50,10 @@ const SellerDashBoard = () => {
         >
           Orders
         </button>
+       <button type="button" className={classes.ThirdButton} onClick={()=>window.location.href="/Analytics"}>
+         Analytics
+       </button>
+        
       </div>
       <div className={classes.InnerContainer}>
         <div className={classes.FirstContainer}>
@@ -57,7 +61,7 @@ const SellerDashBoard = () => {
             
             <img
               src={`http://localhost:8080/${Speciality.sellerInfo.img}`}
-              alt="Seller Image"
+              alt="Seller"
             />
           </div>
           <div className={classes.TextContainer}>
@@ -114,7 +118,7 @@ const SellerDashBoard = () => {
                 <div className={classes.SpecialImage}>
                   <img
                     src={`http://localhost:8080/${ele.imageURL}`}
-                    alt="Special Image"
+                    alt="Special"
                   />
                 </div>
                 <div className={classes.SpecialText}>
@@ -143,7 +147,7 @@ const SellerDashBoard = () => {
                 <div className={classes.SpecialImage}>
                   <img
                     src={`http://localhost:8080/${ele.imageURL}`}
-                    alt="General Image"
+                    alt="General"
                   />
                 </div>
                 <div className={classes.SpecialText}>
