@@ -24,7 +24,8 @@ const SellerEditProfile=()=>{
         sellerID:null
     })
   
-    // const [url,seturl]=useState("")
+    const [url,seturl]=useState("")
+    console.log(url)
  
 //    console.log("Empty "+Edit)
     useEffect(() => {
