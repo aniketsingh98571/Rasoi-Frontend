@@ -52,23 +52,48 @@ const UserDashboard = () => {
     // setorderid()
     // console.log(orderID)
     // console.log(rating)
-    return(
-       
-        <>
-        {
-              !UI&&Object.keys(Orders).length !== 0?
-       <div className={classes.OuterContainer}>
-           <SecondaryHeader/>
-           {rating.rating?<RatingModal  close={closeRate} consumerID={localStorage.getItem("ConsumerId")} sellerID={rating.sellerID} orderID={rating.orderID}/>:null}
-          { modal?<UserEditModal open={true} close={closeModal} ConsumerId={localStorage.getItem("ConsumerId")} ConsumerName={Orders.consumerInfo.name} ConsumerAddress={Orders.consumerInfo.address} ConsumerPic={Orders.consumerInfo.img} ConsumerData={Orders} SetConsumerData={setOrders}/>:null}
-       <div className={classes.FirstContainer}>
-               <div className={classes.LeftContainer}>
-                  
-                 <div className={classes.ProfileImageContainer}>
-                     {  Orders.consumerInfo.img===null?  <img src={Consumer} alt="Add User"/>:
-                       <img src={`http://localhost:8080/${Orders.consumerInfo.img}`} alt="User"/>
-                     }
-                   </div>
+  };
+  const closeRate = () => {
+    setrating({ rating: false });
+    reload(!load);
+  };
+  return (
+    <>
+      {!UI && Object.keys(Orders).length !== 0 ? (
+        <div className={classes.OuterContainer}>
+          <SecondaryHeader />
+          {rating.rating ? (
+            <RatingModal
+              close={closeRate}
+              consumerID={localStorage.getItem("ConsumerId")}
+              sellerID={rating.sellerID}
+              orderID={rating.orderID}
+            />
+          ) : null}
+          {modal ? (
+            <UserEditModal
+              open={true}
+              close={closeModal}
+              ConsumerId={localStorage.getItem("ConsumerId")}
+              ConsumerName={Orders.consumerInfo.name}
+              ConsumerAddress={Orders.consumerInfo.address}
+              ConsumerPic={Orders.consumerInfo.img}
+              ConsumerData={Orders}
+              SetConsumerData={setOrders}
+            />
+          ) : null}
+          <div className={classes.FirstContainer}>
+            <div className={classes.LeftContainer}>
+              <div className={classes.ProfileImageContainer}>
+                {Orders.consumerInfo.img === null ? (
+                  <img src={Consumer} alt="Add User" />
+                ) : (
+                  <img
+                    src={`http://localhost:8080/${Orders.consumerInfo.img}`}
+                    alt="User"
+                  />
+                )}
+              </div>
 
               <div className={classes.InfoContainer}>
                 <div className={classes.NameContainer}>
@@ -168,10 +193,12 @@ const UserDashboard = () => {
               )}
             </div>
           </div>
-        </div>: null}
+        </div>
+      ) : null}
 
       {UI ? <Loader /> : null}
     </>
   );
 };
+
 export default UserDashboard;
