@@ -52,6 +52,11 @@ const UserDashboard = () => {
     // setorderid()
     // console.log(orderID)
     // console.log(rating)
+  }
+  const closeRate=()=>{
+    setrating({rating:false})
+    reload(!load)
+}
     return(
        
         <>
@@ -174,5 +179,5 @@ const UserDashboard = () => {
     </>
   );
 };
-}
+
 export default UserDashboard;
