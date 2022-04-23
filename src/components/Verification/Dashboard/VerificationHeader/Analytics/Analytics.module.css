@@ -1,0 +1,46 @@
+.Container{
+    /* border: 2px solid red; */
+    width: 40%;
+    margin: 30px auto  0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.AcceptColor{
+    width: 25px;
+    height: 25px;
+    background-color: #019267;
+    margin: 0 10px 0 0px;
+}
+.RejectColor{
+    width: 25px;
+    height: 25px;
+    background-color: #FD5D5D;
+    margin: 0 10px 0 0px;
+}
+
+.PendingColor{
+    width: 25px;
+    height: 25px;
+    background-color: #2FA4FF;
+    margin: 0 10px 0 0px;
+}
+.PendingContainer,.RejectContainer,.AcceptContainer{
+    display: flex;
+    align-items: center;
+    margin: 10px 0 0 0;
+    font-family: AvenirNextLTPro-Regular;
+}
+.Add{
+    /* border: 2px solid blue; */
+    margin: 0 auto;
+    /* border: none; */
+}
+.heading{
+    width: 90vw;
+    text-align: left;
+    font-family: AvenirNextLTPro-Bold;
+    margin-left: 8vw;
+    font-size: 20px;
+    margin-top: 20px;
+}

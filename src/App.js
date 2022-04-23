@@ -18,6 +18,7 @@ import { ToastContainer } from "react-toastify";
 import Checkout from "./components/Checkout/Checkout";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
 import Analytics from "./components/SellerDashboard/Analytics";
+import ValidatorAnalytics from "./components/Verification/Dashboard/VerificationHeader/Analytics/Analytics";
 
 function App() {
   return (
@@ -49,7 +50,7 @@ function App() {
             />
             <Route exact path="/sellerMenu" element={<SellerMenu />} />
             <Route exact path="/checkout" element={<Checkout />} />
-            <Route exact path="/ConsumerProfile" element={<UserDashboard/>}/>
+            <Route exact path="/ConsumerProfile" element={<UserDashboard />} />
             {/* CONSUMER ROUTES END */}
 
             {/* SELLER ROUTES */}
@@ -73,6 +74,11 @@ function App() {
               element={<VerificationLogin />}
             />
             <Route exact path="/verification" element={<Dashboard />} />
+            <Route
+              exact
+              path="/validatorAnalytics"
+              element={<ValidatorAnalytics />}
+            />
             {/* VERIFICATION ROUTES END*/}
           </Routes>
         </BrowserRouter>
