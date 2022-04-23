@@ -24,7 +24,7 @@ const VerificationLogin = () => {
         .post("http://localhost:8080/validator/signin", VerifierLog)
         .then((res) => {
           console.log(res);
-          localStorage.setItem("verifierId", "SMLAD");
+          localStorage.setItem("verifierId", res.data.validatorID);
           toast.success("Login Successfull!", {
             position: "top-center",
             autoClose: 2000,

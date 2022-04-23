@@ -7,8 +7,15 @@ const Dropdown = () => {
     localStorage.removeItem("verifierId");
     navigate("/verificationLogin");
   };
+
+  const handleAnalytics = () => {
+    navigate("/validatorAnalytics");
+  };
   return (
     <div className={classes.menu}>
+      <div className={classes.menuItem} onClick={handleAnalytics}>
+        <h3>Analytics</h3>
+      </div>
       <div className={classes.menuItem} onClick={handleLogout}>
         <h3>Logout</h3>
       </div>
