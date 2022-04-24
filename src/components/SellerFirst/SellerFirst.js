@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classes from "./SellerFirst.module.css";
 import logo from "../../assets/images/logo.png";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import Loader from "../SellerDashboard/Loader";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -57,7 +57,7 @@ const SellerFirst = () => {
     }
 
     axios
-      .get("http://localhost:8080/seller/getSellerConfig", {
+      .get("http://13.89.1.212/seller/getSellerConfig", {
         params: {
           sellerID: sellerID,
         },
@@ -186,7 +186,7 @@ const SellerFirst = () => {
       // console.log(isSpecial)
 
       axios
-        .post("http://localhost:8080/seller/addDishes", InnerFormData)
+        .post("http://104.43.237.82/seller/addDishes", InnerFormData)
         .then((res) => {
           // console.log(res);
           // console.log(SecondForm)
@@ -305,7 +305,7 @@ const SellerFirst = () => {
       OuterFormData.append("sellerID", localStorage.getItem("SellerId"));
 
       axios
-        .put("http://localhost:8080/seller/fillSellerDetails", OuterFormData)
+        .put("http://104.43.237.82/seller/fillSellerDetails", OuterFormData)
         .then((res) => {
           // console.log(res);
           if (res.status === 200) {
@@ -648,7 +648,7 @@ const SellerFirst = () => {
           Submit
         </button>
       </div>
-      <ToastContainer />
+      
       </div>
     :null
 }

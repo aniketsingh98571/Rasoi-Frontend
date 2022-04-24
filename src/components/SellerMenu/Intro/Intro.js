@@ -8,7 +8,7 @@ const Intro = (props) => {
     <div className={classes.Intro}>
       <div className={classes.selllerImage}>
         <img
-          src={`http://localhost:8080/${props.res.sellerInfo.img}`}
+          src={`http://104.43.237.82/${props.res.sellerInfo.img}`}
           alt="sellerImage"
         />
       </div>

@@ -96,7 +96,7 @@ const SellerFirstLogic = () => {
       InnerFormData.append("sellerID", localStorage.getItem("SellerId"));
 
       axios
-        .post("http://localhost:8080/seller/addDishes", InnerFormData)
+        .post("http://104.43.237.82/seller/addDishes", InnerFormData)
         .then((res) => {
           console.log(res);
           SetSecondForm({ dishName: "", price: "", timeReq: "" });
@@ -104,6 +104,7 @@ const SellerFirstLogic = () => {
           //if 1 and all the other required fields in first form are filled then
           //done activate else done not activate.
           if (res.status === 201) {
+            console.log("wow")
             toast.success("Dish Added Successfully", {
               position: "top-center",
               autoClose: 5000,
@@ -148,7 +149,7 @@ const SellerFirstLogic = () => {
       OuterFormData.append("sellerID", localStorage.getItem("SellerId"));
 
       axios
-        .put("http://localhost:8080/seller/fillSellerDetails", OuterFormData)
+        .put("http://104.43.237.82/seller/fillSellerDetails", OuterFormData)
         .then((res) => {
           console.log(res);
           if (res.status === 200) {

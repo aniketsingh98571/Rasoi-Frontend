@@ -64,8 +64,9 @@ const EditModal=(props)=>{
             // if(menu.dishType===null)
             //     Setmenu({...menu,dishType:"Veg"})
             //  console.log(menu)
+            //http://localhost:8080/seller/addDishes
                 axios
-        .post("http://localhost:8080/seller/addDishes", AddMenuItem)
+        .post("http://104.43.237.82/seller/addDishes", AddMenuItem)
         .then((res) => {
         //   console.log(res);
           if(res.status===201){
@@ -94,7 +95,7 @@ const EditModal=(props)=>{
         else{
             // console.log("Item not to be added")
            axios
-                .put("http://localhost:8080/seller/editDish", EditMenuItem)
+                .put("http://104.43.237.82/seller/editDish", EditMenuItem)
                 .then((res) => {
                 //   console.log(res);
                   if(res.status===200){
@@ -182,7 +183,7 @@ const EditModal=(props)=>{
                         <div className={classes.ProfileInput}>
                         <label htmlFor="ProfileInputId1">
               <div className={classes.LabelContainer}>
-              <img src={props.AddUpdate==="add"?"":`http://localhost:8080/${props.item.imageURL}`} id="EditDishImageID" alt="Add"/>
+              <img src={props.AddUpdate==="add"?"":`http://104.43.237.82/${props.item.imageURL}`} id="EditDishImageID" alt="Add"/>
                <p>{props.AddUpdate==="add"?"Add Image":"Update Image"}</p>
               </div>
             </label>

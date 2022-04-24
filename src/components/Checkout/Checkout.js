@@ -32,7 +32,7 @@ const Checkout = () => {
     setCart([]);
 
     axios
-      .post("http://localhost:8080/consumer/placeOrder", {
+      .post("http://13.89.1.212/consumer/placeOrder", {
         consumerID: localStorage.getItem("ConsumerId"),
         sellerID: localStorage.getItem("cartSellerID"),
         totalCost: totalPrice,

@@ -75,8 +75,9 @@ const UserSignUpLogic = () => {
       ConsumerRegistration.password &&
       ConfirmPass
     ) {
-      // console.log("All okay");
-      fetch("http://localhost:8080/consumer/signup", {
+      // http://localhost:8080/consumer/signup
+      
+      fetch("http://13.89.1.212/consumer/signup", {
         method: "POST", // or 'PUT'
         mode: "cors",
         headers: {

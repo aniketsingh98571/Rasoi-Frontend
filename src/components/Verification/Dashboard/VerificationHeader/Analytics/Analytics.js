@@ -35,7 +35,7 @@ const Analytics = () => {
   useEffect(() => {
     // console.log("Mai useeffect hu");
     axios
-      .get("http://localhost:8080/validator/analytics", {
+      .get("https://rasoibackendresourcehandlerserver.azurewebsites.net/validator/analytics", {
         params: {
           validatorUsername: "Somesh Lad",
         },

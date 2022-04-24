@@ -13,10 +13,10 @@ const UserSignInLogic = () => {
   };
   const SubmitHandler = (e) => {
     e.preventDefault();
-    // console.log(Consumerlog);
+    // http://localhost:8080/consumer/login
     if ((Consumerlog.mobileNo && Consumerlog.password) ||(e.key==="Enter")) {
       axios
-        .post("http://localhost:8080/consumer/login", Consumerlog)
+        .post("http://13.89.1.212/consumer/login", Consumerlog)
         .then((response) => {
           console.log(response);
           if (response.status === 200) {

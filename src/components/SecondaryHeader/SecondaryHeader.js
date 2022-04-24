@@ -62,7 +62,7 @@ const SecondaryHeader = (props) => {
             </div>
           ) : (
             <div className={classes.avatar}>
-              <img src={`http://localhost:8080/${uimg}`} alt="" />
+              <img src={`http://104.43.237.82/${uimg}`} alt="" />
             </div>
           )}
 

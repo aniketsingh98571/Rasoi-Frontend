@@ -37,7 +37,7 @@ const ConsumerHeader = (props) => {
       // console.log(search);
 
       axios
-        .get("http://localhost:8080/consumer/search", {
+        .get("http://13.89.1.212/consumer/search", {
           params: {
             searchingString: search.searchInput,
           },
@@ -147,7 +147,7 @@ const ConsumerHeader = (props) => {
             </div>
           ) : (
             <div className={classes.avatar}>
-              <img src={`http://localhost:8080/${props.uimg}`} alt="" />
+              <img src={`http://104.43.237.82/${props.uimg}`} alt="" />
             </div>
           )}
 

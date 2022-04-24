@@ -17,7 +17,7 @@ const Dashboard = () => {
       setLoading(true);
       // console.log("Mai useeffect hu");
       axios
-        .get("http://localhost:8080/validator/getAllNonVadidatedSeller", {
+        .get("http://13.89.1.212/validator/getAllNonVadidatedSeller", {
           params: {
             validatorUsername: "Somesh Lad",
           },

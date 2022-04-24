@@ -5,7 +5,7 @@ import axios from "axios";
 const Dropdown = (props) => {
   const filterClick = (state) => {
     axios
-      .get("http://localhost:8080/consumer/filter", {
+      .get("http://13.89.1.212/consumer/filter", {
         params: {
           consumerID: localStorage.getItem("ConsumerId"),
           order: state,
