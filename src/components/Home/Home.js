@@ -20,7 +20,7 @@ const Home = () => {
       const consumerID = localStorage.getItem("ConsumerId");
       localStorage.removeItem("sellerID");
       axios
-        .get("http://localhost:8080/consumer/consumerDashbord", {
+        .get("http://13.89.1.212/consumer/consumerDashbord", {
           params: {
             consumerID: consumerID,
           },

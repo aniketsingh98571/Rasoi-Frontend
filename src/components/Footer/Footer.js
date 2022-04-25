@@ -5,13 +5,13 @@ const Footer = () => {
   return (
     <footer className={classes.container}>
       <div className={classes.links}>
-        <a href="./home.html" target={"_new"}>
+        <a href="/Home" target={"_new"}>
           <div className={classes.linkItem}>Home</div>
         </a>
-        <a href="./ServiceAgreement.html" target={"_new"}>
+        <a href="#" target={"_new"}>
           <div className={classes.linkItem}>Service Agreement</div>
         </a>
-        <a href="./TandC.html" target={"_new"}>
+        <a href="#" target={"_new"}>
           <div className={classes.linkItem}>Terms and Conditions</div>
         </a>
       </div>

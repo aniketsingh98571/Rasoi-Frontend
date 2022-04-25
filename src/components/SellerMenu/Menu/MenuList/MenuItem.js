@@ -59,42 +59,10 @@ const MenuItem = (props) => {
       dishPrice: "",
     });
 
-    // const itemExist = cart.find((product) => product.id === item.id);
-    // if (itemExist) {
-    //   console.log("In if");
-    //   setItem({ ...itemExist, dishQty: item.dishQty + 1 });
-    //   addToCart();
-    // } else {
-    //   console.log("inElse");
-    // }
-    // console.log(item);
+   
   };
 
-  // const handleAdd = (item) => {
-  //   // setItem(
-  //   //   (item.dishName = props.dishName),
-  //   //   (item.dishQty = 1),
-  //   //   (item.dishType = props.dishType),
-  //   //   (item.dishPrice = props.dishPrice)
-  //   // );
-  //   setItem(item, [...cart]);
-  //   // let newcart = [...cart, item];
-  //   // newcart = +item;
-  //   setCart(item);
 
-  //   console.log(item);
-  //   console.log(cart);
-
-  //   // setCart(cart.push(item));
-  //   setItem({
-  //     dishName: "",
-  //     dishQty: 1,
-  //     dishType: "",
-  //     dishPrice: "",
-  //   });
-
-  //   addToCart(item.dishName, item.dishQty, item.dishType, item.dishPrice);
-  // };
 
   return (
     <>
