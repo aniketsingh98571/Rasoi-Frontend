@@ -8,10 +8,10 @@ const Footer = () => {
         <a href="/Home" target={"_new"}>
           <div className={classes.linkItem}>Home</div>
         </a>
-        <a href="#" target={"_new"}>
+        <a href="/Home" target={"_new"}>
           <div className={classes.linkItem}>Service Agreement</div>
         </a>
-        <a href="#" target={"_new"}>
+        <a href="/Home" target={"_new"}>
           <div className={classes.linkItem}>Terms and Conditions</div>
         </a>
       </div>
