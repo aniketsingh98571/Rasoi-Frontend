@@ -68,11 +68,11 @@ const RequestCard = (props) => {
     <div className={classes.card}>
       <div className={classes.imageDiv}>
         <div className={classes.sellerImage}>
-          <img src={`http://104.43.237.82/${props.sellerImg}`} alt="seller" />
+          <img src={`http://52.173.243.196/${props.sellerImg}`} alt="seller" />
           <figcaption>Seller Image</figcaption>
         </div>
         <div className={classes.panImage}>
-          <img src={`http://104.43.237.82/${props.sellerPan}`} alt="pan" />
+          <img src={`http://52.173.243.196/${props.sellerPan}`} alt="pan" />
           <figcaption>PAN Card</figcaption>
         </div>
       </div>

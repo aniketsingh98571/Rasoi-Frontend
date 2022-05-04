@@ -31,7 +31,7 @@ const SubmitHandler1=(e)=>{
     ConsumerEdit.append("address",EditUser.address)
     
     axios
-        .put("http://104.43.237.82/consumer/editProfile",ConsumerEdit)
+        .put("http://52.173.243.196/consumer/editProfile",ConsumerEdit)
         .then((res) => {
         //   console.log(res);
           if(res.status===200){

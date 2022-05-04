@@ -60,7 +60,7 @@ const SellerDashBoard = () => {
           <div className={classes.ImageContainer}>
             
             <img
-              src={`http://104.43.237.82/${Speciality.sellerInfo.img}`}
+              src={`http://52.173.243.196/${Speciality.sellerInfo.img}`}
               alt="Seller"
             />
           </div>
@@ -117,7 +117,7 @@ const SellerDashBoard = () => {
               <div className={classes.SpecialCard} key={ele._id}>
                 <div className={classes.SpecialImage}>
                   <img
-                    src={`http://104.43.237.82/${ele.imageURL}`}
+                    src={`http://52.173.243.196/${ele.imageURL}`}
                     alt="Special"
                   />
                 </div>
@@ -146,7 +146,7 @@ const SellerDashBoard = () => {
               <div className={classes.SpecialCard} key={ele._id}>
                 <div className={classes.SpecialImage}>
                   <img
-                    src={`http://104.43.237.82/${ele.imageURL}`}
+                    src={`http://52.173.243.196/${ele.imageURL}`}
                     alt="General"
                   />
                 </div>

@@ -71,7 +71,7 @@ const UserDashboard = () => {
                   
                  <div className={classes.ProfileImageContainer}>
                      {  Orders.consumerInfo.img===null?  <img src={Consumer} alt="Add User"/>:
-                       <img src={`http://104.43.237.82/${Orders.consumerInfo.img}`} alt="User"/>
+                       <img src={`http://52.173.243.196/${Orders.consumerInfo.img}`} alt="User"/>
                      }
                    </div>
 

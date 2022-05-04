@@ -17,7 +17,7 @@ const SellerCard = (props) => {
     <>
       <div className={classes.card}>
         <div className={classes.sellerImage}>
-          <img src={`http://104.43.237.82/${props.sellerImg}`} alt="Seller" />
+          <img src={`http://52.173.243.196/${props.sellerImg}`} alt="Seller" />
         </div>
         <div className={classes.sellerDesc}>
           <h3>{props.sellerName}</h3>

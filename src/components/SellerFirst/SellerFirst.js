@@ -186,7 +186,7 @@ const SellerFirst = () => {
       // console.log(isSpecial)
 
       axios
-        .post("http://104.43.237.82/seller/addDishes", InnerFormData)
+        .post("http://52.173.243.196/seller/addDishes", InnerFormData)
         .then((res) => {
           // console.log(res);
           // console.log(SecondForm)
@@ -305,7 +305,7 @@ const SellerFirst = () => {
       OuterFormData.append("sellerID", localStorage.getItem("SellerId"));
 
       axios
-        .put("http://104.43.237.82/seller/fillSellerDetails", OuterFormData)
+        .put("http://52.173.243.196/seller/fillSellerDetails", OuterFormData)
         .then((res) => {
           // console.log(res);
           if (res.status === 200) {
