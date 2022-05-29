@@ -35,7 +35,7 @@ const Analytics=()=>{
     useEffect(()=>{
         const sellerID=localStorage.getItem("SellerId")
         axios
-        .get("http://13.89.1.212/seller/analytics", {
+        .get("http://localhost:8080/seller/analytics", {
           params: {
             sellerID: sellerID,
           },

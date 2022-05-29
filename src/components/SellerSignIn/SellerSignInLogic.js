@@ -15,7 +15,7 @@ const SellerSignInLogic = () => {
     e.preventDefault();
     if (Sellerlog.mobileNo && Sellerlog.password) {
       axios
-        .post("http://13.89.1.212/seller/signin", Sellerlog)
+        .post("http://localhost:8080/seller/signin", Sellerlog)
         .then((res) => {
           if (res.status === 200 && res.data.configured === false) {
             toast.success("Login Successful", {

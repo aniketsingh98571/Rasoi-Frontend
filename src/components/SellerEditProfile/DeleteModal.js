@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const DeleteModal = (props) => {
   const DeleteDish = () => {
     axios
-      .delete("http://52.173.243.196/seller/deleteDish", {
+      .delete("http://localhost:8080/seller/deleteDish", {
         params: {
           sellerID: props.config.sellerID,
           dishID: props.config.dishID,

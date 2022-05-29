@@ -57,7 +57,7 @@ const SellerFirst = () => {
     }
 
     axios
-      .get("http://13.89.1.212/seller/getSellerConfig", {
+      .get("http://localhost:8080/seller/getSellerConfig", {
         params: {
           sellerID: sellerID,
         },
@@ -186,7 +186,7 @@ const SellerFirst = () => {
       // console.log(isSpecial)
 
       axios
-        .post("http://52.173.243.196/seller/addDishes", InnerFormData)
+        .post("http://localhost:8080/seller/addDishes", InnerFormData)
         .then((res) => {
           // console.log(res);
           // console.log(SecondForm)
@@ -305,7 +305,7 @@ const SellerFirst = () => {
       OuterFormData.append("sellerID", localStorage.getItem("SellerId"));
 
       axios
-        .put("http://52.173.243.196/seller/fillSellerDetails", OuterFormData)
+        .put("http://localhost:8080/seller/fillSellerDetails", OuterFormData)
         .then((res) => {
           // console.log(res);
           if (res.status === 200) {

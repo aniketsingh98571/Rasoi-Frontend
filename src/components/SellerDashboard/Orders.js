@@ -19,7 +19,7 @@ const Orders = () => {
     }
     console.log(sellerID);
     axios
-      .get("http://13.89.1.212/seller/getOrders", {
+      .get("http://localhost:8080/seller/getOrders", {
         params: {
           sellerID: sellerID,
         },
@@ -47,7 +47,7 @@ const Orders = () => {
     const orderID = id;
     // console.log(id + " Delivered ")
     axios
-      .post("http://13.89.1.212/seller/markAsDeliver", {
+      .post("http://localhost:8080/seller/markAsDeliver", {
         sellerID: sellerID,
         orderID: orderID,
       })
@@ -78,7 +78,7 @@ const Orders = () => {
     const action = true;
     const orderID = id;
     axios
-      .post("http://13.89.1.212/seller/acceptOrRejectOrder", {
+      .post("http://localhost:8080/seller/acceptOrRejectOrder", {
         sellerID: sellerID,
         orderID: orderID,
         action: action,
@@ -120,7 +120,7 @@ const Orders = () => {
     const action = false;
     // console.log(id + " Order Rejected")
     axios
-      .post("http://13.89.1.212/seller/acceptOrRejectOrder", {
+      .post("http://localhost:8080/seller/acceptOrRejectOrder", {
         sellerID: sellerID,
         orderID: orderID,
         action: action,

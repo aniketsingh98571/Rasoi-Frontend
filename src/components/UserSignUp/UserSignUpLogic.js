@@ -77,7 +77,7 @@ const UserSignUpLogic = () => {
     ) {
       // http://localhost:8080/consumer/signup
       
-      fetch("http://13.89.1.212/consumer/signup", {
+      fetch("http://localhost:8080/consumer/signup", {
         method: "POST", // or 'PUT'
         mode: "cors",
         headers: {

@@ -13,7 +13,7 @@ const SellerDashBoard = () => {
     }
     // console.log(sellerID);
      axios
-    .get("http://13.89.1.212/seller/sellerDashboard", {
+    .get("http://localhost:8080/seller/sellerDashboard", {
       params: {
         sellerID: sellerID,
       },
@@ -60,7 +60,7 @@ const SellerDashBoard = () => {
           <div className={classes.ImageContainer}>
             
             <img
-              src={`http://52.173.243.196/${Speciality.sellerInfo.img}`}
+              src={`http://localhost:8080/${Speciality.sellerInfo.img}`}
               alt="Seller"
             />
           </div>
@@ -117,7 +117,7 @@ const SellerDashBoard = () => {
               <div className={classes.SpecialCard} key={ele._id}>
                 <div className={classes.SpecialImage}>
                   <img
-                    src={`http://52.173.243.196/${ele.imageURL}`}
+                    src={`http://localhost:8080/${ele.imageURL}`}
                     alt="Special"
                   />
                 </div>
@@ -146,7 +146,7 @@ const SellerDashBoard = () => {
               <div className={classes.SpecialCard} key={ele._id}>
                 <div className={classes.SpecialImage}>
                   <img
-                    src={`http://52.173.243.196/${ele.imageURL}`}
+                    src={`http://localhost:8080/${ele.imageURL}`}
                     alt="General"
                   />
                 </div>

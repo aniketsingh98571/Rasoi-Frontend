@@ -20,7 +20,7 @@ const SellerMenu = () => {
     } else {
       const sellerID = localStorage.getItem("sellerID");
       axios
-        .get("http://13.89.1.212/seller/sellerDashboard", {
+        .get("http://localhost:8080/seller/sellerDashboard", {
           params: {
             sellerID: sellerID,
           },

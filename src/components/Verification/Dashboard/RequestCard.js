@@ -9,7 +9,7 @@ const RequestCard = (props) => {
 
     ///POST/PUT request
     axios
-      .put("http://13.89.1.212/validator/validateSeller", {
+      .put("http://localhost:8080/validator/validateSeller", {
         id: props.sellerID,
         action: "true",
       })
@@ -38,7 +38,7 @@ const RequestCard = (props) => {
   const handleReject = () => {
     // setValidate({ id: props.sellerID, action:"false" });
     axios
-      .put("http://13.89.1.212/validator/validateSeller", {
+      .put("http://localhost:8080/validator/validateSeller", {
         id: props.sellerID,
         action: "false",
       })
@@ -68,11 +68,11 @@ const RequestCard = (props) => {
     <div className={classes.card}>
       <div className={classes.imageDiv}>
         <div className={classes.sellerImage}>
-          <img src={`http://52.173.243.196/${props.sellerImg}`} alt="seller" />
+          <img src={`http://localhost:8080/${props.sellerImg}`} alt="seller" />
           <figcaption>Seller Image</figcaption>
         </div>
         <div className={classes.panImage}>
-          <img src={`http://52.173.243.196/${props.sellerPan}`} alt="pan" />
+          <img src={`http://localhost:8080/${props.sellerPan}`} alt="pan" />
           <figcaption>PAN Card</figcaption>
         </div>
       </div>

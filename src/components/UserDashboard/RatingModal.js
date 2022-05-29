@@ -17,7 +17,7 @@ const RatingModal=(props)=>{
         // console.log("Order id "+props.orderID)
         // console.log(stars+" rating")
         axios
-        .post("http://13.89.1.212/consumer/rateSeller", {
+        .post("http://localhost:8080/consumer/rateSeller", {
           consumerID:props.consumerID,
           sellerID:props.sellerID,
           orderID:props.orderID,

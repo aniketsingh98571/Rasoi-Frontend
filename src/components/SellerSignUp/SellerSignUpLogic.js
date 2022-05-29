@@ -103,7 +103,7 @@ const SellerSignUpLogic = () => {
       formData.append("panImage", ConsumerRegistration.panImage);
       formData.append("profileImage", ConsumerRegistration.profileImage);
       axios
-        .post("http://52.173.243.196/seller/signup", formData)
+        .post("http://localhost:8080/seller/signup", formData)
         .then((res) => {
           console.log(res);
           SetConsumerRegistration({

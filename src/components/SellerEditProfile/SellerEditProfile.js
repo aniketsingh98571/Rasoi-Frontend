@@ -36,7 +36,7 @@ const SellerEditProfile=()=>{
         // console.log(sellerID);
         // console.log("Loading")
         axios
-          .get("http://13.89.1.212/seller/sellerDashboard", {
+          .get("http://localhost:8080/seller/sellerDashboard", {
             params: {
               sellerID: sellerID,
             },
@@ -90,7 +90,7 @@ const SellerEditProfile=()=>{
         SubmitFirstForm.append("instagram",firstForm.instagram)
         // console.log(dishesCount)
         axios
-        .put("http://52.173.243.196/seller/editSellerInfo", SubmitFirstForm)
+        .put("http://localhost:8080/seller/editSellerInfo", SubmitFirstForm)
         .then((res) => {
           console.log(res);
           if(res.status===200){
@@ -177,7 +177,7 @@ const SellerEditProfile=()=>{
                         <div className={classes.ProfileInput}>
                         <label htmlFor="ProfileInputId">
               <div className={classes.LabelContainer}>
-              <img src={`http://52.173.243.196/${Edit.sellerInfo.img}`} id="SellerPersonalImageID" alt=""/>
+              <img src={`http://localhost:8080/${Edit.sellerInfo.img}`} id="SellerPersonalImageID" alt=""/>
                <p>Update Image</p>
               </div>
             </label>
@@ -233,7 +233,7 @@ const SellerEditProfile=()=>{
                             return (
                             <div key={ele._id} className={classes.InnerSpecialContainer}>
                             <div className={classes.SpecialImageContainer}>
-                                <img src={`http://52.173.243.196/${ele.imageURL}`} loading="lazy" alt=""/>
+                                <img src={`http://localhost:8080/${ele.imageURL}`} loading="lazy" alt=""/>
                             </div>
                             <div className={classes.LeftContainer}>
                                 <div className={classes.FoodNameContainer}>
@@ -283,7 +283,7 @@ const SellerEditProfile=()=>{
                             return (
                              <div key={ele._id} className={classes.InnerSpecialContainer}>
                             <div className={classes.SpecialImageContainer}>
-                                <img src={`http://52.173.243.196/${ele.imageURL}` } alt=""/>
+                                <img src={`http://localhost:8080/${ele.imageURL}` } alt=""/>
                             </div>
                             <div className={classes.LeftContainer}>
                                 <div className={classes.FoodNameContainer}>

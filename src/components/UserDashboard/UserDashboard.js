@@ -24,7 +24,7 @@ const UserDashboard = () => {
       window.location.href = "/";
     }
     axios
-      .get("http://13.89.1.212/consumer/profile", {
+      .get("http://localhost:8080/consumer/profile", {
         params: {
           consumerID: ConsumerId,
         },
@@ -71,7 +71,7 @@ const UserDashboard = () => {
                   
                  <div className={classes.ProfileImageContainer}>
                      {  Orders.consumerInfo.img===null?  <img src={Consumer} alt="Add User"/>:
-                       <img src={`http://52.173.243.196/${Orders.consumerInfo.img}`} alt="User"/>
+                       <img src={`http://localhost:8080/${Orders.consumerInfo.img}`} alt="User"/>
                      }
                    </div>
 
